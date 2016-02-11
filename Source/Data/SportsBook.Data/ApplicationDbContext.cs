@@ -17,6 +17,14 @@
         {
         }
 
+        public virtual IDbSet<City> Cities { get; set; }
+
+        public virtual IDbSet<Facility> Facilities { get; set; }
+
+        public virtual IDbSet<SportCategory> SportCategories { get; set; }
+
+        public virtual IDbSet<FacilityComment> FacilityComments { get; set; }
+
         public static SportsBookDbContext Create()
         {
             return new SportsBookDbContext();

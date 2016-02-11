@@ -60,7 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppUser.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Facility.cs" />
+    <Compile Include="FacilityComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SportCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

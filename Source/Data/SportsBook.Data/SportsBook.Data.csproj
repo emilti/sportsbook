@@ -78,6 +78,10 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SportsBook.Common\SportsBook.Common.csproj">
+      <Project>{0304527d-5938-4a5d-b433-01be9ab5b852}</Project>
+      <Name>SportsBook.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SportsBook.Data.Common\SportsBook.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
       <Name>SportsBook.Data.Common</Name>
