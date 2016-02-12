@@ -1,5 +1,6 @@
 ﻿namespace SportsBook.Data.Models
 {
+    using Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Facility
+    public class Facility : BaseModel<int>
     {
         private ICollection<SportCategory> sportCategories;
 
@@ -32,6 +33,9 @@
         public int CityId { get; set; }
 
         public virtual City City { get; set; }
+
+        [Required]
+        public string Image { get; set; }
 
         public virtual ICollection<SportCategory> SportCategories
         {

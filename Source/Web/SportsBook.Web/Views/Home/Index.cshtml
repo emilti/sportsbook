@@ -1,2 +1,11 @@
-﻿
-<h1>Home</h1>
+﻿@model List<SportsBook.Web.ViewModels.Home.FacilityViewModel>
+
+@foreach (var facility in Model)
+{
+    <div>
+        <img src=@facility.Image width="200" height="200">
+        @Html.ActionLink(@facility.Name, "", "Users", new { id = @facility.Id }, new { content = "a" })
+    </div>
+    <br />
+}
+
