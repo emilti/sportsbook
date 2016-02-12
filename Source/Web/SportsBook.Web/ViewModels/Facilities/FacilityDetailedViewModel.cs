@@ -1,40 +1,32 @@
-﻿namespace SportsBook.Data.Models
+﻿namespace SportsBook.Web.ViewModels.Facilities
 {
-    using Common.Models;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Web;
+    using AutoMapper;
+    using Data.Models;
+    using SportsBook.Web.Infrastructure.Mapping;
 
-    public class Facility : BaseModel<int>
+    public class FacilityDetailedViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        private ICollection<FacilityComment> facilityComments;
-
-        public Facility()
+        public FacilityDetailedViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
-            this.FacilityComments = new HashSet<FacilityComment>();
         }
 
         public int Id { get; set; }
 
-        [MaxLength(25)]
-        [MinLength(2)]
         public string Name { get; set; }
 
-        [MaxLength(150)]
-        [MinLength(2)]
         public string Description { get; set; }
 
         public int CityId { get; set; }
 
         public virtual City City { get; set; }
 
-        [Required]
         public string Image { get; set; }
 
         public virtual ICollection<SportCategory> SportCategories
@@ -43,10 +35,9 @@
             set { this.sportCategories = value; }
         }
 
-        public virtual ICollection<FacilityComment> FacilityComments
+        public void CreateMappings(IMapperConfiguration configuration)
         {
-            get { return this.facilityComments; }
-            set { this.facilityComments = value; }
+            configuration.CreateMap<SportsBook.Data.Models.Facility, FacilityDetailedViewModel>();
         }
     }
 }

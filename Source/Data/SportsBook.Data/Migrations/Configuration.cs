@@ -1,13 +1,13 @@
 ﻿namespace SportsBook.Data.Migrations
 {
+    using System;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using SportsBook.Common;
-    using System;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
+    
     public sealed class Configuration : DbMigrationsConfiguration<SportsBookDbContext>
     {
         private UserManager<AppUser> userManager;
@@ -105,7 +105,6 @@
             var allUsers = context.Users.AsQueryable();
             context.SaveChanges();
 
-
             if (context.Cities.Count() == 0)
             {
                 City sofia = new City
@@ -128,6 +127,7 @@
                     {
                         Name = "Faciltiy" + i,
                         City = sofia,
+                        Image = "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_March_2010-1.jpg",
                         Description = "Description" + i
                     };
 
@@ -142,14 +142,12 @@
             SportCategory football = new SportCategory
             {
                 Name = "Football",
-                Image = "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_March_2010-1.jpg",
                 Description = "Description"
             };
 
             SportCategory volleyball = new SportCategory
             {
                 Name = "Volleyball",
-                Image = "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_March_2010-1.jpg",
                 Description = "Description"
             };
 
@@ -157,7 +155,6 @@
             SportCategory basketball = new SportCategory
             {
                 Name = "basketball",
-                Image = "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_March_2010-1.jpg",
                 Description = "Description"
             };
 

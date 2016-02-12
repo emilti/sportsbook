@@ -22,9 +22,6 @@
         [MinLength(2)]
         public string Description { get; set; }
 
-        [Required]
-        public string Image { get; set; }
-
         public virtual ICollection<Facility> Facilities
         {
             get { return this.facilities; }
