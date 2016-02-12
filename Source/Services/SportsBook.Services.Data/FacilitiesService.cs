@@ -22,7 +22,12 @@
 
         public IQueryable<Facility> GetTopFacilities()
         {
-            return this.facilities.All().Take(5);
+            return this.facilities.All().Take(6);
+        }
+
+        public Facility GetFacilityDetails(int id)
+        {
+            return this.facilities.GetById(id);
         }
     }
 }

@@ -1,0 +1,11 @@
+﻿@model SportsBook.Web.ViewModels.Facilities.FacilityDetailedViewModel
+
+@Model.Name
+@Model.Description
+@Model.City
+@Model.Image
+@foreach(var category in @Model.SportCategories)
+{
+    <span>@category.Name</span><span>@category.Id</span>
+}
+

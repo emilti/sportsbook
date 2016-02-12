@@ -1,20 +1,4 @@
-﻿@model List<SportsBook.Web.ViewModels.Home.FacilityViewModel>
+﻿@model List<SportsBook.Web.ViewModels.Facilities.FacilityViewModel>
 
-<div class="row">
-    @foreach (var facility in Model)
-    {       
-        <div class="col-md-4">            
-            <div class="holder caption">
-                <img src=@facility.Image alt=" this is a title" class="image" />
-                <div>
-                    <span class="details-caption">Details</span>
-                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    @Html.ActionLink(@facility.Name, "", "Users", new { id = @facility.Id }, new { content = "a" })
-                </div>
-            </div>           
-        </div>
-    }
-</div>
+
+@Html.Partial("FacilityPartial")

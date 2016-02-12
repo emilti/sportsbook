@@ -1,18 +1,20 @@
-﻿using SportsBook.Data.Models;
-using SportsBook.Web.Infrastructure.Mapping;
-using System.Collections.Generic;
-using AutoMapper;
-using System;
-
-namespace SportsBook.Web.ViewModels.Home
+﻿namespace SportsBook.Web.ViewModels.Facilities
 {
-    public class FacilityViewModel : IMapFrom<Facility>, IHaveCustomMappings
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using AutoMapper;
+    using Data.Models;
+    using SportsBook.Web.Infrastructure.Mapping;
+
+    public class FacilityDetailedViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        public FacilityViewModel()
+        public FacilityDetailedViewModel()
         {
-            this.SportCategories = new HashSet<SportCategory>(); 
+            this.SportCategories = new HashSet<SportCategory>();
         }
 
         public int Id { get; set; }
@@ -35,7 +37,7 @@ namespace SportsBook.Web.ViewModels.Home
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Facility, FacilityViewModel>();
+            configuration.CreateMap<SportsBook.Data.Models.Facility, FacilityDetailedViewModel>();
         }
     }
 }
