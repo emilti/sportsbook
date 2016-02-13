@@ -15,8 +15,8 @@ h1, h2
 /* Common division block */
 .holder
 {
-    border: 6px solid #FFFFFF;    
-    margin: 20px;
+    border: 0px solid #FFFFFF;    
+    margin: 5px;
     position: relative;    
     overflow: hidden;
     box-shadow: 0px 0px 5px #333333;
@@ -32,20 +32,24 @@ h1, h2
 /* Caption and Light */
 .caption
 {
-    color: rgba(0,0,0,0);
-    line-height: 200px;
-    
+    color: white;
+    line-height: 200px;    
 }
 .caption:hover
 {
-    border: 6px solid #E0E0E0;
+    border: 10px solid #E0E0E0;
     color: rgb(255,255,255);
     line-height: 40px;
     box-shadow: 0px 0px 10px 7px #FFFFFF;    
+   
 }
 
 .caption:hover>div{
     display:inline
+}
+
+.caption:hover>img{
+    -webkit-filter: brightness(0.4);
 }
 
 .caption>div
@@ -59,9 +63,12 @@ h1, h2
 
 .image{
     width:200px;
-    height:200px
+    height:200px;
+   
 }
 
-.details-caption{
-    color:black
+
+div div div span.details-caption{
+    color:white;
+    
 }

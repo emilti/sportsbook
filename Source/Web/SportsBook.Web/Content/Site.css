@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.image-in-details{
+    width:300px;
+    height:300px;
+    float:left;
+    margin:20px;
+}
+
+.sports-tags{
+    clear:both
+}

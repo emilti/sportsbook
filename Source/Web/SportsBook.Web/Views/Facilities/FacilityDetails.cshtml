@@ -1,11 +1,19 @@
 ﻿@model SportsBook.Web.ViewModels.Facilities.FacilityDetailedViewModel
 
-@Model.Name
-@Model.Description
-@Model.City
-@Model.Image
-@foreach(var category in @Model.SportCategories)
+<h3>@Model.Name</h3>
+
+<img src=@Model.Image class="image-in-details">
+<div>@Model.Description</div>
+
+@Model.City.Name
+
+<div class="sports-tags">
+@foreach (var category in @Model.SportCategories)
 {
-    <span>@category.Name</span><span>@category.Id</span>
+    <button type="button" class="btn btn-primary">
+        <span>@category.Name</span>
+    </button>
 }
+</div>
+
 

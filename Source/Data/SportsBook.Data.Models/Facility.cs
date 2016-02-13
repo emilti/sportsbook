@@ -1,12 +1,12 @@
 ﻿namespace SportsBook.Data.Models
 {
-    using Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Common.Models;
 
     public class Facility : BaseModel<int>
     {
@@ -20,13 +20,11 @@
             this.FacilityComments = new HashSet<FacilityComment>();
         }
 
-        public int Id { get; set; }
-
-        [MaxLength(25)]
+        [MaxLength(50)]
         [MinLength(2)]
         public string Name { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(1200)]
         [MinLength(2)]
         public string Description { get; set; }
 
