@@ -20,13 +20,14 @@
             this.comments = commentsRepo;
         }
 
-        public FacilityComment Add(int facilityId, string content, string userId, Facility commentedFacility)
+        public FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility)
         {
             var newComment = new FacilityComment
             {
                 FacilityId = facilityId,
                 Content = content,
-                AuthorId = userId,
+                AuthorName = username,
+                AuthorId = authorId,
                 CreatedOn = DateTime.UtcNow,
             };
 

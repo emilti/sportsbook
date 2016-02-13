@@ -7,8 +7,8 @@
     using System.Threading.Tasks;
     using SportsBook.Data.Models;
 
-    public interface ICommentsService
+    public interface IUsersService
     {
-        FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility);
+        AppUser GetUserDetails(string id);
     }
 }

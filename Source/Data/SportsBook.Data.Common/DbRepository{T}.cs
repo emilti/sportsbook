@@ -3,7 +3,6 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
-
     using SportsBook.Data.Common.Models;
 
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?

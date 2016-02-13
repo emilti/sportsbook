@@ -17,6 +17,8 @@
 
         public Facility Facility { get; set; }
 
+        public string AuthorName { get; set; }
+
         public string AuthorId { get; set; }
 
         public AppUser Author { get; set; }

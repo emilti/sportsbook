@@ -1,5 +1,5 @@
 ﻿@model SportsBook.Web.ViewModels.Facilities.FacilityDetailedViewModel
-
+@using Microsoft.AspNet.Identity
 <h3>@Model.Name</h3>
 
 <img src=@Model.Image class="image-in-details">
@@ -8,21 +8,23 @@
 @Model.City.Name
 
 <div class="sports-tags">
-@foreach (var category in @Model.SportCategories)
-{
-    <button type="button" class="btn btn-primary">
-        <span>@category.Name</span>
-    </button>
-}
+    @foreach (var category in @Model.SportCategories)
+    {
+        <button type="button" class="btn btn-primary">
+            <span>@category.Name</span>
+        </button>
+    }
 </div>
 
-@Html.Partial("CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
+}
 
-@foreach(var comment in Model.FacilityComments)
+@foreach (var comment in Model.FacilityComments)
 {
     <div>
-        @comment.Content
+        @comment.AuthorName - @comment.Content - @comment.CreatedOn
     </div>
-    
 }
 
