@@ -17,14 +17,50 @@
 </div>
 
 @if (Request.IsAuthenticated)
-{
-    @Html.Partial("CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
+{  
+    <button id="add-comment-button" class="btn btn-primary">Add</button>    
+    <div id="add-comment-part"></div>
+    <button id="cancel-comment-button" class="btn btn-danger" style="display:none">Cancel</button>
 }
 
 @foreach (var comment in Model.FacilityComments)
 {
-    <div>
-        @comment.AuthorName - @comment.Content - @comment.CreatedOn
+    if (User.Identity.GetUserId() == @comment.AuthorId)
+    {
+        <span>check</span>
+    }
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
+        </div>
+        <div class="panel-body">
+            @comment.Content
+        </div>
     </div>
+}
+
+<script id="add-comment-template" type="text/template">
+    @Html.Partial("_CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
+</script>
+
+
+@section addComment{
+    <script>
+        $("#add-comment-button").on("click", function () { myAddFunction() });
+        function myAddFunction() {
+            $("#add-comment-button").css("display", "none")
+            var addCommentTemplate = $('#add-comment-template').html();           
+            $("#add-comment-part").html(addCommentTemplate)
+            $("#cancel-comment-button").css("display", "inline-block")
+        }
+
+        $("#cancel-comment-button").on("click", function () { myCancelFunction() });
+        function myCancelFunction() {
+            $("#add-comment-button").css("display","inline-block")
+            $("#add-comment-part").empty();
+            $("#cancel-comment-button").css("display", "none")
+        }
+
+    </script>
 }
 

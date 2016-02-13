@@ -6,7 +6,17 @@
     @Html.TextAreaFor(model => model.Content, 10, 240, null);
       
     <input type="submit" class="btn btn-success" />
+   
     <div>
         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
     </div>
 }
+
+@*<div id="result"></div>
+
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "result" }))
+{
+    @Html.Hidden("id", ViewContext.RouteData.Values["id"])
+    @Html.TextAreaFor(model => model.Content, 10, 240, null);
+    <input type="submit" value="OK" />
+}*@
