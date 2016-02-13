@@ -13,6 +13,7 @@
     using Data.Common;
     using Services.Web;
     using Services.Data.Contracts;
+    using Services.Data;
 
     public static class AutofacConfig
     {
@@ -55,6 +56,8 @@
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
+         
+
             var servicesAssembly = Assembly.GetAssembly(typeof(IFacilitiesService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 

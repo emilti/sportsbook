@@ -2,9 +2,9 @@
 {
     using System;
     using System.Linq;
+    using SportsBook.Data.Common;
     using SportsBook.Data.Models;
     using SportsBook.Services.Data.Contracts;
-    using SportsBook.Data.Common;
 
     public class FacilitiesService : IFacilitiesService
     {

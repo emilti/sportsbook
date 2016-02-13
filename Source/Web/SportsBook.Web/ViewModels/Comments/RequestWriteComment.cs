@@ -7,10 +7,6 @@
 
     public class RequestWriteComment
     {
-        public int AuthorId { get; set; }
-
-        public int FacilityId { get; set; }
-
         public string Content { get; set; }
     }
 }

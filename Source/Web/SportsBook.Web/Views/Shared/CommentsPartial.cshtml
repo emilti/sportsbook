@@ -2,12 +2,9 @@
 
 @using (@Html.BeginForm("WriteComment", "Comments", FormMethod.Post))
 {
-
-    @Html.TextAreaFor(model => model.Content, 10, 40, null);
-    <br />
-    <input type="text" name="title" />
-    <br />
-    <input type="text" name="content" />
+    @Html.Hidden("id", ViewContext.RouteData.Values["id"])
+    @Html.TextAreaFor(model => model.Content, 10, 240, null);
+      
     <input type="submit" class="btn btn-success" />
     <div>
         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })

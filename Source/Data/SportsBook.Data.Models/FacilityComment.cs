@@ -6,11 +6,10 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Common.Models;
 
-    public class FacilityComment
+    public class FacilityComment : BaseModel<int>
     {
-        public int Id { get; set; }
-
         [Required]
         public string Content { get; set; }
 
