@@ -16,4 +16,20 @@
 }
 </div>
 
+@Html.TextAreaFor(model => model.FacilityComments, 10, 40, null);
+
+
+    h3>Write New Message</h3>
+@using (@Html.BeginForm("WriteComment", "Comments", FormMethod.Post))
+{
+    <br />
+    <input type="text" name="title" />
+    <br />
+    <input type="text" name="content" />
+    <input type="submit" class="btn btn-success" />
+    <div>
+        @Html.ValidationMessageFor(model => model., "", new { @class = "text-danger" })
+        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+    </div>
+}
 
