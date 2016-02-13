@@ -18,3 +18,11 @@
 
 @Html.Partial("CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
 
+@foreach(var comment in Model.FacilityComments)
+{
+    <div>
+        @comment.Content
+    </div>
+    
+}
+
