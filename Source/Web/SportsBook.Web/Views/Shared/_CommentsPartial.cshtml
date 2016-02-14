@@ -3,7 +3,7 @@
 @using (@Html.BeginForm("WriteComment", "Comments", FormMethod.Post))
 {
     @Html.Hidden("id", ViewContext.RouteData.Values["id"])
-    @Html.TextAreaFor(model => model.Content, 10, 240, null);
+    @Html.EditorFor(model => model.Content, "ContentCommentTemplate");
       
     <input type="submit" class="btn btn-success" />
    

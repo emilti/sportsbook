@@ -9,6 +9,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.Comments;
+    using Infrastructure.Mapping;
 
     public class CommentsController : BaseController
     {
@@ -38,6 +39,15 @@
             string username = user.UserName;
             var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility);
             return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Regular,Admin")]
+        public ActionResult EditComment(int id)
+        {
+            FacilityComment foundComment = this.comments.GetById(id);
+            var foundCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<EditCommentViewModel>(foundComment);
+            return this.View(foundCommentForView);
         }
     }
 }

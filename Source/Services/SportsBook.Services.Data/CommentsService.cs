@@ -37,5 +37,11 @@
 
             return newComment;
         }
+
+        public FacilityComment GetById(int commentId)
+        {
+            FacilityComment foundComment = this.comments.GetById(commentId);
+            return foundComment;
+        }
     }
 }

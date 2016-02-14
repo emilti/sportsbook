@@ -33,3 +33,8 @@ textarea {
 .sports-tags{
     clear:both
 }
+
+.comments-bottom{
+    padding-bottom:10px;
+    padding-right:10px
+}

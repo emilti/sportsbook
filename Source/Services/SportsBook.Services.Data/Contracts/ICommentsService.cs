@@ -10,5 +10,7 @@
     public interface ICommentsService
     {
         FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility);
+
+        FacilityComment GetById(int commentId);
     }
 }

@@ -17,18 +17,14 @@
 </div>
 
 @if (Request.IsAuthenticated)
-{  
-    <button id="add-comment-button" class="btn btn-primary">Add</button>    
+{
+    <button id="add-comment-button" class="btn btn-primary">Add</button>
     <div id="add-comment-part"></div>
     <button id="cancel-comment-button" class="btn btn-danger" style="display:none">Cancel</button>
 }
 
 @foreach (var comment in Model.FacilityComments)
 {
-    if (User.Identity.GetUserId() == @comment.AuthorId)
-    {
-        <span>check</span>
-    }
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
@@ -36,6 +32,21 @@
         <div class="panel-body">
             @comment.Content
         </div>
+        @if (User.Identity.GetUserId() == @comment.AuthorId)
+        {
+        <div class="row comments-bottom">
+            <div class="col-md-offset-10 col-md-2 btn-group">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9 btn-group">
+                        @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                  
+                </div>
+               
+            </div>
+        </div>       
+        }
     </div>
 }
 
@@ -49,18 +60,17 @@
         $("#add-comment-button").on("click", function () { myAddFunction() });
         function myAddFunction() {
             $("#add-comment-button").css("display", "none")
-            var addCommentTemplate = $('#add-comment-template').html();           
+            var addCommentTemplate = $('#add-comment-template').html();
             $("#add-comment-part").html(addCommentTemplate)
             $("#cancel-comment-button").css("display", "inline-block")
         }
 
         $("#cancel-comment-button").on("click", function () { myCancelFunction() });
         function myCancelFunction() {
-            $("#add-comment-button").css("display","inline-block")
+            $("#add-comment-button").css("display", "inline-block")
             $("#add-comment-part").empty();
             $("#cancel-comment-button").css("display", "none")
         }
-
     </script>
 }
 
