@@ -50,8 +50,8 @@
             return this.View(foundCommentForView);
         }
 
-
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Regular,Admin")]
         public ActionResult EditComment(int id, EditCommentResponseModel model)
         {
@@ -62,6 +62,15 @@
 
             FacilityComment foundComment = this.comments.GetById(id);
             this.comments.UpdateComment(id, model.Content);
+            return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Regular,Admin")]
+        public ActionResult DeleteComment(int id)
+        {
+            FacilityComment foundComment = this.comments.GetById(id);
+            this.comments.DeleteComment(foundComment);
             return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
         }
     }

@@ -25,29 +25,37 @@
 
 @foreach (var comment in Model.FacilityComments)
 {
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
-        </div>
-        <div class="panel-body">
-            @comment.Content
-        </div>
-        @if (User.Identity.GetUserId() == @comment.AuthorId)
-        {
-        <div class="row comments-bottom">
-            <div class="col-md-offset-10 col-md-2 btn-group">
-                <div class="row">
-                    <div class="col-md-offset-3 col-md-9 btn-group">
-                        @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
-                        <button class="btn btn-danger">Delete</button>
-                    </div>
-                  
-                </div>
-               
+    if (comment.IsDeleted == false)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
             </div>
-        </div>       
-        }
-    </div>
+            <div class="panel-body">
+                @comment.Content
+            </div>
+            @if (User.Identity.GetUserId() == @comment.AuthorId)
+            {
+                <div class="row comments-bottom">
+                    <div class="col-md-offset-10 col-md-2 btn-group">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9 btn-group">
+                                @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
+                                @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
+                                {
+                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                    @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
 }
 
 <script id="add-comment-template" type="text/template">

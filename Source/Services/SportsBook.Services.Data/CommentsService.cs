@@ -38,6 +38,12 @@
             return newComment;
         }
 
+        public void DeleteComment(FacilityComment facilityComment)
+        {
+            this.comments.Delete(facilityComment);
+            this.comments.Save();
+        }
+
         public FacilityComment GetById(int commentId)
         {
             FacilityComment foundComment = this.comments.GetById(commentId);

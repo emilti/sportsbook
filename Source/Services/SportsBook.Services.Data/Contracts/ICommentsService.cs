@@ -14,5 +14,7 @@
         FacilityComment GetById(int commentId);
 
         void UpdateComment(int id, string newContent);
+
+        void DeleteComment(FacilityComment id);
     }
 }
