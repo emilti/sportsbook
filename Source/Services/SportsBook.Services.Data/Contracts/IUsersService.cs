@@ -10,5 +10,7 @@
     public interface IUsersService
     {
         AppUser GetUserDetails(string id);
+
+        void UpdateUser(AppUser user);
     }
 }

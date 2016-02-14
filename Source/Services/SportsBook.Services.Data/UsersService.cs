@@ -23,5 +23,10 @@
         {
             return this.users.GetById(id);
         }
+
+        public void UpdateUser(AppUser foundUser)
+        {            
+            this.users.SaveChanges();
+        }
     }
 }
