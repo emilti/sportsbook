@@ -84,7 +84,7 @@
             var result =
                 await
                 this.SignInManager.PasswordSignInAsync(
-                    model.Email,
+                    model.UserName,
                     model.Password,
                     model.RememberMe,
                     shouldLockout: false);
@@ -170,7 +170,15 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                var user = new AppUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    Avatar = model.Avatar,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
+
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -25,7 +25,7 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Regular,Admin")]
+        [Authorize]
         public ActionResult WriteComment(int id, RequestWriteComment model)
         {
             if (!this.ModelState.IsValid)
@@ -42,7 +42,7 @@
         }
 
         [HttpGet]
-        [Authorize(Roles = "Regular,Admin")]
+        [Authorize]
         public ActionResult EditComment(int id)
         {
             FacilityComment foundComment = this.comments.GetById(id);
@@ -52,7 +52,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Regular,Admin")]
+        [Authorize]
         public ActionResult EditComment(int id, EditCommentResponseModel model)
         {
             if (!this.ModelState.IsValid)
@@ -66,7 +66,7 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Regular,Admin")]
+        [Authorize]
         public ActionResult DeleteComment(int id)
         {
             FacilityComment foundComment = this.comments.GetById(id);
