@@ -1,13 +1,47 @@
 ﻿@model SportsBook.Web.ViewModels.Account.AccountDetailsViewModel
 
-<img src=@Model.Avatar class="image-in-details">
-
-@Model.Email
-@Model.UserName
-<div>@Model.FirstName</div>
-@Model.LastName
-
-
+<div class="container" style="padding-top: 60px;">
+    
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="text-center">
+                <img src=@Model.Avatar style="width:200px;height:200px"class="avatar img-circle img-thumbnail" alt="avatar">                
+            </div>
+        </div>
+        <!-- edit form column -->
+        <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+           
+            <h3>Personal info</h3>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <label class="control-label">@Model.FirstName</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                        <label class="control-label">@Model.LastName</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Username:</label>
+                    <div class="col-lg-8">
+                        <label class="control-label">@Model.UserName</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Email:</label>
+                    <div class="col-lg-8">
+                        <label class="control-label">@Model.Email</label>
+                    </div>
+                </div>   
+            </form>
+        </div>
+    </div>
+</div>
 
 @*<div class="sports-tags">
     @foreach (var category in @Model.)
