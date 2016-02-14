@@ -11,10 +11,13 @@
     public class FacilityDetailedViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
+        private ICollection<FacilityComment> facilityComments;
 
         public FacilityDetailedViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
+            this.FacilityComments = new HashSet<FacilityComment>();
+
         }
 
         public int Id { get; set; }
@@ -33,6 +36,12 @@
         {
             get { return this.sportCategories; }
             set { this.sportCategories = value; }
+        }
+
+        public virtual ICollection<FacilityComment> FacilityComments
+        {
+            get { return this.facilityComments; }
+            set { this.facilityComments = value; }
         }
 
         public void CreateMappings(IMapperConfiguration configuration)
