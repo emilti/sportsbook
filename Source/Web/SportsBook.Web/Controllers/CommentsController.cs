@@ -49,5 +49,20 @@
             var foundCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<EditCommentViewModel>(foundComment);
             return this.View(foundCommentForView);
         }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Regular,Admin")]
+        public ActionResult EditComment(int id, EditCommentResponseModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+
+            }
+
+            FacilityComment foundComment = this.comments.GetById(id);
+            this.comments.UpdateComment(id, model.Content);
+            return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
+        }
     }
 }

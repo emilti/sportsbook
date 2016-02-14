@@ -43,5 +43,12 @@
             FacilityComment foundComment = this.comments.GetById(commentId);
             return foundComment;
         }
+
+        public void UpdateComment(int id, string newContent)
+        {
+            var comment = this.comments.GetById(id);
+            comment.Content = newContent;
+            this.comments.Save();
+        }
     }
 }

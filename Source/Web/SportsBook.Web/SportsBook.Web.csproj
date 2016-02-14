@@ -216,6 +216,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Comments\EditCommentResponseModel.cs" />
     <Compile Include="ViewModels\Comments\RequestWriteComment.cs" />
     <Compile Include="ViewModels\Comments\EditCommentViewModel.cs" />
     <Compile Include="ViewModels\Facilities\FacilityDetailedViewModel.cs" />

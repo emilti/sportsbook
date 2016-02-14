@@ -1,5 +1,5 @@
 ﻿@model SportsBook.Web.ViewModels.Comments.EditCommentViewModel
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditComment", "Comments", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

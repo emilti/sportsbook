@@ -12,5 +12,7 @@
         FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility);
 
         FacilityComment GetById(int commentId);
+
+        void UpdateComment(int id, string newContent);
     }
 }
