@@ -1,18 +1,16 @@
 ﻿@model SportsBook.Web.ViewModels.Account.AccountDetailsViewModel
-
+@using Microsoft.AspNet.Identity
 <div class="container" style="padding-top: 60px;">
-    
+
     <div class="row">
         <!-- left column -->
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="text-center">
-                <img src=@Model.Avatar style="width:200px;height:200px"class="avatar img-circle img-thumbnail" alt="avatar">                
+                <img src=@Model.Avatar style="width:200px;height:200px" class="avatar img-circle img-thumbnail" alt="avatar">
             </div>
         </div>
         <!-- edit form column -->
         <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-           
-            <h3>Personal info</h3>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
@@ -37,17 +35,37 @@
                     <div class="col-lg-8">
                         <label class="control-label">@Model.Email</label>
                     </div>
-                </div>   
+                </div>
             </form>
         </div>
     </div>
 </div>
+@if (User.Identity.GetUserName() == Model.UserName)
+{
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+        </div>
+        <div class="col-md-8 col-sm-6 col-xs-12">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"></label>
+                    <div class="col-lg-8">
+                        <label class="control-label">
+                            @Html.ActionLink("Edit Account", "GetEditAccount", "Account", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-warning" })
+                        </label>
+                    </div>
+                </div>
 
-@*<div class="sports-tags">
-    @foreach (var category in @Model.)
-    {
-        <button type="button" class="btn btn-primary">
-            <span>@category.Name</span>
-        </button>
-    }
-</div>*@
+            </form>
+        </div>
+    </div>
+}
+
+    @*<div class="sports-tags">
+            @foreach (var category in @Model.)
+            {
+                <button type="button" class="btn btn-primary">
+                    <span>@category.Name</span>
+                </button>
+            }
+        </div>*@
