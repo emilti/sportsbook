@@ -446,6 +446,15 @@
             return this.View(currentUserForView);
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult EditAccount(string id)
+        {
+            AppUser currentUser = this.users.GetUserDetails(id);
+            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
+            return this.View(currentUserForView);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

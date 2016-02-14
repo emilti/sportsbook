@@ -1,0 +1,67 @@
+﻿@model SportsBook.Web.ViewModels.Account.AccountDetailsViewModel
+
+<div class="container" style="padding-top: 60px;">
+    <h1 class="page-header">Edit Profile</h1>
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="text-center">
+                <img src=@Model.Avatar class="profile-image img-circle img-thumbnail" alt="avatar">
+            </div>
+        </div>
+
+
+        <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+
+            <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert">Ã—</a>
+                <i class="fa fa-coffee"></i>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            <h3>Personal info</h3>
+            @using (Html.BeginForm("EditAccount", "Account", FormMethod.Post, new { @class ="form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "col-lg-3 control-label" })
+
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.UserName, Model.UserName, new { @class = "form-control" })
+                    </div>
+                </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(m => m.Email, Model.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(m => m.FirstName, Model.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(m => m.LastName, Model.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(m => m.Avatar, Model.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <input class="btn btn-primary" value="Save Changes" type="submit">
+                            <span></span>
+                            <input class="btn btn-default" value="Cancel" type="reset">
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>

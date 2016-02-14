@@ -6,7 +6,7 @@
         <!-- left column -->
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="text-center">
-                <img src=@Model.Avatar style="width:200px;height:200px" class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src=@Model.Avatar class="profile-image avatar img-circle img-thumbnail" alt="avatar">
             </div>
         </div>
         <!-- edit form column -->
@@ -51,7 +51,7 @@
                     <label class="col-lg-3 control-label"></label>
                     <div class="col-lg-8">
                         <label class="control-label">
-                            @Html.ActionLink("Edit Account", "GetEditAccount", "Account", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Edit Account", "EditAccount", "Account", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-warning" })
                         </label>
                     </div>
                 </div>
