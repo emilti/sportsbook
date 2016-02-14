@@ -4,13 +4,13 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-
+    using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
+    using Infrastructure.Mapping;
 
     [Authorize]
     public class AccountController : BaseController
@@ -18,12 +18,15 @@
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
+        private readonly IUsersService users;
+
         private ApplicationSignInManager signInManager;
 
         private ApplicationUserManager userManager;
 
-        public AccountController()
+        public AccountController(IUsersService usersService)
         {
+            this.users = usersService;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -434,6 +437,13 @@
         public ActionResult ExternalLoginFailure()
         {
             return this.View();
+        }
+
+        public ActionResult ViewAccount(string id)
+        {
+            AppUser currentUser = this.users.GetUserDetails(id);
+            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
+            return this.View(currentUserForView);
         }
 
         protected override void Dispose(bool disposing)

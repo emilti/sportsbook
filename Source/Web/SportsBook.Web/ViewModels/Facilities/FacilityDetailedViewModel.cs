@@ -46,7 +46,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<SportsBook.Data.Models.Facility, FacilityDetailedViewModel>();
+            configuration.CreateMap<Facility, FacilityDetailedViewModel>();
         }
     }
 }

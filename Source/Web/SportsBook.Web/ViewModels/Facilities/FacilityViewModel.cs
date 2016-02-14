@@ -12,7 +12,7 @@
 
         public FacilityViewModel()
         {
-            this.SportCategories = new HashSet<SportCategory>(); 
+            this.SportCategories = new HashSet<SportCategory>();
         }
 
         public int Id { get; set; }
@@ -35,7 +35,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<SportsBook.Data.Models.Facility, FacilityViewModel>();
+            configuration.CreateMap<Facility, FacilityViewModel>();
         }
     }
 }

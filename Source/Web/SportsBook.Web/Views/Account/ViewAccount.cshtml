@@ -1,0 +1,19 @@
+﻿@model SportsBook.Web.ViewModels.Account.AccountDetailsViewModel
+
+<img src=@Model.Avatar class="image-in-details">
+
+@Model.Email
+@Model.UserName
+<div>@Model.FirstName</div>
+@Model.LastName
+
+
+
+@*<div class="sports-tags">
+    @foreach (var category in @Model.)
+    {
+        <button type="button" class="btn btn-primary">
+            <span>@category.Name</span>
+        </button>
+    }
+</div>*@
