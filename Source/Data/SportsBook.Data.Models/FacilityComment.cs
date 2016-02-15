@@ -15,12 +15,12 @@
 
         public int FacilityId { get; set; }
 
-        public Facility Facility { get; set; }
+        public virtual Facility Facility { get; set; }
 
         public string AuthorName { get; set; }
 
         public string AuthorId { get; set; }
 
-        public AppUser Author { get; set; }
+        public virtual AppUser Author { get; set; }
     }
 }

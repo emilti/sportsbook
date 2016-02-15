@@ -22,3 +22,7 @@
     height: 30px;
     text-indent: -9999px; /* hides the link text */
 }
+
+ul>li>a.profile-link{
+    display:inline-block
+}

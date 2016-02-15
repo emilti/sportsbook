@@ -322,7 +322,7 @@
     <Content Include="Views\Account\ViewAccount.cshtml" />
     <Content Include="Views\Account\EditAccount.cshtml" />
     <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
-    <Content Include="Views\Account\FacilityInFavourites.cshtml" />
+    <Content Include="Views\Shared\_FacilityInFavourites.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
     <Content Include="Views\FavoriteFacilities\FacilityInFavourites.cshtml" />
   </ItemGroup>
