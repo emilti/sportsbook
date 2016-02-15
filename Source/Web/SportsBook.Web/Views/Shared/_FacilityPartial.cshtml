@@ -13,6 +13,7 @@
             <div class="row">
                 <div class="col-md-4">                    
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { content = "a" })
+                    @Html.ActionLink("Favorites", "AddToFavorites", "Categories", null, new { @class = "favorites-button" })
                 </div>
             </div>
         </div>

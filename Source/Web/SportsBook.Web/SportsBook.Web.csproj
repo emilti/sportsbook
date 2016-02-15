@@ -241,6 +241,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\box.css" />
     <Content Include="Content\custom-styles.css" />
+    <Content Include="Content\images\add-to-favorites.jpg" />
     <Content Include="Content\Theme\animate.css" />
     <Content Include="Content\Theme\bootstrap.css" />
     <Content Include="Content\Theme\bootstrap.js" />

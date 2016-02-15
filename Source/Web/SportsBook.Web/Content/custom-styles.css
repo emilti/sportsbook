@@ -6,3 +6,11 @@
     width:200px;
     height:200px
 }
+
+.favorites-button {  
+    background: url('../Content/images/add-to-favorites.jpg');
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px; /* hides the link text */
+}
