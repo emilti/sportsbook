@@ -492,25 +492,6 @@
             return this.PartialView(foundFacilitiesToView);
         }
 
-        public ActionResult CheckFacilityInFavourites(int id)
-        {
-            List<Facility> foundFacilities = new List<Facility>();
-            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
-            AppUser currentUser = this.users.GetUserDetails(this.User.Identity.GetUserId());
-            Facility checkedFacilityForCurrentUser = currentUser.Facilities.FirstOrDefault(a => a.Id == id);
-            if (checkedFacilityForCurrentUser != null )
-            {
-                return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
-            }
-            else
-            {
-                Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                return this.PartialView("FacilityNotInFavourites", curentFacility);
-            }
-
-            // return this.PartialView(foundFacilitiesToView);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

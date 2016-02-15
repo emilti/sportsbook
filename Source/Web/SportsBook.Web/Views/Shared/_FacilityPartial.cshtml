@@ -13,10 +13,10 @@
             <div class="row">
                 <div class="col-md-4">
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { content = "a" })
-                  
-                    @Html.Action("CheckFacilityInFavourites", "Account", new { id = @facility.Id })                   
-
-                   
+                    @if (User.Identity.GetUserId() != null)
+                    {
+                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id })
+                    }                    
                 </div>
             </div>
         </div>

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FacilitiesController.cs" />
+    <Compile Include="Controllers\FavoriteFacilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -323,6 +324,7 @@
     <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
     <Content Include="Views\Account\FacilityInFavourites.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
+    <Content Include="Views\FavoriteFacilities\FacilityInFavourites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
