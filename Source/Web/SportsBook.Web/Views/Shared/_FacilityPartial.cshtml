@@ -5,10 +5,12 @@
     {
         <div class="col-md-4">
             <div class="holder caption">
-                <img src=@facility.Image alt=" this is a title" class="image" />
-                <div>
-                    <span class="details-caption" id="details">Details</span>
-                </div>
+                <a href="@Url.Action("FacilityDetails", "Facilities", new { id = @facility.Id })">                    
+                    <img src=@facility.Image alt=" this is a title" class="image" />
+                    <div>
+                        <span class="details-caption" id="details">Details</span>
+                    </div>
+                </a>
             </div>
             <div class="row">
                 <div class="col-md-4">

@@ -44,20 +44,20 @@ h1, h2
    
 }
 
-.caption:hover>div{
+.caption:hover div{
     display:inline
 }
 
-.caption:hover>img{
+.caption:hover img{
     -webkit-filter: brightness(0.4);
 }
 
-.caption>div
+.caption div
 {
     display:none;
     position: absolute;
-    top: 0px;
-    left: 50px;
+    top: 140px;
+    left: 60px;
     font-size: 30px;    
 }
 
@@ -70,5 +70,6 @@ h1, h2
 
 div div div span.details-caption{
     color:white;
+    font-size:18px;
     
 }
