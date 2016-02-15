@@ -14,3 +14,11 @@
     height: 30px;
     text-indent: -9999px; /* hides the link text */
 }
+
+.remove-from-favorites-button {   
+    background: url('../Content/images/remove-from-favorites.jpg');
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px; /* hides the link text */
+}

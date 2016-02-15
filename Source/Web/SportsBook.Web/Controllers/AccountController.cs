@@ -1,16 +1,18 @@
 ﻿namespace SportsBook.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
-    using Infrastructure.Mapping;
+    using ViewModels.Facilities;
 
     [Authorize]
     public class AccountController : BaseController
@@ -20,13 +22,16 @@
 
         private readonly IUsersService users;
 
+        private readonly IFacilitiesService facilities;
+
         private ApplicationSignInManager signInManager;
 
         private ApplicationUserManager userManager;
 
-        public AccountController(IUsersService usersService)
+        public AccountController(IUsersService usersService, IFacilitiesService facilitiesService)
         {
             this.users = usersService;
+            this.facilities = facilitiesService;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -474,6 +479,36 @@
             userToEdit.LastName = model.LastName;
             this.users.UpdateUser(modelReceived);
             return this.RedirectToAction("ViewAccount", "Account", new { id = id });
+        }
+
+        public ActionResult GetFavouriteFacilities()
+        {
+            List<Facility> foundFacilities = new List<Facility>();
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(this.User.Identity.GetUserId());
+
+            foundFacilities = this.users.GetFacilitiesForUser(currentUser).ToList();
+            foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
+            return this.PartialView(foundFacilitiesToView);
+        }
+
+        public ActionResult CheckFacilityInFavourites(int id)
+        {
+            List<Facility> foundFacilities = new List<Facility>();
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(this.User.Identity.GetUserId());
+            Facility checkedFacilityForCurrentUser = currentUser.Facilities.FirstOrDefault(a => a.Id == id);
+            if (checkedFacilityForCurrentUser != null )
+            {
+                return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
+            }
+            else
+            {
+                Facility curentFacility = this.facilities.GetFacilityDetails(id);
+                return this.PartialView("FacilityNotInFavourites", curentFacility);
+            }
+
+            // return this.PartialView(foundFacilitiesToView);
         }
 
         protected override void Dispose(bool disposing)

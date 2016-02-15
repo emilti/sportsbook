@@ -1,5 +1,5 @@
 ﻿@model List<SportsBook.Web.ViewModels.Facilities.FacilityViewModel>
-
+@using Microsoft.AspNet.Identity
 <div class="row">
     @foreach (var facility in Model)
     {
@@ -11,9 +11,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">                    
+                <div class="col-md-4">
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { content = "a" })
-                    @Html.ActionLink("Favorites", "AddToFavorites", "Categories", null, new { @class = "favorites-button" })
+                  
+                    @Html.Action("CheckFacilityInFavourites", "Account", new { id = @facility.Id })                   
+
+                   
                 </div>
             </div>
         </div>

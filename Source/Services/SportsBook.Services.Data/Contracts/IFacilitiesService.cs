@@ -10,5 +10,7 @@
         IQueryable<AppUser> All(int page = 1, int pageSize = 10);
 
         Facility GetFacilityDetails(int id);
+
+        void UpdateFacility();
     }
 }

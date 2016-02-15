@@ -25,8 +25,13 @@
         }
 
         public void UpdateUser(AppUser foundUser)
-        {            
+        {
             this.users.SaveChanges();
+        }
+
+        public IQueryable<Facility> GetFacilitiesForUser(AppUser user)
+        {
+            return user.Facilities.AsQueryable();
         }
     }
 }

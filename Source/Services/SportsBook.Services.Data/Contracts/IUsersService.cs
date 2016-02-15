@@ -12,5 +12,7 @@
         AppUser GetUserDetails(string id);
 
         void UpdateUser(AppUser user);
+
+        IQueryable<Facility> GetFacilitiesForUser(AppUser user);
     }
 }
