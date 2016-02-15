@@ -29,5 +29,10 @@
         {
             return this.facilities.GetById(id);
         }
+
+        public void UpdateFacility()
+        {
+            this.facilities.Save();
+        }
     }
 }

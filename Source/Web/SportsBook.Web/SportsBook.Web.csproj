@@ -199,14 +199,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FacilitiesController.cs" />
+    <Compile Include="Controllers\FavoriteFacilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Account\AccountDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountEditDetailsResponseModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -238,6 +242,22 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\box.css" />
+    <Content Include="Content\custom-styles.css" />
+    <Content Include="Content\images\add-to-favorites.jpg" />
+    <Content Include="Content\images\remove-from-favorites.jpg" />
+    <Content Include="Content\Theme\animate.css" />
+    <Content Include="Content\Theme\bootstrap.css" />
+    <Content Include="Content\Theme\bootstrap.js" />
+    <Content Include="Content\Theme\font-awesome.css" />
+    <Content Include="Content\Theme\jquery.js" />
+    <Content Include="Content\Theme\jquery_002.js" />
+    <Content Include="Content\Theme\jquery_003.js" />
+    <Content Include="Content\Theme\main.css" />
+    <Content Include="Content\Theme\main.js" />
+    <Content Include="Content\Theme\prettyPhoto.css" />
+    <Content Include="Content\Theme\price-range.css" />
+    <Content Include="Content\Theme\price-range.js" />
+    <Content Include="Content\Theme\responsive.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -299,6 +319,12 @@
     <Content Include="Views\Shared\_CommentsPartial.cshtml" />
     <Content Include="Views\Comments\EditComment.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ContentCommentTemplate.cshtml" />
+    <Content Include="Views\Account\ViewAccount.cshtml" />
+    <Content Include="Views\Account\EditAccount.cshtml" />
+    <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
+    <Content Include="Views\Account\FacilityInFavourites.cshtml" />
+    <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
+    <Content Include="Views\FavoriteFacilities\FacilityInFavourites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

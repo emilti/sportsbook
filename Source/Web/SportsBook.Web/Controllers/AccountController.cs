@@ -1,16 +1,18 @@
 ﻿namespace SportsBook.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-
+    using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
+    using ViewModels.Facilities;
 
     [Authorize]
     public class AccountController : BaseController
@@ -18,12 +20,18 @@
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
+        private readonly IUsersService users;
+
+        private readonly IFacilitiesService facilities;
+
         private ApplicationSignInManager signInManager;
 
         private ApplicationUserManager userManager;
 
-        public AccountController()
+        public AccountController(IUsersService usersService, IFacilitiesService facilitiesService)
         {
+            this.users = usersService;
+            this.facilities = facilitiesService;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -434,6 +442,54 @@
         public ActionResult ExternalLoginFailure()
         {
             return this.View();
+        }
+
+        public ActionResult ViewAccount(string id)
+        {
+            AppUser currentUser = this.users.GetUserDetails(id);
+            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
+            return this.View(currentUserForView);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult EditAccount(string id)
+        {
+            AppUser currentUser = this.users.GetUserDetails(id);
+            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
+            return this.View(currentUserForView);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult EditAccount(string id, AccountEditDetailsResponseModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+
+            }
+
+            AppUser userToEdit = this.users.GetUserDetails(id);
+            AppUser modelReceived = AutoMapperConfig.Configuration.CreateMapper().Map<AppUser>(model);
+            userToEdit.Avatar = model.Avatar;
+            userToEdit.Email = model.Email;
+            userToEdit.UserName = model.UserName;
+            userToEdit.FirstName = model.FirstName;
+            userToEdit.LastName = model.LastName;
+            this.users.UpdateUser(modelReceived);
+            return this.RedirectToAction("ViewAccount", "Account", new { id = id });
+        }
+
+        public ActionResult GetFavouriteFacilities()
+        {
+            List<Facility> foundFacilities = new List<Facility>();
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(this.User.Identity.GetUserId());
+
+            foundFacilities = this.users.GetFacilitiesForUser(currentUser).ToList();
+            foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
+            return this.PartialView(foundFacilitiesToView);
         }
 
         protected override void Dispose(bool disposing)

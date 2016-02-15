@@ -14,10 +14,13 @@
 
         private ICollection<FacilityComment> facilityComments;
 
+        private ICollection<AppUser> usersLiked;
+
         public Facility()
         {
             this.SportCategories = new HashSet<SportCategory>();
             this.FacilityComments = new HashSet<FacilityComment>();
+            this.UsersLiked = new HashSet<AppUser>();
         }
 
         [MaxLength(50)]
@@ -45,6 +48,12 @@
         {
             get { return this.facilityComments; }
             set { this.facilityComments = value; }
+        }
+
+        public virtual ICollection<AppUser> UsersLiked
+        {
+            get { return this.usersLiked; }
+            set { this.usersLiked = value; }
         }
     }
 }
