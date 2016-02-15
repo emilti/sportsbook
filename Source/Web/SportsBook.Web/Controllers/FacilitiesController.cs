@@ -28,23 +28,5 @@
             var facilityForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityDetailedViewModel>(foundFacility);
             return this.View(facilityForView);
         }
-
-        public ActionResult AddToFavorites(int id)
-        {
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);
-            var userId = this.User.Identity.GetUserId();
-            AppUser currentUser = this.users.GetUserDetails(userId);
-            currentUser.Facilities.Add(foundFacility);
-            foundFacility.UsersLiked.Add(currentUser);
-            this.facilities.UpdateFacility();
-            this.users.UpdateUser(currentUser);
-            return this.RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult RemoveFromFavorites(int id)
-        {
-           
-            return this.RedirectToAction("Index", "Home");
-        }
     }
 }

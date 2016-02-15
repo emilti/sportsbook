@@ -47,8 +47,31 @@ namespace SportsBook.Web.Controllers
                 return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
             }
 
-
             // return this.PartialView(foundFacilitiesToView);
+        }
+
+        public ActionResult AddToFavorites(int id)
+        {
+            Facility foundFacility = this.facilities.GetFacilityDetails(id);
+            var userId = this.User.Identity.GetUserId();
+            AppUser currentUser = this.users.GetUserDetails(userId);
+            currentUser.Facilities.Add(foundFacility);
+            foundFacility.UsersLiked.Add(currentUser);
+            this.facilities.UpdateFacility();
+            this.users.UpdateUser(currentUser);
+            return this.RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult RemoveFromFavorites(int id)
+        {
+            Facility foundFacility = this.facilities.GetFacilityDetails(id);
+            var userId = this.User.Identity.GetUserId();
+            AppUser currentUser = this.users.GetUserDetails(userId);
+            currentUser.Facilities.Remove(foundFacility);
+            foundFacility.UsersLiked.Remove(currentUser);
+            this.facilities.UpdateFacility();
+            this.users.UpdateUser(currentUser);
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

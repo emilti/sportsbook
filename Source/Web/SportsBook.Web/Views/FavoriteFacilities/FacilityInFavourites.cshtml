@@ -2,9 +2,9 @@
 
 @if (ViewBag.isFavorite == "true")
 {
-    @Html.ActionLink("RemoveFromFavorites", "RemoveFromFavorites", "Facilities", new { id = Model.Id }, new { @class = "remove-from-favorites-button" })
+    @Html.ActionLink("RemoveFromFavorites", "RemoveFromFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "remove-from-favorites-button" })
 }
 else
 {
-    @Html.ActionLink("Favorites", "AddToFavorites", "Facilities", new { id = Model.Id }, new { @class = "favorites-button" })
+    @Html.ActionLink("Favorites", "AddToFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "favorites-button" })
 }
