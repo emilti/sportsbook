@@ -18,66 +18,68 @@
 
 @if (Request.IsAuthenticated)
 {
-    <button id="add-comment-button" class="btn btn-primary">Add</button>
-    <div id="add-comment-part"></div>
-    <button id="cancel-comment-button" class="btn btn-danger" style="display:none">Cancel</button>
+    <button id="add-comment-button" class="btn btn-primary">Add</button>  
 }
 
-@foreach (var comment in Model.FacilityComments)
-{
-    if (comment.IsDeleted == false)
+<div>
+    <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
+    <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
+</div>
+
+<div id="comments-part"></div>
+
+<script id="comments-template" type="text/template"> 
+    @foreach (var comment in Model.FacilityComments)
     {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
-            </div>
-            <div class="panel-body">
-                @comment.Content
-            </div>
-            @if (User.Identity.GetUserId() == @comment.AuthorId)
-            {
-                <div class="row comments-bottom">
-                    <div class="col-md-offset-10 col-md-2 btn-group">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9 btn-group">
-                                @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
-                                @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
-                                {
-                                    <input type="submit" class="btn btn-danger" value="Delete" />
-                                    @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
-                                }
+        if (comment.IsDeleted == false)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
+                </div>
+                <div class="panel-body">
+                    @comment.Content
+                </div>
+                @if (User.Identity.GetUserId() == @comment.AuthorId)
+                {
+                    <div class="row comments-bottom">
+                        <div class="col-md-offset-10 col-md-2 btn-group">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9 btn-group">
+                                    @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
+                                    @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
+                                    {
+                                        <input type="submit" class="btn btn-danger" value="Delete" />
+                                        @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
+                                    }
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
     }
-
-}
-
-<script id="add-comment-template" type="text/template">
-    @Html.Partial("_CommentsPartial", new SportsBook.Web.ViewModels.Comments.RequestWriteComment())
 </script>
 
 
 @section addComment{
     <script>
-        $("#add-comment-button").on("click", function () { myAddFunction() });
-        function myAddFunction() {
-            $("#add-comment-button").css("display", "none")
-            var addCommentTemplate = $('#add-comment-template').html();
-            $("#add-comment-part").html(addCommentTemplate)
-            $("#cancel-comment-button").css("display", "inline-block")
+        $("#show-comments-button").on("click", function () { showComments() });
+        function showComments() {
+            $("#show-comments-button").css("display", "none")
+            var ShowCommentsTemplate = $('#comments-template').html();
+            $("#comments-part").html(ShowCommentsTemplate)
+            $("#hide-comments-button").css("display", "inline-block")
         }
 
-        $("#cancel-comment-button").on("click", function () { myCancelFunction() });
-        function myCancelFunction() {
-            $("#add-comment-button").css("display", "inline-block")
-            $("#add-comment-part").empty();
-            $("#cancel-comment-button").css("display", "none")
+        $("#hide-comments-button").on("click", function () { hideComments() });
+        function hideComments() {
+            $("#hide-comments-button").css("display", "none")
+            $("#comments-part").empty();
+            $("#show-comments-button").css("display", "inline-block")
         }
     </script>
 }
