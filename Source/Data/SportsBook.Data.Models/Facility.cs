@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Web.Mvc;
     using Common.Models;
 
     public class Facility : BaseModel<int>
@@ -23,12 +24,14 @@
             this.UsersLiked = new HashSet<AppUser>();
         }
 
-        [MaxLength(50)]
-        [MinLength(2)]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string Name { get; set; }
 
-        [MaxLength(2000)]
-        [MinLength(2)]
+        [AllowHtml]
+        [StringLength(2000, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         public string Description { get; set; }
 
         public int CityId { get; set; }
@@ -36,6 +39,8 @@
         public virtual City City { get; set; }
 
         [Required]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         public string Image { get; set; }
 
         public virtual ICollection<SportCategory> SportCategories

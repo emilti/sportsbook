@@ -50,15 +50,20 @@
         [ValidateAntiForgeryToken]
         public ActionResult AddFacility(FacilityCreateViewModel model)
         {
-            Facility mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<Facility>(model);
-            foreach (var categoryId in model.SportCategoriesIds)
+            if (this.ModelState.IsValid)
             {
-                SportCategory currentCategory = this.sportCategories.GetById(categoryId);
-                mappedFacility.SportCategories.Add(currentCategory);
+                Facility mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<Facility>(model);
+                foreach (var categoryId in model.SportCategoriesIds)
+                {
+                    SportCategory currentCategory = this.sportCategories.GetById(categoryId);
+                    mappedFacility.SportCategories.Add(currentCategory);
+                }
+
+                this.facilities.Add(mappedFacility);
+                return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
             }
 
-            this.facilities.Add(mappedFacility);
-            return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
+            return this.View(model);
         }
 
         private IEnumerable<SelectListItem> GetSelectListCities(IEnumerable<City> elements)
