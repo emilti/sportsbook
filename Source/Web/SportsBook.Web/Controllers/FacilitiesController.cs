@@ -59,6 +59,8 @@
                     mappedFacility.SportCategories.Add(currentCategory);
                 }
 
+                mappedFacility.AuthorId = this.User.Identity.GetUserId();
+
                 this.facilities.Add(mappedFacility);
                 return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
             }

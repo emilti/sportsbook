@@ -34,7 +34,7 @@ namespace SportsBook.Web.Controllers
                 return this.PartialView("FacilityInFavourites", curentFacility);
             }
 
-            Facility checkedFacilityForCurrentUser = currentUser.Facilities.FirstOrDefault(a => a.Id == id);
+            Facility checkedFacilityForCurrentUser = currentUser.FavoriteFacilities.FirstOrDefault(a => a.Id == id);
             if (checkedFacilityForCurrentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
@@ -55,7 +55,7 @@ namespace SportsBook.Web.Controllers
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
             AppUser currentUser = this.users.GetUserDetails(userId);
-            currentUser.Facilities.Add(foundFacility);
+            currentUser.FavoriteFacilities.Add(foundFacility);
             foundFacility.UsersLiked.Add(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);
@@ -67,7 +67,7 @@ namespace SportsBook.Web.Controllers
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
             AppUser currentUser = this.users.GetUserDetails(userId);
-            currentUser.Facilities.Remove(foundFacility);
+            currentUser.FavoriteFacilities.Remove(foundFacility);
             foundFacility.UsersLiked.Remove(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);

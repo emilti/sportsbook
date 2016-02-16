@@ -4,21 +4,23 @@
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using System.Web.Mvc;
     using Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Web.Mvc;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class AppUser : IdentityUser
     {
         private ICollection<SportCategory> sportCategories;
-        private ICollection<Facility> facilities;
+        private ICollection<Facility> favoriteFfacilities;
+        private ICollection<Facility> submittedFacilities;
 
         public AppUser()
         {
             this.SportCategories = new HashSet<SportCategory>();
-            this.Facilities = new HashSet<Facility>();
+            this.FavoriteFacilities = new HashSet<Facility>();
+            this.submittedFacilities = new HashSet<Facility>();
         }
 
         [Required]
@@ -45,10 +47,16 @@
             set { this.sportCategories = value; }
         }
 
-        public virtual ICollection<Facility> Facilities
+        public virtual ICollection<Facility> FavoriteFacilities
         {
-            get { return this.facilities; }
-            set { this.facilities = value; }
+            get { return this.favoriteFfacilities; }
+            set { this.favoriteFfacilities = value; }
+        }
+
+        public virtual ICollection<Facility> SubmittedFacilities
+        {
+            get { return this.submittedFacilities; }
+            set { this.submittedFacilities = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
