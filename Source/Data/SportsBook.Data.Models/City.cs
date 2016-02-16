@@ -5,8 +5,9 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Common.Models;
 
-    public class City
+    public class City : BaseModel<int>
     {
         private ICollection<Facility> facilities;
 

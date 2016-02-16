@@ -4,17 +4,19 @@
     @foreach (var facility in Model)
     {
         <div class="col-md-4">
-            <div class="holder caption">
-                <a href="@Url.Action("FacilityDetails", "Facilities", new { id = @facility.Id })">                    
+            @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { @class = "details-name" })
+            <div class="holder caption">              
+                <a href="@Url.Action("FacilityDetails", "Facilities", new { id = @facility.Id })">   
                     <img src=@facility.Image alt=" this is a title" class="image" />
-                    <div>
+                    
+                    <div>                        
                         <span class="details-caption" id="details">Details</span>
                     </div>
                 </a>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { content = "a" })
+                   
                     @if (User.Identity.GetUserId() != null)
                     {
                         @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id })

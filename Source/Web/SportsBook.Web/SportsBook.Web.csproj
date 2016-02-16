@@ -223,6 +223,7 @@
     <Compile Include="ViewModels\Comments\EditCommentResponseModel.cs" />
     <Compile Include="ViewModels\Comments\RequestWriteComment.cs" />
     <Compile Include="ViewModels\Comments\EditCommentViewModel.cs" />
+    <Compile Include="ViewModels\Facilities\FacilityCreateViewModel.cs" />
     <Compile Include="ViewModels\Facilities\FacilityDetailedViewModel.cs" />
     <Compile Include="ViewModels\Facilities\FacilityViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -325,6 +326,7 @@
     <Content Include="Views\Shared\_FacilityInFavourites.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
     <Content Include="Views\FavoriteFacilities\FacilityInFavourites.cshtml" />
+    <Content Include="Views\Facilities\AddFacility.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
