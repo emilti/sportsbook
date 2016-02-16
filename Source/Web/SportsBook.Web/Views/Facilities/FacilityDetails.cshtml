@@ -18,12 +18,13 @@
 
 @if (Request.IsAuthenticated)
 {
-    <button id="add-comment-button" class="btn btn-primary">Add</button>  
+     
 }
 
 <div>
     <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
     <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
+    @Html.ActionLink("Add Comment", "AddComment", "Comments",new { id = Model.Id }, new { @class = "btn btn-primary" })
 </div>
 
 <div id="comments-part"></div>
@@ -49,6 +50,7 @@
                                     @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
                                     @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
                                     {
+                                        @Html.AntiForgeryToken()
                                         <input type="submit" class="btn btn-danger" value="Delete" />
                                         @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
                                     }

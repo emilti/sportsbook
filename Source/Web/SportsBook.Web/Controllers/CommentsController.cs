@@ -24,9 +24,18 @@
             this.users = usersService;
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult AddComment(int id)
+        {
+            this.ViewBag.facilityId = id;
+            return this.View();
+        }
+
         [HttpPost]
         [Authorize]
-        public ActionResult WriteComment(int id, RequestWriteComment model)
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(int id, CommentViewModel model)
         {
             if (this.ModelState.IsValid)
             {
@@ -45,14 +54,14 @@
         public ActionResult EditComment(int id)
         {
             FacilityComment foundComment = this.comments.GetById(id);
-            var foundCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<EditCommentViewModel>(foundComment);
+            var foundCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<CommentViewModel>(foundComment);
             return this.View(foundCommentForView);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult EditComment(int id, EditCommentViewModel model)
+        public ActionResult EditComment(int id, CommentViewModel model)
         {
             if (this.ModelState.IsValid)
             {
@@ -66,6 +75,7 @@
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteComment(int id)
         {
             FacilityComment foundComment = this.comments.GetById(id);

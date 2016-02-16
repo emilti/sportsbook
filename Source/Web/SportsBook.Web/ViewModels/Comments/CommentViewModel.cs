@@ -6,7 +6,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class EditCommentViewModel : IMapTo<SportsBook.Data.Models.FacilityComment>, IHaveCustomMappings
+    public class CommentViewModel : IMapTo<SportsBook.Data.Models.FacilityComment>, IHaveCustomMappings
     {
         [Required]
         [AllowHtml]
@@ -16,7 +16,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<FacilityComment, EditCommentViewModel>();
+            configuration.CreateMap<FacilityComment, CommentViewModel>();
         }
     }
 }
