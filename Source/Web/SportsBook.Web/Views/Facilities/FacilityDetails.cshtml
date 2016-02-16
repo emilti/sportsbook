@@ -16,7 +16,8 @@
     }
 </div>
 
-@if (Request.IsAuthenticated)
+
+@if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
 {
     @Html.ActionLink("Edit Facility", "EditFacility", "Facilities", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }

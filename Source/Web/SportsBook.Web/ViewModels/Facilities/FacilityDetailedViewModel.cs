@@ -9,6 +9,7 @@
     using AutoMapper;
     using Data.Models;
     using SportsBook.Web.Infrastructure.Mapping;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class FacilityDetailedViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
@@ -39,6 +40,11 @@
         public int CityId { get; set; }
 
         public virtual City City { get; set; }
+
+        public string AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
+        public virtual AppUser Author { get; set; }
 
         [Required]
         [AllowHtml]
