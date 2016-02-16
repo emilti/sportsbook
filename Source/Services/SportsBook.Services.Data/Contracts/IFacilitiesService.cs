@@ -12,5 +12,7 @@
         Facility GetFacilityDetails(int id);
 
         void UpdateFacility();
+
+        void Add(Facility facility);
     }
 }

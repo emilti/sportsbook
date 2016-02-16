@@ -1,26 +1,24 @@
-﻿namespace SportsBook.Data.Models
+﻿namespace SportsBook.Web.ViewModels.Facilities
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Common.Models;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using Data.Models;
+    using Web.Infrastructure.Mapping;
 
-    public class Facility : BaseModel<int>
+    public class FacilityCreateViewModel : IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        private ICollection<FacilityComment> facilityComments;
-
-        private ICollection<AppUser> usersLiked;
-
-        public Facility()
+        public FacilityCreateViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
-            this.FacilityComments = new HashSet<FacilityComment>();
-            this.UsersLiked = new HashSet<AppUser>();
         }
 
         [MaxLength(50)]
@@ -38,22 +36,22 @@
         [Required]
         public string Image { get; set; }
 
+        public IEnumerable<SelectListItem> CitiesDropDown { get; set; }
+
+        public IEnumerable<int> SportCategoriesIds { get; set; }
+
+        public IEnumerable<SelectListItem> SportCategoriesDropDown { get; set; }
+
+        [DisplayName("Sport Categries")]
         public virtual ICollection<SportCategory> SportCategories
         {
             get { return this.sportCategories; }
             set { this.sportCategories = value; }
         }
 
-        public virtual ICollection<FacilityComment> FacilityComments
+        public void CreateMappings(IMapperConfiguration configuration)
         {
-            get { return this.facilityComments; }
-            set { this.facilityComments = value; }
-        }
-
-        public virtual ICollection<AppUser> UsersLiked
-        {
-            get { return this.usersLiked; }
-            set { this.usersLiked = value; }
+            configuration.CreateMap<FacilityCreateViewModel, Facility>();
         }
     }
 }

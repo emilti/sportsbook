@@ -15,11 +15,15 @@
     {
         private readonly IFacilitiesService facilities;
         private readonly IUsersService users;
+        private readonly ICitiesService cities;
+        private readonly ISportCategoriesService sportCategories;
 
-        public FacilitiesController(IFacilitiesService facilitiesService, IUsersService usersService)
+        public FacilitiesController(IFacilitiesService facilitiesService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
         {
             this.facilities = facilitiesService;
             this.users = usersService;
+            this.cities = citiesService;
+            this.sportCategories = sportCategories;
         }
 
         public ActionResult FacilityDetails(int id)
@@ -27,6 +31,66 @@
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var facilityForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityDetailedViewModel>(foundFacility);
             return this.View(facilityForView);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult AddFacility()
+        {
+            FacilityCreateViewModel model = new FacilityCreateViewModel();
+            var cities = this.cities.All();
+            model.CitiesDropDown = this.GetSelectListCities(cities);
+            var sportCategories = this.sportCategories.All();
+            model.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddFacility(FacilityCreateViewModel model)
+        {
+            Facility mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<Facility>(model);
+            foreach (var categoryId in model.SportCategoriesIds)
+            {
+                SportCategory currentCategory = this.sportCategories.GetById(categoryId);
+                mappedFacility.SportCategories.Add(currentCategory);
+            }
+
+            this.facilities.Add(mappedFacility);
+            return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
+        }
+
+        private IEnumerable<SelectListItem> GetSelectListCities(IEnumerable<City> elements)
+        {
+            // Create an empty list to hold result of the operation
+            var selectList = new List<SelectListItem>();
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = element.Id.ToString(),
+                    Text = element.Name
+                });
+            }
+
+            return selectList;
+        }
+
+        private IEnumerable<SelectListItem> GetSelectListSportCategories(IEnumerable<SportCategory> elements)
+        {
+            // Create an empty list to hold result of the operation
+            var selectList = new List<SelectListItem>();
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = element.Id.ToString(),
+                    Text = element.Name
+                });
+            }
+
+            return selectList;
         }
     }
 }
