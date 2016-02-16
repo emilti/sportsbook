@@ -5,10 +5,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Web;
+    using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
-    using System.Web.Mvc;
 
     public class AccountDetailsViewModel : IMapFrom<AppUser>, IHaveCustomMappings
     {

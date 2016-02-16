@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Web;
+    using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
@@ -20,19 +21,34 @@
             this.Facilities = new HashSet<Facility>();
         }
 
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Required]
+        [AllowHtml]
+        [Display(Name = "Username")]
+        [RegularExpression(@"[a-zA-Z_0-9]+", ErrorMessage = "Only letters, numbers and _ allowed")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [Display(Name = "Avatar")]
         public string Avatar { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
+        [AllowHtml]
+        [RegularExpression(@"[a-zA-Z_0-9]+", ErrorMessage = "Only letters, numbers and _ allowed")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
+        [AllowHtml]
+        [RegularExpression(@"[a-zA-Z_0-9]+", ErrorMessage = "Only letters, numbers and _ allowed")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string LastName { get; set; }
 

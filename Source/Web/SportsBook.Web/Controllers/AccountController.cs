@@ -463,22 +463,21 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult EditAccount(string id, AccountEditDetailsResponseModel model)
+        public ActionResult EditAccount(string id, AccountDetailsViewModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-
+                AppUser userToEdit = this.users.GetUserDetails(id);
+                userToEdit.Avatar = model.Avatar;
+                userToEdit.Email = model.Email;
+                userToEdit.UserName = model.UserName;
+                userToEdit.FirstName = model.FirstName;
+                userToEdit.LastName = model.LastName;
+                this.users.UpdateUser(userToEdit);
+                return this.RedirectToAction("ViewAccount", "Account", new { id = id });
             }
 
-            AppUser userToEdit = this.users.GetUserDetails(id);
-            AppUser modelReceived = AutoMapperConfig.Configuration.CreateMapper().Map<AppUser>(model);
-            userToEdit.Avatar = model.Avatar;
-            userToEdit.Email = model.Email;
-            userToEdit.UserName = model.UserName;
-            userToEdit.FirstName = model.FirstName;
-            userToEdit.LastName = model.LastName;
-            this.users.UpdateUser(modelReceived);
-            return this.RedirectToAction("ViewAccount", "Account", new { id = id });
+            return this.View(model);
         }
 
         public ActionResult GetFavouriteFacilities()
