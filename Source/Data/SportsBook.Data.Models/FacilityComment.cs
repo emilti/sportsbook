@@ -6,11 +6,15 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Web.Mvc;
     using Common.Models;
 
     public class FacilityComment : BaseModel<int>
     {
         [Required]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [StringLength(200, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string Content { get; set; }
 
         public int FacilityId { get; set; }

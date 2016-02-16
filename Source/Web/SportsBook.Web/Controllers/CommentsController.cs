@@ -28,16 +28,15 @@
         [Authorize]
         public ActionResult WriteComment(int id, RequestWriteComment model)
         {
-            if (!this.ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                this.ModelState.AddModelError("", "Message title is invlaid.");
-                return this.View(model);
+                Facility commentedFacility = this.facilities.GetFacilityDetails(id);
+                AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
+                string username = user.UserName;
+                var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility);
+                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
             }
 
-            Facility commentedFacility = this.facilities.GetFacilityDetails(id);
-            AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
-            string username = user.UserName;
-            var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility);
             return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
         }
 
@@ -53,16 +52,16 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult EditComment(int id, EditCommentResponseModel model)
+        public ActionResult EditComment(int id, EditCommentViewModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-
+                FacilityComment foundComment = this.comments.GetById(id);
+                this.comments.UpdateComment(id, model.Content);
+                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
             }
 
-            FacilityComment foundComment = this.comments.GetById(id);
-            this.comments.UpdateComment(id, model.Content);
-            return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
+            return this.View(model);
         }
 
         [HttpPost]

@@ -2,14 +2,11 @@
 
 @using (@Html.BeginForm("WriteComment", "Comments", FormMethod.Post))
 {
+
     @Html.Hidden("id", ViewContext.RouteData.Values["id"])
     @Html.EditorFor(model => model.Content, "ContentCommentTemplate");
-      
+    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
     <input type="submit" class="btn btn-success" />
-   
-    <div>
-        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-    </div>
 }
 
 @*<div id="result"></div>
@@ -20,3 +17,7 @@
     @Html.TextAreaFor(model => model.Content, 10, 240, null);
     <input type="submit" value="OK" />
 }*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
