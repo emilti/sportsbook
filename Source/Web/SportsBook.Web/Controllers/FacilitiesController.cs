@@ -45,6 +45,15 @@
             return this.View(model);
         }
 
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddFacility(FacilityCreateViewModel model)
+        {
+            // this.facilities.add(model.Name, model.Description, model, model.SportCategoriesDropDown, model.Image)
+            return this.View(model);
+        }
+
         private IEnumerable<SelectListItem> GetSelectListCities(IEnumerable<City> elements)
         {
             // Create an empty list to hold result of the operation

@@ -15,6 +15,20 @@
             this.facilities = facilities;
         }
 
+        public Facility Add(string content, string authorId, string username, Facility commentedFacility)
+        {
+            // var newComment = new FacilityComment
+            // {
+            //     FacilityId = facilityId,
+            //     Content = content,
+            //     AuthorName = username,
+            //     AuthorId = authorId,
+            //     CreatedOn = DateTime.UtcNow,
+            // }; 
+            //
+            return new Facility();
+        }
+
         public IQueryable<AppUser> All(int page = 1, int pageSize = 10)
         {
             throw new NotImplementedException();
