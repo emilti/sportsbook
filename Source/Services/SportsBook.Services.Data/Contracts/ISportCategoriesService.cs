@@ -10,5 +10,7 @@
     public interface ISportCategoriesService
     {
         IQueryable<SportCategory> All();
+
+        SportCategory GetById(int sportCategoryId);
     }
 }

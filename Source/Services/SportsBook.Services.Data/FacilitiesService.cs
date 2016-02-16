@@ -48,5 +48,11 @@
         {
             this.facilities.Save();
         }
+
+        public void Add(Facility facility)
+        {
+            this.facilities.Add(facility);
+            this.facilities.Save();
+        }
     }
 }

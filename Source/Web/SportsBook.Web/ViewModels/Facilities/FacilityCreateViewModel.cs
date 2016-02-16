@@ -12,7 +12,7 @@
     using Data.Models;
     using Web.Infrastructure.Mapping;
 
-    public class FacilityCreateViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
+    public class FacilityCreateViewModel : IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
@@ -25,7 +25,7 @@
         [MinLength(2)]
         public string Name { get; set; }
 
-        [MaxLength(1200)]
+        [MaxLength(2000)]
         [MinLength(2)]
         public string Description { get; set; }
 
@@ -38,6 +38,8 @@
 
         public IEnumerable<SelectListItem> CitiesDropDown { get; set; }
 
+        public IEnumerable<int> SportCategoriesIds { get; set; }
+
         public IEnumerable<SelectListItem> SportCategoriesDropDown { get; set; }
 
         [DisplayName("Sport Categries")]
@@ -49,7 +51,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Facility, FacilityCreateViewModel>();
+            configuration.CreateMap<FacilityCreateViewModel, Facility>();
         }
     }
 }

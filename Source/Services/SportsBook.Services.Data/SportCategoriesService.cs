@@ -24,5 +24,11 @@ namespace SportsBook.Services.Data
         {
             return this.sportCategories.All();
         }
+
+        public SportCategory GetById(int sportCategoryId)
+        {
+            SportCategory foundSportCategory = this.sportCategories.GetById(sportCategoryId);
+            return foundSportCategory;
+        }
     }
 }
