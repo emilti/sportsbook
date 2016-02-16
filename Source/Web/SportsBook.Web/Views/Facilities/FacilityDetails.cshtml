@@ -18,8 +18,9 @@
 
 @if (Request.IsAuthenticated)
 {
-     
+    @Html.ActionLink("Edit Facility", "EditFacility", "Facilities", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }
+
 
 <div>
     <button id="show-comments-button" class="btn btn-primary">Show Comments</button>

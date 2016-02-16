@@ -1,22 +1,18 @@
 ﻿namespace SportsBook.Web.ViewModels.Facilities
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
     using Web.Infrastructure.Mapping;
 
-    public class FacilityCreateViewModel : IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
+    public class FacilityCreateOrChangeViewModel : IMapFrom<Facility>, IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        public FacilityCreateViewModel()
+        public FacilityCreateOrChangeViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
         }
@@ -55,7 +51,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<FacilityCreateViewModel, Facility>();
+            configuration.CreateMap<FacilityCreateOrChangeViewModel, Facility>();
         }
     }
 }
