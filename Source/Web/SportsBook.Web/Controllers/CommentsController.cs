@@ -6,10 +6,10 @@
     using System.Web;
     using System.Web.Mvc;
     using Data.Models;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.Comments;
-    using Infrastructure.Mapping;
 
     public class CommentsController : BaseController
     {
@@ -39,10 +39,11 @@
         {
             if (this.ModelState.IsValid)
             {
+                // FacilityComment mappedComment = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityComment>(model);
                 Facility commentedFacility = this.facilities.GetFacilityDetails(id);
                 AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
                 string username = user.UserName;
-                var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility);
+                var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility, user.Avatar);
                 return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
             }
 
