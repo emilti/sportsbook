@@ -35,11 +35,12 @@
     @foreach (var comment in Model.FacilityComments)
     {
         if (comment.IsDeleted == false)
-        {
+        {            
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong>@comment.AuthorName</strong> commented on<span class="text-muted">@comment.CreatedOn</span>
+                    <strong>@comment.AuthorName</strong> commented on<span class="text-muted pull-right">@Html.DisplayFor(m => comment.CreatedOn, "DateTimeTemplate")</span>
                 </div>
+                
                 <div class="panel-body">
                     @comment.Content
                 </div>
@@ -57,9 +58,7 @@
                                         @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
                                     }
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 }

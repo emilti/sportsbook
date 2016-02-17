@@ -330,11 +330,11 @@
     <Content Include="Views\Comments\AddComment.cshtml" />
     <Content Include="Views\Facilities\EditFacility.cshtml" />
     <Content Include="Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
