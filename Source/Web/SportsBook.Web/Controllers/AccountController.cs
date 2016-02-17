@@ -187,6 +187,11 @@
                     LastName = model.LastName
                 };
 
+                if (model.Avatar == null)
+                {
+                    user.Avatar = "http://www.premiumdxb.com/assets/img/avatar/default-avatar.jpg";
+                }
+
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
