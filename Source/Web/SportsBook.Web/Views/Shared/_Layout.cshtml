@@ -166,6 +166,12 @@
         @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
     @RenderSection("addComment", required: false)
-    @RenderSection("changeFavorites", required: false)  
+    @RenderSection("changeFavorites", required: false) 
+    <script>
+        function standBy(id) {
+            $('#image-container-' + id).attr('src', 'http://naxcore.com/wp-content/themes/Artificial-Reason-WP/img/no_image.png')
+        }
+    </script> 
+   
 </body>
 </html>

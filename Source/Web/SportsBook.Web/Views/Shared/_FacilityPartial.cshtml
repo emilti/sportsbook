@@ -7,7 +7,7 @@
             @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { @class = "details-name" })
             <div class="holder caption">              
                 <a href="@Url.Action("FacilityDetails", "Facilities", new { id = @facility.Id })">   
-                    <img src=@facility.Image alt=" this is a title" class="image" />
+                    <img src=@facility.Image id="image-container-@facility.Id" onError="standBy(@facility.Id)" class="image" />
                     
                     <div>                        
                         <span class="details-caption" id="details">Details</span>
