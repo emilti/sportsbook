@@ -323,9 +323,8 @@
     <Content Include="Views\Account\ViewAccount.cshtml" />
     <Content Include="Views\Account\EditAccount.cshtml" />
     <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
-    <Content Include="Views\Shared\_FacilityInFavourites.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
-    <Content Include="Views\FavoriteFacilities\FacilityInFavourites.cshtml" />
+    <Content Include="Views\Shared\_FacilityInFavourites.cshtml" />
     <Content Include="Views\Facilities\AddFacility.cshtml" />
     <Content Include="Views\Comments\AddComment.cshtml" />
     <Content Include="Views\Facilities\EditFacility.cshtml" />
@@ -335,6 +334,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\FavoriteFacilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -30,21 +30,21 @@ namespace SportsBook.Web.Controllers
             if (currentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.className = "favorites-button";
-                return this.PartialView("FacilityInFavourites", curentFacility);
+                this.ViewBag.className = "favorites-button";
+                return this.PartialView("_FacilityInFavourites", curentFacility);
             }
 
             Facility checkedFacilityForCurrentUser = currentUser.FavoriteFacilities.FirstOrDefault(a => a.Id == id);
             if (checkedFacilityForCurrentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.className = "favorites-button";
-                return this.PartialView("FacilityInFavourites", curentFacility);
+                this.ViewBag.className = "favorites-button";
+                return this.PartialView("_FacilityInFavourites", curentFacility);
             }
             else
             {
-                ViewBag.className = "remove-from-favorites-button";
-                return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
+                this.ViewBag.className = "remove-from-favorites-button";
+                return this.PartialView("_FacilityInFavourites", checkedFacilityForCurrentUser);
             }
 
             // return this.PartialView(foundFacilitiesToView);
