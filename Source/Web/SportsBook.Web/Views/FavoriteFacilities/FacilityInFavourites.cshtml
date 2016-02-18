@@ -1,10 +1,39 @@
 ﻿@model SportsBook.Data.Models.Facility
 
-@if (ViewBag.isFavorite == "true")
-{
-    @Html.ActionLink("RemoveFromFavorites", "RemoveFromFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "remove-from-favorites-button" })
-}
-else
-{
-    @Html.ActionLink("Favorites", "AddToFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "favorites-button" })
+
+
+@* @if (ViewBag.isFavorite == "true")
+    {*@
+@*@Html.ActionLink("RemoveFromFavorites", "RemoveFromFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "remove-from-favorites-button" })*@
+<div id="fav-field" class="row @this.ViewBag.className" data-id="@Model.Id" data-action="change">
+</div>
+
+@*}
+     else
+    {
+        @Html.ActionLink("Favorites", "AddToFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "favorites-button" })
+    //     <div class="row favorites-button" data-id="@Model.Id" data-action="addToFavorites">
+    //     </div>
+     }*@
+
+@section favorites{
+    <script>
+        $("div[data-action='change']").click(function () {
+            var id = $(this).attr("data-id");
+            var checkClass = $("#fav-field").hasClass("remove-from-favorites-button")
+            if (checkClass) {
+                $.post("/FavoriteFacilities/RemoveFromFavorites", { id: id },
+              function (data) {
+                  $("#fav-field").removeClass("remove-from-favorites-button");
+                  $("#fav-field").addClass("favorites-button");
+              })
+            } else {
+                $.post("/FavoriteFacilities/AddToFavorites", { id: id },
+             function (data) {
+                 $("#fav-field").removeClass("favorites-butto");
+                 $("#fav-field").addClass("remove-from-favorites-button");
+             })
+            }
+        })
+    </script>
 }

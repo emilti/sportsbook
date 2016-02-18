@@ -17,7 +17,7 @@
     <link href="~/Content/Theme/main.css" rel="stylesheet" />
     <link href="~/Content/Theme/responsive.css" rel="stylesheet" />
 
-    
+
     <link href="~/Content/custom-styles.css" rel="stylesheet" />
     <link href="~/Content/box.css" rel="stylesheet" />
 
@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
-                            <ul class="nav navbar-nav">                                                                                         
+                            <ul class="nav navbar-nav">
                                 @Html.Partial("_LoginPartial")
                             </ul>
                         </div>
@@ -110,7 +110,7 @@
                             </button>
                         </div>
                         <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">                                
+                            <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li>@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                                 <li class="dropdown">
                                     <a href="#">Shop<i class="fa fa-angle-down"></i></a>
@@ -146,7 +146,7 @@
 
 
 
-  
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -163,8 +163,31 @@
     <script src="~/Content/Theme/jquery_003.js"></script>
     <script src="~/Content/Theme/main.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
     @RenderSection("addComment", required: false)
- </body>
+    @RenderSection("favorites", required: false)
+
+
+    <script>
+        $("div[data-action='change']").click(function () {
+            var id = $(this).attr("data-id");
+            var checkClass = $("div[data-id = '" + id + "']").hasClass("remove-from-favorites-button")
+            if (checkClass) {
+                $.post("/FavoriteFacilities/RemoveFromFavorites", { id: id },
+              function (data) {
+                  $("div[data-id = '" + id + "']").removeClass("remove-from-favorites-button");
+                  $("div[data-id = '" + id + "']").addClass("favorites-button");
+              })
+            } else {
+                $.post("/FavoriteFacilities/AddToFavorites", { id: id },
+             function (data) {
+                 $("div[data-id = '" + id + "']").removeClass("favorites-butto");
+                 $("div[data-id = '" + id + "']").addClass("remove-from-favorites-button");
+             })
+            }
+        })
+    </script>
+
+</body>
 </html>

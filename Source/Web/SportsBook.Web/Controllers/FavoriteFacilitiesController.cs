@@ -30,7 +30,7 @@ namespace SportsBook.Web.Controllers
             if (currentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.isFavorite = "false";
+                ViewBag.className = "favorites-button";
                 return this.PartialView("FacilityInFavourites", curentFacility);
             }
 
@@ -38,19 +38,19 @@ namespace SportsBook.Web.Controllers
             if (checkedFacilityForCurrentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.isFavorite = "false";
+                ViewBag.className = "favorites-button";
                 return this.PartialView("FacilityInFavourites", curentFacility);
             }
             else
             {
-                ViewBag.isFavorite = "true";
+                ViewBag.className = "remove-from-favorites-button";
                 return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
             }
 
             // return this.PartialView(foundFacilitiesToView);
         }
 
-        public ActionResult AddToFavorites(int id)
+        public void AddToFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
@@ -59,10 +59,9 @@ namespace SportsBook.Web.Controllers
             foundFacility.UsersLiked.Add(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);
-            return this.RedirectToAction("Index", "Home");
         }
 
-        public ActionResult RemoveFromFavorites(int id)
+        public void RemoveFromFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
@@ -71,7 +70,7 @@ namespace SportsBook.Web.Controllers
             foundFacility.UsersLiked.Remove(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);
-            return this.RedirectToAction("Index", "Home");
+           // return this.RedirectToAction("Index", "Home");
         }
     }
 }
