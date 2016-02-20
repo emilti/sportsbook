@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Areas.RegisteredUsers.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using ViewModels.Comments;
+    using Web.Controllers;
 
     public class CommentsController : BaseController
     {
@@ -44,10 +45,10 @@
                 AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
                 string username = user.UserName;
                 var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility, user.Avatar);
-                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
+                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id, area = string.Empty });
             }
 
-            return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id });
+            return this.RedirectToAction("FacilityDetails", "Facilities", new { id = id, area = string.Empty });
         }
 
         [HttpGet]
