@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNet.Identity;
-using SportsBook.Data.Models;
-using SportsBook.Services.Data.Contracts;
-using SportsBook.Web.ViewModels.Facilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using SportsBook.Data.Models;
+    using SportsBook.Services.Data.Contracts;
+    using SportsBook.Web.ViewModels.Facilities;
+
     public class FavoriteFacilitiesController : BaseController
     {
         private readonly IUsersService users;
