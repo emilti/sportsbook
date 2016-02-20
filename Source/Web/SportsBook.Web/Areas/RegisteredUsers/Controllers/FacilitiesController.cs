@@ -27,13 +27,6 @@
             this.sportCategories = sportCategories;
         }
 
-        public ActionResult FacilityDetails(int id)
-        {
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);
-            var facilityForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityDetailedViewModel>(foundFacility);
-            return this.View(facilityForView);
-        }
-
         [HttpGet]
         [Authorize]
         public ActionResult AddFacility()
@@ -63,7 +56,7 @@
                 mappedFacility.AuthorId = this.User.Identity.GetUserId();
 
                 this.facilities.Add(mappedFacility);
-                return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
+                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = mappedFacility.Id });
             }
 
             return this.View(model);
@@ -107,7 +100,7 @@
                 }
 
                 this.facilities.UpdateFacility(id, mappedFacility);
-                return this.RedirectToAction("FacilityDetails", new { id = id, area = string.Empty });
+                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = id, area = string.Empty });
             }
 
             return this.View(model);
