@@ -53,8 +53,8 @@
                             <div class="col-md-offset-10 col-md-2 btn-group">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9 btn-group">
-                                        @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
-                                        @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
+                                        @Html.ActionLink("Edit", "EditComment", "Comments", new { area = "RegisteredUsers", id = comment.Id }, new { @class = "btn btn-warning" })
+                                        @using (Html.BeginForm("DeleteComment", "Comments", new { area = "RegisteredUsers", id = comment.Id }, FormMethod.Post))
                                         {
                                             @Html.AntiForgeryToken()
                                             <input type="submit" class="btn btn-danger" value="Delete" />

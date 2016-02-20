@@ -69,7 +69,7 @@
             {
                 FacilityComment foundComment = this.comments.GetById(id);
                 this.comments.UpdateComment(id, model.Content);
-                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId });
+                return this.RedirectToAction("FacilityDetails", "Facilities", new { id = foundComment.FacilityId, area = string.Empty });
             }
 
             return this.View(model);
