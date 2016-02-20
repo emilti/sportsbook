@@ -37,7 +37,7 @@
         [Authorize]
         public ActionResult AddFacility()
         {
-            FacilityCreateViewModel model = new FacilityCreateViewModel();
+            FacilityCreateOrChangeViewModel model = new FacilityCreateOrChangeViewModel();
             var cities = this.cities.All();
             model.CitiesDropDown = this.GetSelectListCities(cities);
             var sportCategories = this.sportCategories.All();
@@ -48,7 +48,43 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFacility(FacilityCreateViewModel model)
+        public ActionResult AddFacility(FacilityCreateOrChangeViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                Facility mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<Facility>(model);
+                foreach (var categoryId in model.SportCategoriesIds)
+                {
+                    SportCategory currentCategory = this.sportCategories.GetById(categoryId);
+                    mappedFacility.SportCategories.Add(currentCategory);
+                }
+
+                mappedFacility.AuthorId = this.User.Identity.GetUserId();
+
+                this.facilities.Add(mappedFacility);
+                return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
+            }
+
+            return this.View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult EditFacility(int Id)
+        {
+            Facility editedFacilty = this.facilities.GetFacilityDetails(Id);
+            FacilityCreateOrChangeViewModel mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityCreateOrChangeViewModel>(editedFacilty);
+            var cities = this.cities.All();
+            mappedFacility.CitiesDropDown = this.GetSelectListCities(cities);
+            var sportCategories = this.sportCategories.All();
+            mappedFacility.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
+            return this.View(mappedFacility);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFacility(FacilityCreateOrChangeViewModel model)
         {
             if (this.ModelState.IsValid)
             {

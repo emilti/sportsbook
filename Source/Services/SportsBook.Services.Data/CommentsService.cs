@@ -20,7 +20,7 @@
             this.comments = commentsRepo;
         }
 
-        public FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility)
+        public FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility, string userAvatar)
         {
             var newComment = new FacilityComment
             {
@@ -29,6 +29,7 @@
                 AuthorName = username,
                 AuthorId = authorId,
                 CreatedOn = DateTime.UtcNow,
+                CreatorAvatar = userAvatar
             };
 
             this.comments.Add(newComment);

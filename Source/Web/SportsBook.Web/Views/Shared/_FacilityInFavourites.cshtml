@@ -1,10 +1,4 @@
 ﻿@model SportsBook.Data.Models.Facility
 
-@if (ViewBag.isFavorite == "true")
-{
-    @Html.ActionLink("RemoveFromFavorites", "RemoveFromFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "remove-from-favorites-button" })
-}
-else
-{
-    @Html.ActionLink("Favorites", "AddToFavorites", "FavoriteFacilities", new { id = Model.Id }, new { @class = "favorites-button" })
-}
+<div id="fav-field" class="row @this.ViewBag.className" data-id="@Model.Id" data-action="change">
+</div>

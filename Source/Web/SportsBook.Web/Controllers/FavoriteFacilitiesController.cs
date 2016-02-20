@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNet.Identity;
-using SportsBook.Data.Models;
-using SportsBook.Services.Data.Contracts;
-using SportsBook.Web.ViewModels.Facilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using SportsBook.Data.Models;
+    using SportsBook.Services.Data.Contracts;
+    using SportsBook.Web.ViewModels.Facilities;
+
     public class FavoriteFacilitiesController : BaseController
     {
         private readonly IUsersService users;
@@ -30,48 +30,47 @@ namespace SportsBook.Web.Controllers
             if (currentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.isFavorite = "false";
-                return this.PartialView("FacilityInFavourites", curentFacility);
+                this.ViewBag.className = "favorites-button";
+                return this.PartialView("_FacilityInFavourites", curentFacility);
             }
 
-            Facility checkedFacilityForCurrentUser = currentUser.Facilities.FirstOrDefault(a => a.Id == id);
+            Facility checkedFacilityForCurrentUser = currentUser.FavoriteFacilities.FirstOrDefault(a => a.Id == id);
             if (checkedFacilityForCurrentUser == null)
             {
                 Facility curentFacility = this.facilities.GetFacilityDetails(id);
-                ViewBag.isFavorite = "false";
-                return this.PartialView("FacilityInFavourites", curentFacility);
+                this.ViewBag.className = "favorites-button";
+                return this.PartialView("_FacilityInFavourites", curentFacility);
             }
             else
             {
-                ViewBag.isFavorite = "true";
-                return this.PartialView("FacilityInFavourites", checkedFacilityForCurrentUser);
+                this.ViewBag.className = "remove-from-favorites-button";
+                return this.PartialView("_FacilityInFavourites", checkedFacilityForCurrentUser);
             }
 
             // return this.PartialView(foundFacilitiesToView);
         }
 
-        public ActionResult AddToFavorites(int id)
+        public void AddToFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
             AppUser currentUser = this.users.GetUserDetails(userId);
-            currentUser.Facilities.Add(foundFacility);
+            currentUser.FavoriteFacilities.Add(foundFacility);
             foundFacility.UsersLiked.Add(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);
-            return this.RedirectToAction("Index", "Home");
         }
 
-        public ActionResult RemoveFromFavorites(int id)
+        public void RemoveFromFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();
             AppUser currentUser = this.users.GetUserDetails(userId);
-            currentUser.Facilities.Remove(foundFacility);
+            currentUser.FavoriteFacilities.Remove(foundFacility);
             foundFacility.UsersLiked.Remove(currentUser);
             this.facilities.UpdateFacility();
             this.users.UpdateUser(currentUser);
-            return this.RedirectToAction("Index", "Home");
+           // return this.RedirectToAction("Index", "Home");
         }
     }
 }

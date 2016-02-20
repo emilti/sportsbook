@@ -36,7 +36,7 @@
 
         public IQueryable<Facility> GetTopFacilities()
         {
-            return this.facilities.All().Take(6);
+            return this.facilities.All().OrderByDescending(x => x.CreatedOn).Take(6);
         }
 
         public Facility GetFacilityDetails(int id)

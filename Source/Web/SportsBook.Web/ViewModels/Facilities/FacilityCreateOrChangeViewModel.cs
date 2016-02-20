@@ -1,31 +1,29 @@
 ﻿namespace SportsBook.Web.ViewModels.Facilities
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
     using Web.Infrastructure.Mapping;
 
-    public class FacilityCreateViewModel : IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
+    public class FacilityCreateOrChangeViewModel : IMapFrom<Facility>, IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        public FacilityCreateViewModel()
+        public FacilityCreateOrChangeViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
         }
 
+        [Required]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string Name { get; set; }
 
+        [Required]
         [AllowHtml]
         [StringLength(2000, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
@@ -55,7 +53,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<FacilityCreateViewModel, Facility>();
+            configuration.CreateMap<FacilityCreateOrChangeViewModel, Facility>();
         }
     }
 }

@@ -9,7 +9,7 @@
 
     public interface ICommentsService
     {
-        FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility);
+        FacilityComment Add(int facilityId, string content, string authorId, string username, Facility commentedFacility, string userAvatar);
 
         FacilityComment GetById(int commentId);
 

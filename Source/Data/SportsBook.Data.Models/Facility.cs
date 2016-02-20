@@ -1,11 +1,8 @@
 ﻿namespace SportsBook.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Web.Mvc;
     using Common.Models;
 
@@ -38,6 +35,11 @@
 
         public virtual City City { get; set; }
 
+        public string AuthorId { get; set; }
+
+        [ForeignKey("AuthorId")]
+        public virtual AppUser Author { get; set; }
+
         [Required]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
@@ -55,6 +57,7 @@
             set { this.facilityComments = value; }
         }
 
+        [InverseProperty("FavoriteFacilities")]
         public virtual ICollection<AppUser> UsersLiked
         {
             get { return this.usersLiked; }
