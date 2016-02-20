@@ -248,7 +248,7 @@
                 {
                     Name = "Академика",
                     City = sofia,
-                    Image = "http://baroccosport.com/images/phocagallery/thumbs/phoca_thumb_l_imgp1530.jpg",
+                    Image = "http://academica2011.com/images/stories/skakademika4km/novstadion.jpg",
                     Description = "Спортен комплекс Академика се намира на бул.Цариградско шосе № 125. Обекта е с изключително" +
                     "добро инфраструктурно разположение, отлична транспортна достъпност до линиите на градския транспорт и има" +
                     "осигурен паркинг. Комплексът разполага с три спортни зали, плувен басейн и футболно игрище." +

@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Areas.RegisteredUsers.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +10,7 @@
     using Microsoft.AspNet.Identity;
     using SportsBook.Services.Data.Contracts;
     using ViewModels.Facilities;
+    using Web.Controllers;
 
     public class FacilitiesController : BaseController
     {
@@ -84,19 +85,29 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult EditFacility(FacilityCreateOrChangeViewModel model)
+        public ActionResult EditFacility(int id, FacilityCreateOrChangeViewModel model)
         {
             if (this.ModelState.IsValid)
             {
                 Facility mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<Facility>(model);
+
+                Facility currentFacility = this.facilities.GetFacilityDetails(id);
+                foreach (var category in currentFacility.SportCategories)
+                {
+                    category.Facilities.Remove(currentFacility);
+                }
+
+                currentFacility.SportCategories.Clear();
+
+                this.facilities.Save();
                 foreach (var categoryId in model.SportCategoriesIds)
                 {
                     SportCategory currentCategory = this.sportCategories.GetById(categoryId);
                     mappedFacility.SportCategories.Add(currentCategory);
                 }
 
-                this.facilities.Add(mappedFacility);
-                return this.RedirectToAction("FacilityDetails", new { id = mappedFacility.Id });
+                this.facilities.UpdateFacility(id, mappedFacility);
+                return this.RedirectToAction("FacilityDetails", new { id = id, area = string.Empty });
             }
 
             return this.View(model);

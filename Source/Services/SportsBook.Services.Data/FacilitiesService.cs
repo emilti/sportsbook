@@ -44,14 +44,25 @@
             return this.facilities.GetById(id);
         }
 
-        public void UpdateFacility()
+        public void UpdateFacility(int id, Facility facility)
         {
+            Facility facilityToUpdate = this.facilities.GetById(id);
+            facilityToUpdate.CityId = facility.CityId;
+            facilityToUpdate.Description = facility.Description;
+            facilityToUpdate.Image = facility.Image;
+            facilityToUpdate.Name = facility.Name;
+            facilityToUpdate.SportCategories = facility.SportCategories;
             this.facilities.Save();
         }
 
         public void Add(Facility facility)
         {
             this.facilities.Add(facility);
+            this.facilities.Save();
+        }
+
+        public void Save()
+        {
             this.facilities.Save();
         }
     }
