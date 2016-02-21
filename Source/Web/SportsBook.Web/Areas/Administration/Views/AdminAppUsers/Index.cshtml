@@ -1,0 +1,32 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<SportsBook.Web.Areas.Administration.ViewModels.AppUserGridViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Avatar);
+        columns.Bound(c => c.FirstName);
+        columns.Bound(c => c.LastName);
+        columns.Bound(c => c.Email);      
+        columns.Bound(c => c.UserName);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("AppUsers_Read", "AdminAppUsers"))
+          .Create(create => create.Action("AppUsers_Create", "AdminAppUsers"))
+          .Update(update => update.Action("AppUsers_Update", "AdminAppUsers"))
+          .Destroy(destroy => destroy.Action("AppUsers_Destroy", "AdminAppUsers"))
+      )
+)

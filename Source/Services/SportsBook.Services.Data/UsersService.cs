@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
     using SportsBook.Data.Common;
     using SportsBook.Data.Models;
     using SportsBook.Services.Data.Contracts;
@@ -32,6 +33,27 @@
         public IQueryable<Facility> GetFacilitiesForUser(AppUser user)
         {
             return user.FavoriteFacilities.AsQueryable();
+        }
+
+        public IQueryable<AppUser> All()
+        {
+            return this.users.All();
+        }
+
+        public void Remove(AppUser appUser)
+        {
+            this.users.Delete(appUser.Id);
+            this.users.SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            this.users.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            this.users.Dispose();
         }
     }
 }

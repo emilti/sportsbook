@@ -201,8 +201,10 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminAppUsersController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilitiesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminSportCategoriesController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\AppUserGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
     <Compile Include="Areas\RegisteredUsers\RegisteredUsersAreaRegistration.cs" />
@@ -362,6 +364,8 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityGridViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\AdminSportCategories\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SportCategoryGridViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminAppUsers\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\AppUserGridViewModel.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -426,6 +430,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\RegisteredUsers\ViewModels\" />
+    <Folder Include="Views\AdminAppUsers\" />
     <Folder Include="Views\AdminFacilities\" />
     <Folder Include="Views\AdminSportCategories\" />
     <Folder Include="Views\Base\" />

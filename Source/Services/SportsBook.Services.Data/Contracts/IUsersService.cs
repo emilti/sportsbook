@@ -9,10 +9,18 @@
 
     public interface IUsersService
     {
+        IQueryable<AppUser> All();
+
         AppUser GetUserDetails(string id);
 
         void UpdateUser(AppUser user);
 
         IQueryable<Facility> GetFacilitiesForUser(AppUser user);
+
+        void Remove(AppUser appUser);
+
+        void SaveChanges();
+
+        void Dispose();
     }
 }
