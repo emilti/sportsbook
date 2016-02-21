@@ -57,7 +57,7 @@
 
             var postToDisplay =
                 this.sportCategories.All()
-                .To<FacilityGridViewModel>()
+                .To<SportCategoryGridViewModel>()
                 .FirstOrDefault(x => x.Id == newId);
 
             return this.Json(new[] { sportCategory }.ToDataSourceResult(request, ModelState));
