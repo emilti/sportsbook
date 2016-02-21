@@ -34,19 +34,40 @@
         }
 
         [HttpGet]
-        public ActionResult SearchFacilities(FacilitiesListViewModel model, int id = 1)
+        public ActionResult SearchFacilities(FacilitiesListViewModel model, int id = 0)
         {
-            var page = id;
-            var allItemsCount = this.facilities.All().Count();
+           if (model.CurrentPage == 0)
+            {
+                model.CurrentPage = 1;
+            }
+
+            var sportCategory = this.sportCategories.All().FirstOrDefault(x => x.Id == id);
+
+            var sportCategories = this.sportCategories.All();
+            model.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
+            var foundFacilities = new List<Facility>();
+
+            foundFacilities = this.facilities.All().Where(y => y.SportCategories.Where(x => x.Id == id).Count() > 0).ToList();
+
+            var allItemsCount = foundFacilities.Count();
+            var foundFacilitiesAfterSearch = foundFacilities.ToList();
+            if (!string.IsNullOrEmpty(model.Search))
+            {
+                foundFacilitiesAfterSearch = foundFacilities.Where(a => a.Name.ToUpper().Contains(model.Search.ToUpper())).ToList();
+                allItemsCount = foundFacilitiesAfterSearch.Count();
+            }
+
+            var page = model.CurrentPage;
+
             var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
             var itemsToSkip = (page - 1) * ItemsPerPage;
-            var foundFacilities =
-                this.facilities.All()
+            var foundFacilitiestoView =
+                foundFacilitiesAfterSearch
                 .OrderBy(x => x.Name)
                 .ThenBy(x => x.Id)
                 .Skip(itemsToSkip).Take(ItemsPerPage)
                .ToList();
-            var facilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
+            var facilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilitiesAfterSearch);
 
             var viewModel = new FacilitiesListViewModel()
             {
@@ -56,6 +77,22 @@
             };
 
             return this.View(viewModel);
+        }
+
+        private IEnumerable<SelectListItem> GetSelectListSportCategories(IEnumerable<SportCategory> elements)
+        {
+            // Create an empty list to hold result of the operation
+            var selectList = new List<SelectListItem>();
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = element.Id.ToString(),
+                    Text = element.Name
+                });
+            }
+
+            return selectList;
         }
     }
 }

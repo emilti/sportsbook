@@ -1,6 +1,25 @@
 ﻿@model SportsBook.Web.ViewModels.PageableFacilityList.FacilitiesListViewModel
 
 
+@using (Html.BeginForm("SearchFacilities", "AllUsersFacilities", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="form-group col-md-4">    
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Search, Model.Search, new { @class = "form-control", placeholder="Search " })
+            </div>
+        </div>      
+
+        <div class="form-group col-md-4">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input class="btn btn-primary" value="Search" type="submit">
+
+            </div>
+        </div>
+    </div>
+   
+}
 
 
 @{Html.RenderPartial("_FacilityPartial", Model.Facilities);}

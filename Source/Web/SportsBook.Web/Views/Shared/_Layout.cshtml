@@ -111,17 +111,18 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                                <li>@Html.ActionLink("Спортни обекти", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty }, new { @class = "navbar-brand" })</li>
+                                <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>                            
                                 <li class="dropdown">
-                                    <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <a href="#">Категории<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/shop.html">Products</a></li>
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/product-details.html">Product Details</a></li>
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html">Checkout</a></li>
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/cart.html">Cart</a></li>
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/login.html">Login</a></li>
-                                    </ul>
+                                        <li>@Html.ActionLink("Всички", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 0 }, null)</li>
+                                        <li>@Html.ActionLink("Футбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 1 }, null)</li>
+                                        <li>@Html.ActionLink("Волейбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 2 }, null)</li>
+                                        <li>@Html.ActionLink("Баскетбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 3 }, null)</li>
+                                        <li>@Html.ActionLink("Фитнес", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 4 }, null)</li>
+                                        <li>@Html.ActionLink("Плуване", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 5 }, null)</li>
+                                        <li>@Html.ActionLink("Тенис", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 6 }, null)</li>
+                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -130,7 +131,7 @@
                                         <li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li>@Html.ActionLink("Add Facility", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
+                                <li>@Html.ActionLink("Добави обект", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
                                 <li><a href="http://themifycloud.com/demos/templates/eshop/contact-us.html">Contact</a></li>
                             </ul>
                         </div>
