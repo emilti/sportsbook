@@ -12,10 +12,16 @@
     using Kendo.Mvc.UI;
     using SportsBook.Data;
     using SportsBook.Data.Models;
+    using Services.Data.Contracts;
 
     public class AdminFacilitiesController : Controller
     {
-        private SportsBookDbContext db = new SportsBookDbContext();
+        private readonly IFacilitiesService facilities;
+
+        public AdminFacilitiesController(IFacilitiesService facilitiesService)
+        {
+            this.facilities = facilitiesService;
+        }
 
         public ActionResult Index()
         {
@@ -24,8 +30,8 @@
 
         public ActionResult Facilities_Read([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<Facility> facilities = db.Facilities;
-            DataSourceResult result = facilities.ToDataSourceResult(request, facility => new {
+            DataSourceResult result = this.facilities.All().ToDataSourceResult(request, facility => new
+            {
                 Id = facility.Id,
                 Name = facility.Name,
                 Description = facility.Description,
@@ -55,8 +61,8 @@
                     DeletedOn = facility.DeletedOn
                 };
 
-                db.Facilities.Add(entity);
-                db.SaveChanges();
+                this.facilities.Add(entity);
+                this.facilities.Save();
                 facility.Id = entity.Id;
             }
 
@@ -80,9 +86,8 @@
                     DeletedOn = facility.DeletedOn
                 };
 
-                db.Facilities.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                this.facilities.UpdateFacility(facility.Id, entity);
+                this.facilities.Save();
             }
 
             return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
@@ -91,31 +96,15 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Facilities_Destroy([DataSourceRequest]DataSourceRequest request, Facility facility)
         {
-            if (ModelState.IsValid)
-            {
-                var entity = new Facility
-                {
-                    Id = facility.Id,
-                    Name = facility.Name,
-                    Description = facility.Description,
-                    Image = facility.Image,
-                    CreatedOn = facility.CreatedOn,
-                    ModifiedOn = facility.ModifiedOn,
-                    IsDeleted = facility.IsDeleted,
-                    DeletedOn = facility.DeletedOn
-                };
-
-                db.Facilities.Attach(entity);
-                db.Facilities.Remove(entity);
-                db.SaveChanges();
-            }
+            this.facilities.Remove(facility);
+            this.facilities.Save();
 
             return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.facilities.Dispose();
             base.Dispose(disposing);
         }
     }

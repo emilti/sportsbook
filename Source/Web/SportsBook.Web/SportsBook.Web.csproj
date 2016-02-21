@@ -424,7 +424,6 @@
     <Folder Include="Areas\RegisteredUsers\ViewModels\" />
     <Folder Include="Views\AdminFacilities\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\FavoriteFacilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
