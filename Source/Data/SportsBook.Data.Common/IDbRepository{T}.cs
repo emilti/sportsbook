@@ -22,8 +22,10 @@
 
         void Delete(T entity);
 
-        void HardDelete(T entity);
+        void HardDelete(int id);
 
         void Save();
+
+        void Dispose();
     }
 }

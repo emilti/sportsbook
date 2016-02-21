@@ -10,5 +10,8 @@
     public interface ICitiesService
     {
         IQueryable<City> All();
+
+        City GetById(int cityId);
+
     }
 }

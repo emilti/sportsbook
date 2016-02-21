@@ -15,6 +15,10 @@
 
         void Add(Facility facility);
 
+        void Remove(Facility facility);
+
         void Save();
+
+        void Dispose();
     }
 }

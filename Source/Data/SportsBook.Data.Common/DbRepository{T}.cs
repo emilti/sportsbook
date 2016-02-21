@@ -50,14 +50,22 @@
             entity.DeletedOn = DateTime.Now;
         }
 
-        public void HardDelete(T entity)
+        public void HardDelete(int id)
         {
-            this.DbSet.Remove(entity);
+            var entity = this.All().FirstOrDefault(x => x.Id == id);
+           
+                this.DbSet.Remove(entity);
+            
         }
 
         public void Save()
         {
             this.Context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            this.Context.Dispose();
         }
     }
 }

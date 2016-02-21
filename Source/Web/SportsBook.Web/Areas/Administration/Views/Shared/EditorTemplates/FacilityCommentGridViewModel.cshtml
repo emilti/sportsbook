@@ -1,0 +1,8 @@
+﻿@model SportsBook.Web.Areas.Administration.ViewModels.FacilityCommentGridViewModel
+<div class="form-group">
+    @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Content, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+    </div>
+</div>

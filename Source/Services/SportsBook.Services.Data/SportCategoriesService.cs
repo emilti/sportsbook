@@ -20,15 +20,44 @@ namespace SportsBook.Services.Data
             this.sportCategories = sportCategoriesRepo;
         }
 
+        public void Add(SportCategory sportCategory)
+        {
+            this.sportCategories.Add(sportCategory);
+            this.sportCategories.Save();
+        }
+
         public IQueryable<SportCategory> All()
         {
             return this.sportCategories.All();
+        }
+
+        public void Dispose()
+        {
+            this.sportCategories.Dispose();
         }
 
         public SportCategory GetById(int sportCategoryId)
         {
             SportCategory foundSportCategory = this.sportCategories.GetById(sportCategoryId);
             return foundSportCategory;
+        }
+
+        public void Remove(SportCategory sportCategory)
+        {
+            this.sportCategories.HardDelete(sportCategory.Id);
+        }
+
+        public void Save()
+        {
+            this.sportCategories.Save();
+        }
+
+        public void UpdateSportCategory(int id, SportCategory sportCategory)
+        {
+            SportCategory sportCategoryToUpdate = this.sportCategories.GetById(id);
+            sportCategoryToUpdate.Name = sportCategory.Name;
+            sportCategoryToUpdate.Description = sportCategory.Description;
+            this.sportCategories.Save();
         }
     }
 }

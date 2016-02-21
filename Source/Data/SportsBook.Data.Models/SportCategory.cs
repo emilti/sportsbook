@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
+    using System.Web.Mvc;
 
     public class SportCategory : BaseModel<int>
     {
@@ -13,12 +14,16 @@
             this.Facilities = new HashSet<Facility>();
         }
 
-        [MaxLength(25)]
-        [MinLength(2)]
+        [Required]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string Name { get; set; }
 
-        [MaxLength(150)]
-        [MinLength(2)]
+        [Required]
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [StringLength(150, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         public string Description { get; set; }
 
         public virtual ICollection<Facility> Facilities

@@ -65,5 +65,15 @@
         {
             this.facilities.Save();
         }
+
+        public void Remove(Facility facility)
+        {
+            this.facilities.HardDelete(facility.Id);
+        }
+
+        public void Dispose()
+        {
+            this.facilities.Dispose();
+        }
     }
 }

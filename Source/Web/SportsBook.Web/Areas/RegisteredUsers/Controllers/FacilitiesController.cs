@@ -31,7 +31,7 @@
         [Authorize]
         public ActionResult AddFacility()
         {
-            FacilityCreateOrChangeViewModel model = new FacilityCreateOrChangeViewModel();
+            FacilityChangeViewModel model = new FacilityChangeViewModel();
             var cities = this.cities.All();
             model.CitiesDropDown = this.GetSelectListCities(cities);
             var sportCategories = this.sportCategories.All();
@@ -42,7 +42,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFacility(FacilityCreateOrChangeViewModel model)
+        public ActionResult AddFacility(FacilityChangeViewModel model)
         {
             if (this.ModelState.IsValid)
             {
@@ -56,7 +56,7 @@
                 mappedFacility.AuthorId = this.User.Identity.GetUserId();
 
                 this.facilities.Add(mappedFacility);
-                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = mappedFacility.Id });
+                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = mappedFacility.Id, area = string.Empty });
             }
 
             return this.View(model);
@@ -67,7 +67,7 @@
         public ActionResult EditFacility(int Id)
         {
             Facility editedFacilty = this.facilities.GetFacilityDetails(Id);
-            FacilityCreateOrChangeViewModel mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityCreateOrChangeViewModel>(editedFacilty);
+            FacilityChangeViewModel mappedFacility = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityChangeViewModel>(editedFacilty);
             var cities = this.cities.All();
             mappedFacility.CitiesDropDown = this.GetSelectListCities(cities);
             var sportCategories = this.sportCategories.All();
@@ -78,7 +78,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult EditFacility(int id, FacilityCreateOrChangeViewModel model)
+        public ActionResult EditFacility(int id, FacilityChangeViewModel model)
         {
             if (this.ModelState.IsValid)
             {

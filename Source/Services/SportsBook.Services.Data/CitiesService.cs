@@ -23,5 +23,10 @@
         {
             return this.cities.All();
         }
+
+        public City GetById(int cityId)
+        {
+            return this.cities.GetById(cityId);
+        }
     }
 }

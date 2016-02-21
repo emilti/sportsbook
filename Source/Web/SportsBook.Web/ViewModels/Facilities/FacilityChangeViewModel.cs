@@ -8,11 +8,11 @@
     using Data.Models;
     using Web.Infrastructure.Mapping;
 
-    public class FacilityCreateOrChangeViewModel : IMapFrom<Facility>, IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
+    public class FacilityChangeViewModel : IMapFrom<Facility>, IMapTo<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        public FacilityCreateOrChangeViewModel()
+        public FacilityChangeViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
         }
@@ -53,7 +53,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<FacilityCreateOrChangeViewModel, Facility>();
+            configuration.CreateMap<FacilityChangeViewModel, Facility>();
         }
     }
 }
