@@ -39,6 +39,17 @@
             return newComment;
         }
 
+        public void Add(FacilityComment comment)
+        {
+            this.comments.Add(comment);
+            this.comments.Save();
+        }
+
+        public IQueryable<FacilityComment> All()
+        {
+            return this.comments.All();
+        }
+
         public void DeleteComment(FacilityComment facilityComment)
         {
             this.comments.Delete(facilityComment);
@@ -56,6 +67,11 @@
             var comment = this.comments.GetById(id);
             comment.Content = newContent;
             this.comments.Save();
+        }
+
+        public void Dispose()
+        {
+            this.comments.Dispose();
         }
     }
 }

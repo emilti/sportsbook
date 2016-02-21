@@ -203,8 +203,10 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminAppUsersController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilitiesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminFacilityCommentsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminSportCategoriesController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AppUserGridViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
     <Compile Include="Areas\RegisteredUsers\RegisteredUsersAreaRegistration.cs" />
@@ -366,6 +368,8 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\SportCategoryGridViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\AdminAppUsers\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\AppUserGridViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminFacilityComments\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityCommentGridViewModel.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -432,6 +436,7 @@
     <Folder Include="Areas\RegisteredUsers\ViewModels\" />
     <Folder Include="Views\AdminAppUsers\" />
     <Folder Include="Views\AdminFacilities\" />
+    <Folder Include="Views\AdminFacilityComments\" />
     <Folder Include="Views\AdminSportCategories\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
