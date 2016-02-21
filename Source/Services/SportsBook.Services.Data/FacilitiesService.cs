@@ -29,9 +29,9 @@
             return new Facility();
         }
 
-        public IQueryable<AppUser> All(int page = 1, int pageSize = 10)
+        public IQueryable<Facility> All(int page = 1, int pageSize = 10)
         {
-            throw new NotImplementedException();
+            return this.facilities.All();
         }
 
         public IQueryable<Facility> GetTopFacilities()

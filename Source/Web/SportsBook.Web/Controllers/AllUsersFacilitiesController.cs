@@ -6,9 +6,13 @@
     using Services.Data.Contracts;
     using ViewModels.Facilities;
     using ViewModels.PageableFacilityList;
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
 
     public class AllUsersFacilitiesController : BaseController
     {
+        const int ItemsPerPage = 6;
         private readonly IFacilitiesService facilities;
         private readonly IUsersService users;
         private readonly ICitiesService cities;
@@ -30,10 +34,28 @@
         }
 
         [HttpGet]
-        public ActionResult SearchFacilties(int id, FacilitiesListViewModel model)
+        public ActionResult SearchFacilities(FacilitiesListViewModel model, int id = 1)
         {
+            var page = id;
+            var allItemsCount = this.facilities.All().Count();
+            var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var foundFacilities =
+                this.facilities.All()
+                .OrderBy(x => x.Name)
+                .ThenBy(x => x.Id)
+                .Skip(itemsToSkip).Take(ItemsPerPage)
+               .ToList();
+            var facilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
 
-            return this.View();
+            var viewModel = new FacilitiesListViewModel()
+            {
+                CurrentPage = page,
+                TotalPages = totalPages,
+                Facilities = facilitiesToView
+            };
+
+            return this.View(viewModel);
         }
     }
 }
