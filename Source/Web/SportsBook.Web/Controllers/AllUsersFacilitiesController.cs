@@ -47,7 +47,14 @@
             model.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
             var foundFacilities = new List<Facility>();
 
-            foundFacilities = this.facilities.All().Where(y => y.SportCategories.Where(x => x.Id == id).Count() > 0).ToList();
+            if (id > 0)
+                {
+                foundFacilities = this.facilities.All().Where(y => y.SportCategories.Where(x => x.Id == id).Count() > 0).ToList();
+            }
+            else
+            {
+                foundFacilities = this.facilities.All().ToList();
+            }
 
             var allItemsCount = foundFacilities.Count();
             var foundFacilitiesAfterSearch = foundFacilities.ToList();
@@ -67,7 +74,7 @@
                 .ThenBy(x => x.Id)
                 .Skip(itemsToSkip).Take(ItemsPerPage)
                .ToList();
-            var facilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilitiesAfterSearch);
+            var facilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilitiestoView);
 
             var viewModel = new FacilitiesListViewModel()
             {
