@@ -50,6 +50,7 @@
             // return this.PartialView(foundFacilitiesToView);
         }
 
+        [Authorize]
         public void AddToFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
@@ -61,6 +62,7 @@
             this.users.UpdateUser(currentUser);
         }
 
+        [Authorize]
         public void RemoveFromFavorites(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);

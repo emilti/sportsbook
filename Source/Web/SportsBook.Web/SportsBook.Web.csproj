@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilitiesController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\RegisteredUsers\RegisteredUsersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AllUsersFacilitiesController.cs" />
@@ -230,7 +231,7 @@
     <Compile Include="ViewModels\Comments\EditCommentResponseModel.cs" />
     <Compile Include="ViewModels\Comments\RequestWriteComment.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
-    <Compile Include="ViewModels\Facilities\FacilityCreateOrChangeViewModel.cs" />
+    <Compile Include="ViewModels\Facilities\FacilityChangeViewModel.cs" />
     <Compile Include="ViewModels\Facilities\FacilityDetailedViewModel.cs" />
     <Compile Include="ViewModels\Facilities\FacilityViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Content\KendoUI\images\kendoui.woff" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\AdminFacilities\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityGridViewModel.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -419,8 +421,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\RegisteredUsers\ViewModels\" />
     <Folder Include="Views\AdminFacilities\" />
     <Folder Include="Views\Base\" />

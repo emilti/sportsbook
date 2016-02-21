@@ -13,6 +13,8 @@
     using SportsBook.Data;
     using SportsBook.Data.Models;
     using Services.Data.Contracts;
+    using Infrastructure.Mapping;
+    using ViewModels;
 
     public class AdminFacilitiesController : Controller
     {
@@ -30,17 +32,9 @@
 
         public ActionResult Facilities_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = this.facilities.All().ToDataSourceResult(request, facility => new
-            {
-                Id = facility.Id,
-                Name = facility.Name,
-                Description = facility.Description,
-                Image = facility.Image,
-                CreatedOn = facility.CreatedOn,
-                ModifiedOn = facility.ModifiedOn,
-                IsDeleted = facility.IsDeleted,
-                DeletedOn = facility.DeletedOn
-            });
+            DataSourceResult result = this.facilities.All()
+               .To<FacilityGridViewModel>()
+               .ToDataSourceResult(request);
 
             return Json(result);
         }
@@ -70,25 +64,21 @@
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Facilities_Update([DataSourceRequest]DataSourceRequest request, Facility facility)
+        public ActionResult Facilities_Update([DataSourceRequest]DataSourceRequest request, FacilityGridViewModel facility)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new Facility
-                {
-                    Id = facility.Id,
-                    Name = facility.Name,
-                    Description = facility.Description,
-                    Image = facility.Image,
-                    CreatedOn = facility.CreatedOn,
-                    ModifiedOn = facility.ModifiedOn,
-                    IsDeleted = facility.IsDeleted,
-                    DeletedOn = facility.DeletedOn
-                };
-
-                this.facilities.UpdateFacility(facility.Id, entity);
+                var entity = this.facilities.GetFacilityDetails(facility.Id);
+                entity.Name = facility.Name;
+                entity.Description = facility.Description;
+                entity.Image = facility.Image;               
                 this.facilities.Save();
             }
+
+            var postToDisplay =
+             this.facilities.All()
+             .To<FacilityGridViewModel>()
+             .FirstOrDefault(x => x.Id == facility.Id);
 
             return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
         }

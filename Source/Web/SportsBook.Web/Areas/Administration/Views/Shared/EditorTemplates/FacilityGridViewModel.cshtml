@@ -1,6 +1,4 @@
-﻿@model SportsBook.Web.ViewModels.Facilities.FacilityChangeViewModel
-
-@Html.AntiForgeryToken()
+﻿@model SportsBook.Web.Areas.Administration.ViewModels.FacilityGridViewModel
 <h4>Create new facility.</h4>
 <hr />
 <div class="form-group">
@@ -18,22 +16,15 @@
     </div>
 </div>
 
+@*
 <div class="form-group">
-    @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+    @Html.LabelFor(m => m.CityName, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
         @Html.DropDownListFor(m => m.CityId, Model.CitiesDropDown, new { @class = "form-control", required = "required" })
         @Html.ValidationMessageFor(model => model.CitiesDropDown, "", new { @class = "text-danger" })
     </div>
-</div>
+</div>*@
 
-<div class="form-group">
-    @Html.LabelFor(m => m.SportCategories, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.ListBoxFor(model => model.SportCategoriesIds, Model.SportCategoriesDropDown, new { @class = "form-control",  required = "required", data_placeholder = "Select one or more sport categories." })
-        @Html.ValidationMessageFor(model => model.SportCategoriesIds, "", new { @class = "text-danger" })
-         @*@Html.DropDownListFor(m => m.SportCategories, Model.SportCategoriesDropDown, new { @class = "form-control" })*@
-    </div>
-</div>
 
 <div class="form-group">
     @Html.LabelFor(m => m.Image, new { @class = "col-md-2 control-label" })
