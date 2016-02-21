@@ -9,6 +9,7 @@
     using Services.Data.Contracts;
     using ViewModels;
 
+    [Authorize(Roles = "Admin")]
     public class AdminFacilityCommentsController : Controller
     {
         private readonly ICommentsService comments;

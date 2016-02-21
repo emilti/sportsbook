@@ -18,6 +18,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Data;
 
+    [Authorize(Roles ="Admin")]
     public class AdminAppUsersController : Controller
     {
         private SportsBookDbContext context;

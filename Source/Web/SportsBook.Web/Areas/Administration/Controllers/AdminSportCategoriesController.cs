@@ -15,6 +15,7 @@
     using SportsBook.Services.Data.Contracts;
     using ViewModels;
 
+    [Authorize(Roles = "Admin")]
     public class AdminSportCategoriesController : Controller
     {
         private readonly ISportCategoriesService sportCategories;
