@@ -1,12 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Styles.Render("~/Content/css", "~/Content/kendo")
+    @Scripts.Render("~/bundles/jquery")
 
+    @Scripts.Render("~/bundles/kendo")  
     <link href="~/Content/Theme/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Theme/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -113,7 +115,7 @@
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>                            
                                 <li class="dropdown">
-                                    <a href="#">Категории<i class="fa fa-angle-down"></i></a>
+                                    <a href="#">Спортни обекти<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li>@Html.ActionLink("Всички", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 0 }, null)</li>
                                         <li>@Html.ActionLink("Футбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 1 }, null)</li>
@@ -124,15 +126,18 @@
                                         <li>@Html.ActionLink("Тенис", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 6 }, null)</li>
                                      </ul>
                                 </li>
+                                
+                                <li>@Html.ActionLink("Добави обект", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
+
+                             
+                          
                                 <li class="dropdown">
-                                    <a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <a href="#">Администрация<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/blog.html">Blog List</a></li>
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
+                                        <li>@Html.ActionLink("Спортни обекти", "Index", "AdminFacilities", new { area = "Administration" }, null)</li>
                                     </ul>
                                 </li>
-                                <li>@Html.ActionLink("Добави обект", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
-                                <li><a href="http://themifycloud.com/demos/templates/eshop/contact-us.html">Contact</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -158,17 +163,19 @@
     </div>
 
 
-    <script src="~/Content/Theme/jquery_002.js"></script>
+    @*<script src="~/Content/Theme/jquery_002.js"></script>*@
     <script src="~/Content/Theme/bootstrap.js"></script>
-    <script src="~/Content/Theme/jquery.js"></script>
+    @*<script src="~/Content/Theme/jquery.js"></script>
     <script src="~/Content/Theme/price-range.js"></script>
-    <script src="~/Content/Theme/jquery_003.js"></script>
+    <script src="~/Content/Theme/jquery_003.js"></script>*@
     <script src="~/Content/Theme/main.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
     @RenderSection("addComment", required: false)
     @RenderSection("changeFavorites", required: false) 
+    @RenderSection("Scripts", required: false)
+    
     <script>
         function standBy(id) {
             $('#image-container-' + id).attr('src', 'http://naxcore.com/wp-content/themes/Artificial-Reason-WP/img/no_image.png')
