@@ -19,14 +19,14 @@
 
 @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
 {
-    @Html.ActionLink("Edit Facility", "EditFacility", "Facilities", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Edit Facility", "EditFacility", "Facilities", new { area = "RegisteredUsers", id = Model.Id }, new { @class = "btn btn-primary" })
 }
 
 
 <div>
     <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
     <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
-    @Html.ActionLink("Add Comment", "AddComment", "Comments",new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "RegisteredUsers", id = Model.Id }, new { @class = "btn btn-primary" })
 </div>
 
 <div id="comments-part"></div>
@@ -53,8 +53,8 @@
                             <div class="col-md-offset-10 col-md-2 btn-group">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9 btn-group">
-                                        @Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
-                                        @using (Html.BeginForm("DeleteComment", "Comments", new { id = comment.Id }, FormMethod.Post))
+                                        @Html.ActionLink("Edit", "EditComment", "Comments", new { area = "RegisteredUsers", id = comment.Id }, new { @class = "btn btn-warning" })
+                                        @using (Html.BeginForm("DeleteComment", "Comments", new { area = "RegisteredUsers", id = comment.Id }, FormMethod.Post))
                                         {
                                             @Html.AntiForgeryToken()
                                             <input type="submit" class="btn btn-danger" value="Delete" />

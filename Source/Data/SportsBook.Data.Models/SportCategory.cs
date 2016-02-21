@@ -13,8 +13,6 @@
             this.Facilities = new HashSet<Facility>();
         }
 
-        public int Id { get; set; }
-
         [MaxLength(25)]
         [MinLength(2)]
         public string Name { get; set; }

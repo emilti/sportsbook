@@ -2,11 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     using AutoMapper;
     using SportsBook.Data.Models;
     using SportsBook.Web.Infrastructure.Mapping;
-    using System.Web.Mvc;
-    using System.ComponentModel.DataAnnotations;
 
     public class FacilityViewModel : IMapFrom<SportsBook.Data.Models.Facility>, IHaveCustomMappings
     {

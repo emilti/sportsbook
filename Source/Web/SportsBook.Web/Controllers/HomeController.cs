@@ -21,12 +21,12 @@
         {
             List<Facility> foundFacilities = new List<Facility>();
             List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
-            foundFacilities =
-               this.Cache.Get(
-                    "newFacilities",
-                    () => this.facilities.GetTopFacilities().ToList(),
-                    5 * 60);
-            // foundFacilities = this.facilities.GetTopFacilities().ToList();
+            // foundFacilities =
+            //    this.Cache.Get(
+            //         "newFacilities",
+            //         () => this.facilities.GetTopFacilities().ToList(),
+            //         5 * 60);
+            foundFacilities = this.facilities.GetTopFacilities().ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.View(foundFacilitiesToView);
         }

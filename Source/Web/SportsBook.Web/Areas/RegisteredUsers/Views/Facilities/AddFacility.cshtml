@@ -1,6 +1,6 @@
 ﻿@model SportsBook.Web.ViewModels.Facilities.FacilityCreateOrChangeViewModel
 
-@using (Html.BeginForm("AddFacility", "Facilities", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("AddFacility", "Facilities", new { area = "RegisteredUsers" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
    @Html.Partial("_FacilityCreateOrChangePartial")
 }

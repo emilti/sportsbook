@@ -4,9 +4,9 @@
     @foreach (var facility in Model)
     {
         <div class="col-md-4">
-            @Html.ActionLink(@facility.Name, "FacilityDetails", "Facilities", new { id = @facility.Id }, new { @class = "details-name" })
+            @Html.ActionLink(@facility.Name, "FacilityDetails", "AllUsersFacilities", new { id = @facility.Id, area = "" }, new { @class = "details-name" })
             <div class="holder caption">              
-                <a href="@Url.Action("FacilityDetails", "Facilities", new { id = @facility.Id })">   
+                <a href="@Url.Action("FacilityDetails", "AllUsersFacilities", new { id = @facility.Id, area = "" })">   
                     <img src=@facility.Image id="image-container-@facility.Id" onError="standBy(@facility.Id)" class="image" />
                     
                     <div>                        

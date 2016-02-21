@@ -57,7 +57,7 @@
             AppUser currentUser = this.users.GetUserDetails(userId);
             currentUser.FavoriteFacilities.Add(foundFacility);
             foundFacility.UsersLiked.Add(currentUser);
-            this.facilities.UpdateFacility();
+            this.facilities.UpdateFacility(id, foundFacility);
             this.users.UpdateUser(currentUser);
         }
 
@@ -68,7 +68,7 @@
             AppUser currentUser = this.users.GetUserDetails(userId);
             currentUser.FavoriteFacilities.Remove(foundFacility);
             foundFacility.UsersLiked.Remove(currentUser);
-            this.facilities.UpdateFacility();
+            this.facilities.UpdateFacility(id, foundFacility);
             this.users.UpdateUser(currentUser);
            // return this.RedirectToAction("Index", "Home");
         }

@@ -111,7 +111,8 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li>@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                                <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                                <li>@Html.ActionLink("Спортни обекти", "GetObjects", "Home", new { area = "RegisteredUsers" }, new { @class = "navbar-brand" })</li>
                                 <li class="dropdown">
                                     <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
@@ -129,7 +130,7 @@
                                         <li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li>@Html.ActionLink("Add Facility", "AddFacility", "Facilities")</li>
+                                <li>@Html.ActionLink("Add Facility", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
                                 <li><a href="http://themifycloud.com/demos/templates/eshop/contact-us.html">Contact</a></li>
                             </ul>
                         </div>
