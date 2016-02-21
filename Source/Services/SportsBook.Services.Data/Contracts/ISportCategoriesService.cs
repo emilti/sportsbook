@@ -12,5 +12,15 @@
         IQueryable<SportCategory> All();
 
         SportCategory GetById(int sportCategoryId);
+
+        void UpdateSportCategory(int id, SportCategory facility);
+
+        void Add(SportCategory sportCategory);
+
+        void Remove(SportCategory sportCategory);
+
+        void Save();
+
+        void Dispose();
     }
 }

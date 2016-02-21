@@ -1,0 +1,30 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<SportsBook.Web.Areas.Administration.ViewModels.SportCategoryGridViewModel>()
+      .Name("grid")
+      .HtmlAttributes(new { style = "height: 600px" })
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.Description);        
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("SportCategories_Read", "AdminSportCategories"))
+          .Create(create => create.Action("SportCategories_Create", "AdminSportCategories"))
+          .Update(update => update.Action("SportCategories_Update", "AdminSportCategories"))
+          .Destroy(destroy => destroy.Action("SportCategories_Destroy", "AdminSportCategories"))
+      )
+)

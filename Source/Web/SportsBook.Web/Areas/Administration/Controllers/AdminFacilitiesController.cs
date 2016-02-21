@@ -8,12 +8,13 @@
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
+    using Data;
+    using Data.Models;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using SportsBook.Data;
-    using SportsBook.Data.Models;
+    using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
-    using Infrastructure.Mapping;
     using ViewModels;
 
     public class AdminFacilitiesController : Controller
@@ -27,7 +28,7 @@
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult Facilities_Read([DataSourceRequest]DataSourceRequest request)
@@ -36,31 +37,35 @@
                .To<FacilityGridViewModel>()
                .ToDataSourceResult(request);
 
-            return Json(result);
+            return this.Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Facilities_Create([DataSourceRequest]DataSourceRequest request, Facility facility)
+        public ActionResult Facilities_Create([DataSourceRequest]DataSourceRequest request, FacilityGridViewModel facility)
         {
-            if (ModelState.IsValid)
+            var newId = 0;
+            if (this.ModelState.IsValid)
             {
                 var entity = new Facility
                 {
                     Name = facility.Name,
                     Description = facility.Description,
+                    AuthorId = this.User.Identity.GetUserId(),
                     Image = facility.Image,
-                    CreatedOn = facility.CreatedOn,
-                    ModifiedOn = facility.ModifiedOn,
-                    IsDeleted = facility.IsDeleted,
-                    DeletedOn = facility.DeletedOn
+                    CityId = 1
                 };
+
 
                 this.facilities.Add(entity);
                 this.facilities.Save();
-                facility.Id = entity.Id;
+                newId = entity.Id;
             }
 
-            return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
+            var facilityToDisplay =
+                this.facilities.All()
+                .To<FacilityGridViewModel>()
+                .FirstOrDefault(x => x.Id == newId);
+            return this.Json(new[] { facilityToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -71,7 +76,7 @@
                 var entity = this.facilities.GetFacilityDetails(facility.Id);
                 entity.Name = facility.Name;
                 entity.Description = facility.Description;
-                entity.Image = facility.Image;               
+                entity.Image = facility.Image;
                 this.facilities.Save();
             }
 
@@ -80,7 +85,7 @@
              .To<FacilityGridViewModel>()
              .FirstOrDefault(x => x.Id == facility.Id);
 
-            return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { facility }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -89,7 +94,7 @@
             this.facilities.Remove(facility);
             this.facilities.Save();
 
-            return Json(new[] { facility }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { facility }.ToDataSourceResult(request, ModelState));
         }
 
         protected override void Dispose(bool disposing)
