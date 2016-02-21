@@ -5,6 +5,7 @@
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Facilities;
+    using ViewModels.PageableFacilityList;
 
     public class AllUsersFacilitiesController : BaseController
     {
@@ -26,6 +27,13 @@
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var facilityForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityDetailedViewModel>(foundFacility);
             return this.View(facilityForView);
+        }
+
+        [HttpGet]
+        public ActionResult SearchFacilties(int id, FacilitiesListViewModel model)
+        {
+
+            return this.View();
         }
     }
 }

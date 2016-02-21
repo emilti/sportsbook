@@ -238,6 +238,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\PageableFacilityList\FacilitiesListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -334,6 +335,7 @@
     <Content Include="Areas\RegisteredUsers\Views\Facilities\EditFacility.cshtml" />
     <Content Include="Areas\RegisteredUsers\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
+    <Content Include="Views\AllUsersFacilities\SearchFacilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
