@@ -209,6 +209,7 @@
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
+    <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
@@ -370,6 +371,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\AppUserGridViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\AdminFacilityComments\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityCommentGridViewModel.cshtml" />
+    <Content Include="Areas\Events\Views\web.config" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -433,6 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Events\Controllers\" />
+    <Folder Include="Areas\Events\Models\" />
+    <Folder Include="Areas\Events\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
