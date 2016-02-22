@@ -1,24 +1,25 @@
-﻿namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Areas.Facilities.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.Facilities;
     using ViewModels.PageableFacilityList;
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
+    using Web.Controllers;
 
-    public class AllUsersFacilitiesController : BaseController
+    public class FacilitiesPublicController : BaseController
     {
-        const int ItemsPerPage = 6;
+        private const int ItemsPerPage = 6;
         private readonly IFacilitiesService facilities;
         private readonly IUsersService users;
         private readonly ICitiesService cities;
         private readonly ISportCategoriesService sportCategories;
 
-        public AllUsersFacilitiesController(IFacilitiesService facilitiesService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
+        public FacilitiesPublicController(IFacilitiesService facilitiesService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
         {
             this.facilities = facilitiesService;
             this.users = usersService;

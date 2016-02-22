@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.ViewModels.PageableFacilityList
+﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.PageableFacilityList
 {
     using System;
     using System.Collections.Generic;

@@ -209,14 +209,14 @@
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
-    <Compile Include="Areas\RegisteredUsers\RegisteredUsersAreaRegistration.cs" />
+    <Compile Include="Areas\Facilities\RegisteredUsersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AllUsersFacilitiesController.cs" />
+    <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\RegisteredUsers\Controllers\CommentsController.cs" />
-    <Compile Include="Areas\RegisteredUsers\Controllers\FacilitiesController.cs" />
-    <Compile Include="Areas\RegisteredUsers\Controllers\FavoriteFacilitiesController.cs" />
+    <Compile Include="Areas\Facilities\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\Facilities\Controllers\FacilitiesPrivateController.cs" />
+    <Compile Include="Areas\Facilities\Controllers\FavoriteFacilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -234,12 +234,12 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Comments\EditCommentResponseModel.cs" />
-    <Compile Include="ViewModels\Comments\RequestWriteComment.cs" />
-    <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
-    <Compile Include="ViewModels\Facilities\FacilityChangeViewModel.cs" />
-    <Compile Include="ViewModels\Facilities\FacilityDetailedViewModel.cs" />
-    <Compile Include="ViewModels\Facilities\FacilityViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Comments\EditCommentResponseModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Comments\RequestWriteComment.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Comments\CommentViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Facilities\FacilityChangeViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Facilities\FacilityDetailedViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Facilities\FacilityViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -250,7 +250,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\PageableFacilityList\FacilitiesListViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\PageableFacilityList\FacilitiesListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -340,8 +340,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Areas\RegisteredUsers\Views\web.config" />
-    <Content Include="Areas\RegisteredUsers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Facilities\Views\web.config" />
+    <Content Include="Areas\Facilities\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Content\KendoUI\fonts\DejaVu\DejaVuSans-Bold.ttf" />
     <Content Include="Content\KendoUI\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
@@ -415,29 +415,24 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Shared\_FacilityPartial.cshtml" />
-    <Content Include="Views\AllUsersFacilities\FacilityDetails.cshtml" />
-    <Content Include="Views\Shared\_CommentsPartial.cshtml" />
-    <Content Include="Areas\RegisteredUsers\Views\Comments\EditComment.cshtml" />
+    <Content Include="Areas\Facilities\Views\FacilitiesPublic\FacilityDetails.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_CommentsPartial.cshtml" />
+    <Content Include="Areas\Facilities\Views\Comments\EditComment.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ContentCommentTemplate.cshtml" />
     <Content Include="Views\Account\ViewAccount.cshtml" />
     <Content Include="Views\Account\EditAccount.cshtml" />
     <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
-    <Content Include="Views\Shared\_FacilityInFavourites.cshtml" />
-    <Content Include="Areas\RegisteredUsers\Views\Facilities\AddFacility.cshtml" />
-    <Content Include="Areas\RegisteredUsers\Views\Comments\AddComment.cshtml" />
-    <Content Include="Areas\RegisteredUsers\Views\Facilities\EditFacility.cshtml" />
-    <Content Include="Areas\RegisteredUsers\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_FacilityInFavourites.cshtml" />
+    <Content Include="Areas\Facilities\Views\FacilitiesPrivate\AddFacility.cshtml" />
+    <Content Include="Areas\Facilities\Views\Comments\AddComment.cshtml" />
+    <Content Include="Areas\Facilities\Views\FacilitiesPrivate\EditFacility.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
-    <Content Include="Views\AllUsersFacilities\SearchFacilities.cshtml" />
+    <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\RegisteredUsers\ViewModels\" />
-    <Folder Include="Views\AdminAppUsers\" />
-    <Folder Include="Views\AdminFacilities\" />
-    <Folder Include="Views\AdminFacilityComments\" />
-    <Folder Include="Views\AdminSportCategories\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.ViewModels.Comments
+﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.Comments
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;

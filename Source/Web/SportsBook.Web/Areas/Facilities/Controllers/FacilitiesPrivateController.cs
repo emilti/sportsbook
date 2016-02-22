@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Areas.RegisteredUsers.Controllers
+﻿namespace SportsBook.Web.Areas.Facilities.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -12,14 +12,14 @@
     using ViewModels.Facilities;
     using Web.Controllers;
 
-    public class FacilitiesController : BaseController
+    public class FacilitiesPrivateController : BaseController
     {
         private readonly IFacilitiesService facilities;
         private readonly IUsersService users;
         private readonly ICitiesService cities;
         private readonly ISportCategoriesService sportCategories;
 
-        public FacilitiesController(IFacilitiesService facilitiesService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
+        public FacilitiesPrivateController(IFacilitiesService facilitiesService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
         {
             this.facilities = facilitiesService;
             this.users = usersService;
@@ -56,7 +56,7 @@
                 mappedFacility.AuthorId = this.User.Identity.GetUserId();
 
                 this.facilities.Add(mappedFacility);
-                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = mappedFacility.Id, area = string.Empty });
+                return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = mappedFacility.Id, area = "Facilities" });
             }
 
             return this.View(model);
@@ -100,7 +100,7 @@
                 }
 
                 this.facilities.UpdateFacility(id, mappedFacility);
-                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = id, area = string.Empty });
+                return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
             }
 
             return this.View(model);

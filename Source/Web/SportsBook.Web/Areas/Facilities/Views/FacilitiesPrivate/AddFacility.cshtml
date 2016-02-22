@@ -1,0 +1,10 @@
+﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Facilities.FacilityChangeViewModel
+
+@using (Html.BeginForm("AddFacility", "FacilitiesPrivate", new { area = "Facilities" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+   @Html.Partial("_FacilityCreateOrChangePartial")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

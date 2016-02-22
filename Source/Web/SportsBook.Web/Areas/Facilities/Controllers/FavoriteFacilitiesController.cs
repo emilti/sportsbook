@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Controllers
+﻿namespace SportsBook.Web.Areas.Facilities.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,8 @@
     using Microsoft.AspNet.Identity;
     using SportsBook.Data.Models;
     using SportsBook.Services.Data.Contracts;
-    using SportsBook.Web.ViewModels.Facilities;
+    using ViewModels.Facilities;
+    using Web.Controllers;
 
     public class FavoriteFacilitiesController : BaseController
     {

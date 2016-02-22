@@ -117,23 +117,23 @@
                                 <li class="dropdown">
                                     <a href="#">Спортни обекти<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li>@Html.ActionLink("Всички", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 0 }, null)</li>
-                                        <li>@Html.ActionLink("Футбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 1 }, null)</li>
-                                        <li>@Html.ActionLink("Волейбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 2 }, null)</li>
-                                        <li>@Html.ActionLink("Баскетбол", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 3 }, null)</li>
-                                        <li>@Html.ActionLink("Фитнес", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 4 }, null)</li>
-                                        <li>@Html.ActionLink("Плуване", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 5 }, null)</li>
-                                        <li>@Html.ActionLink("Тенис", "SearchFacilities", "AllUsersFacilities", new { area = string.Empty, id = 6 }, null)</li>
+                                        <li>@Html.ActionLink("Всички", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 0 }, null)</li>
+                                        <li>@Html.ActionLink("Футбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 1 }, null)</li>
+                                        <li>@Html.ActionLink("Волейбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 2 }, null)</li>
+                                        <li>@Html.ActionLink("Баскетбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 3 }, null)</li>
+                                        <li>@Html.ActionLink("Фитнес", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 4 }, null)</li>
+                                        <li>@Html.ActionLink("Плуване", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 5 }, null)</li>
+                                        <li>@Html.ActionLink("Тенис", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 6 }, null)</li>
                                     </ul>
                                 </li>
 
-                                <li>@Html.ActionLink("Добави обект", "AddFacility", "Facilities", new { area = "RegisteredUsers" }, null)</li>
+                                <li>@Html.ActionLink("Добави обект", "AddFacility", "FacilitiesPrivate", new { area = "facilities" }, null)</li>
                                                                 
                                 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                 {
                                     <li class="dropdown">
                                         <a href="#">Администрация<i class="fa fa-angle-down"></i></a>
-                                        <ul role="menu" class="sub-menu">
+                                        <ul role="menu" class="sub-menu"> 
                                             <li>@Html.ActionLink("Потребители", "Index", "AdminAppUsers", new { area = "Administration" }, null)</li>
                                             <li>@Html.ActionLink("Спортове", "Index", "AdminSportCategories", new { area = "Administration" }, null)</li>
                                             <li>@Html.ActionLink("Спортни обекти", "Index", "AdminFacilities", new { area = "Administration" }, null)</li>

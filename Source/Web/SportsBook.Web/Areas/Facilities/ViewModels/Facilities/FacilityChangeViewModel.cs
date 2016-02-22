@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.ViewModels.Facilities
+﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.Facilities
 {
     using System.Collections.Generic;
     using System.ComponentModel;

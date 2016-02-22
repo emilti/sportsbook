@@ -1,0 +1,12 @@
+﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel
+@using (@Html.BeginForm("AddComment", "Comments", new { area = "Facilities" }, FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.Partial("_CommentsPartial")
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

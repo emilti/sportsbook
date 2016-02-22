@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace SportsBook.Web.Areas.RegisteredUsers
+namespace SportsBook.Web.Areas.Facilities
 {
-    public class RegisteredUsersAreaRegistration : AreaRegistration 
+    public class FacilitiesAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "RegisteredUsers";
+                return "Facilities";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "RegisteredUsers_default",
-                "RegisteredUsers/{controller}/{action}/{id}",
+                "Facilities_default",
+                "Facilities/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

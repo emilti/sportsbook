@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using Areas.Facilities.ViewModels.Facilities;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
@@ -12,7 +13,6 @@
     using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
-    using ViewModels.Facilities;
 
     [Authorize]
     public class AccountController : BaseController

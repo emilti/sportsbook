@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Areas.RegisteredUsers.Controllers
+﻿namespace SportsBook.Web.Areas.Facilities.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -45,10 +45,10 @@
                 AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
                 string username = user.UserName;
                 var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility, user.Avatar);
-                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = id, area = string.Empty });
+                return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
             }
 
-            return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = id, area = string.Empty });
+            return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
         }
 
         [HttpGet]
@@ -69,7 +69,7 @@
             {
                 FacilityComment foundComment = this.comments.GetById(id);
                 this.comments.UpdateComment(id, model.Content);
-                return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = foundComment.FacilityId, area = string.Empty });
+                return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = foundComment.FacilityId, area = "Facilities" });
             }
 
             return this.View(model);
@@ -82,7 +82,7 @@
         {
             FacilityComment foundComment = this.comments.GetById(id);
             this.comments.DeleteComment(foundComment);
-            return this.RedirectToAction("FacilityDetails", "AllUsersFacilities", new { id = foundComment.FacilityId, area = string.Empty });
+            return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = foundComment.FacilityId, area = "Facilities" });
         }
     }
 }

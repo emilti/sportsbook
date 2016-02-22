@@ -3,10 +3,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Areas.Facilities.ViewModels.Facilities;
     using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
-    using ViewModels.Facilities;
 
     public class HomeController : BaseController
     {

@@ -1,12 +1,12 @@
-﻿@model List<SportsBook.Web.ViewModels.Facilities.FacilityViewModel>
+﻿@model List<SportsBook.Web.Areas.Facilities.ViewModels.Facilities.FacilityViewModel>
 @using Microsoft.AspNet.Identity
 <div class="row">
     @foreach (var facility in Model)
     {
         <div class="col-md-4">
-            @Html.ActionLink(@facility.Name, "FacilityDetails", "AllUsersFacilities", new { id = @facility.Id, area = "" }, new { @class = "details-name" })
+            @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
             <div class="holder caption">              
-                <a href="@Url.Action("FacilityDetails", "AllUsersFacilities", new { id = @facility.Id, area = "" })">   
+                <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">   
                     <img src=@facility.Image id="image-container-@facility.Id" onError="standBy(@facility.Id)" class="image" />
                     
                     <div>                        
@@ -19,7 +19,7 @@
                    
                     @if (User.Identity.GetUserId() != null)
                     {
-                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id })
+                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
                     }                    
                 </div>
             </div>
