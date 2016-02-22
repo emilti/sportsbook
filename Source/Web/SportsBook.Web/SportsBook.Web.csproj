@@ -212,9 +212,9 @@
     <Compile Include="Areas\Events\Controllers\EventsPrivateController.cs" />
     <Compile Include="Areas\Events\Controllers\EventsPublicController.cs" />
     <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
-    <Compile Include="Areas\Events\ViewModels\Events\EventChangeViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Events\EventDetailedViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Events\EventViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\EventsModels\EventChangeViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\EventsModels\EventDetailedViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\EventsModels\EventViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\PageableEventList\EventsListViewModel.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -378,6 +378,12 @@
     <Content Include="Areas\Administration\Views\AdminFacilityComments\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityCommentGridViewModel.cshtml" />
     <Content Include="Areas\Events\Views\web.config" />
+    <Content Include="Areas\Events\Views\EventsPrivate\AddEvent.cshtml" />
+    <Content Include="Areas\Events\Views\EventsPrivate\EditEvent.cshtml" />
+    <Content Include="Areas\Events\Views\Shared\_EventChangePartial.cshtml" />
+    <Content Include="Areas\Events\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Events\Views\EventsPublic\EventDetails.cshtml" />
+    <Content Include="Areas\Events\Views\EventsPublic\SearchEvents.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -441,7 +447,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Events\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

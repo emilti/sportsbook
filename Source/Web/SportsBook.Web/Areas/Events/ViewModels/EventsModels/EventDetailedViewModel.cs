@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.Facilities
+﻿namespace SportsBook.Web.Areas.Events.ViewModels.EventsModels
 {
     using System;
     using System.Collections.Generic;
@@ -67,7 +67,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Facility, FacilityDetailedViewModel>();
+            configuration.CreateMap<Facility, EventDetailedViewModel>();
         }
     }
 }

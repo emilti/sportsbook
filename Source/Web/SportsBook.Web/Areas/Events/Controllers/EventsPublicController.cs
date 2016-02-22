@@ -1,14 +1,14 @@
-﻿namespace SportsBook.Web.Areas.Facilities.Controllers
+﻿namespace SportsBook.Web.Areas.Events.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using Data.Models;
+    using Events.ViewModels.EventsModels;
+    using Events.ViewModels.PageableEventList;
     using Infrastructure.Mapping;
-    using Services.Data.Contracts;
-    using ViewModels.Facilities;
-    using ViewModels.PageableFacilityList;
+    using Services.Data.Contracts;  
     using Web.Controllers;
 
     public class EventsPublicController : BaseController

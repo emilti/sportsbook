@@ -1,22 +1,23 @@
-﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.Facilities
+﻿namespace SportsBook.Web.Areas.Events.ViewModels.EventsModels
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
     using AutoMapper;
-    using Data.Models;
-    using Web.Infrastructure.Mapping;
+    using SportsBook.Data.Models;
+    using SportsBook.Web.Infrastructure.Mapping;
 
-    public class EventChangeViewModel : IMapFrom<Event>, IMapTo<Event>, IHaveCustomMappings
+    public class EventViewModel : IMapFrom<Event>, IHaveCustomMappings
     {
         private ICollection<SportCategory> sportCategories;
 
-        public EventChangeViewModel()
+        public EventViewModel()
         {
             this.SportCategories = new HashSet<SportCategory>();
         }
+
+        public int Id { get; set; }
 
         [Required]
         [AllowHtml]
@@ -41,13 +42,6 @@
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         public string Image { get; set; }
 
-        public IEnumerable<SelectListItem> CitiesDropDown { get; set; }
-
-        public IEnumerable<int> SportCategoriesIds { get; set; }
-
-        public IEnumerable<SelectListItem> SportCategoriesDropDown { get; set; }
-
-        [DisplayName("Sport Categries")]
         public virtual ICollection<SportCategory> SportCategories
         {
             get { return this.sportCategories; }
@@ -56,7 +50,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<FacilityChangeViewModel, Facility>();
+            configuration.CreateMap<Facility, EventViewModel>();
         }
     }
 }

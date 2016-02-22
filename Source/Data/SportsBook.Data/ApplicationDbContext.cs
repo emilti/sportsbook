@@ -21,9 +21,13 @@
 
         public virtual IDbSet<Facility> Facilities { get; set; }
 
+        public virtual IDbSet<Event> Events { get; set; }
+
         public virtual IDbSet<SportCategory> SportCategories { get; set; }
 
         public virtual IDbSet<FacilityComment> FacilityComments { get; set; }
+
+        public virtual IDbSet<EventComment> EventComments { get; set; }
 
         public static SportsBookDbContext Create()
         {

@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Areas.Facilities.Controllers
+﻿namespace SportsBook.Web.Areas.Events.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -6,10 +6,10 @@
     using System.Web;
     using System.Web.Mvc;
     using Data.Models;
+    using Events.ViewModels.EventsModels;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using SportsBook.Services.Data.Contracts;
-    using ViewModels.Facilities;
     using Web.Controllers;
 
     public class EventsPrivateController : BaseController
@@ -42,7 +42,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFacility(EventChangeViewModel model)
+        public ActionResult AddEvent(EventChangeViewModel model)
         {
             if (this.ModelState.IsValid)
             {

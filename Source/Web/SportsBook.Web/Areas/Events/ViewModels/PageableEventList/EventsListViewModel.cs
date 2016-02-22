@@ -1,4 +1,4 @@
-﻿namespace SportsBook.Web.Areas.Facilities.ViewModels.PageableFacilityList
+﻿namespace SportsBook.Web.Areas.Events.ViewModels.PageableEventList
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,7 @@
     using System.Web.Mvc;
     using Facilities;
     using SportsBook.Data.Models;
+    using EventsModels;
 
     public class EventsListViewModel
     {

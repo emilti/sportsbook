@@ -1,0 +1,87 @@
+﻿@model SportsBook.Web.Areas.Events.ViewModels.PageableEventList.EventsListViewModel
+
+
+@using (Html.BeginForm("Searchevents", "EventsPublic",new { area = "Events" }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="form-group col-md-4">    
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Search, Model.Search, new { @class = "form-control", placeholder = "Търси " })
+            </div>
+        </div>      
+
+        <div class="form-group col-md-4">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input class="btn btn-primary" value="Search" type="submit">
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@*@{Html.RenderPartial("_EventsPartial", Model.);*@
+
+    string url = Request.RawUrl.ToString();
+    var parts = url.Split('/').ToList();
+    var lastPart = parts[parts.Count - 1].Split('?').ToList();
+    var id = lastPart[0]; }
+
+
+<nav>
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li>
+                <a href="/Facilties/FacilitiesPublic/SearchFacilities/@id?currentPage=@(Model.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            var className = string.Empty;
+            if (Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+
+            <li class="@className"><a href="/Facilities/FacilitiesPublic/SearchFacilities/@id?currentPage=@i">@i</a></li>
+        }
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li>
+                <a href="/Facilities/FacilitiesPublic/SearchFacilities/@id?currentPage=@(Model.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+
+    </ul>
+</nav>
+
+@section changeFavorites{
+    <script>
+        $("div[data-action='change']").click(function () {
+            var id = $(this).attr("data-id");
+            var checkClass = $("div[data-id = '" + id + "']").hasClass("remove-from-favorites-button")
+            if (checkClass) {
+                $.post("/FavoriteFacilities/RemoveFromFavorites", { id: id },
+              function (data) {
+                  $("div[data-id = '" + id + "']").removeClass("remove-from-favorites-button");
+                  $("div[data-id = '" + id + "']").addClass("favorites-button");
+              })
+            } else {
+                $.post("/FavoriteFacilities/AddToFavorites", { id: id },
+             function (data) {
+                 $("div[data-id = '" + id + "']").removeClass("favorites-butto");
+                 $("div[data-id = '" + id + "']").addClass("remove-from-favorites-button");
+             })
+            }
+        })
+    </script>
+}
+ 
