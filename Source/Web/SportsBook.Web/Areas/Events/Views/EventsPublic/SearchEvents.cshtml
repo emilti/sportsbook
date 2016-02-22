@@ -22,7 +22,7 @@
 }
 
 
-@{Html.RenderPartial("_EventsPartial", Model.Events);
+@{Html.RenderPartial("_EventPartial", Model.Events);
 
     string url = Request.RawUrl.ToString();
     var parts = url.Split('/').ToList();

@@ -13,6 +13,7 @@
     using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
+    using Areas.Events.ViewModels.EventsModels;
 
     [Authorize]
     public class AccountController : BaseController
@@ -496,6 +497,17 @@
             foundFacilities = this.users.GetFacilitiesForUser(currentUser).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.PartialView(foundFacilitiesToView);
+        }
+
+        public ActionResult GetFavoriteEvents(string id)
+        {
+            List<Event> foundEvents = new List<Event>();
+            List<EventViewModel> foundEventsToView = new List<EventViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(id);
+
+            foundEvents = this.users.GetEventsForUser(currentUser).ToList();
+            foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
+            return this.PartialView(foundEventsToView);
         }
 
         protected override void Dispose(bool disposing)

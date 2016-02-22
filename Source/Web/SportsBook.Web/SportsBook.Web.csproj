@@ -446,7 +446,8 @@
     <Content Include="Areas\Facilities\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
-    <Content Include="Views\Shared\_EventsPartial.cshtml" />
+    <Content Include="Views\Shared\_EventPartial.cshtml" />
+    <Content Include="Views\Account\GetFavoriteEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

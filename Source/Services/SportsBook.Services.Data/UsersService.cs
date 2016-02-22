@@ -35,6 +35,11 @@
             return user.FavoriteFacilities.AsQueryable();
         }
 
+        public IQueryable<Event> GetEventsForUser(AppUser user)
+        {
+            return user.FavoriteEvents.AsQueryable();
+        }
+
         public IQueryable<AppUser> All()
         {
             return this.users.All();

@@ -17,6 +17,8 @@
 
         IQueryable<Facility> GetFacilitiesForUser(AppUser user);
 
+        IQueryable<Event> GetEventsForUser(AppUser user);
+
         void Remove(AppUser appUser);
 
         void SaveChanges();
