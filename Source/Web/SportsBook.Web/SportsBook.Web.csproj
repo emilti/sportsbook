@@ -437,7 +437,7 @@
     <Content Include="Views\Shared\EditorTemplates\ContentCommentTemplate.cshtml" />
     <Content Include="Views\Account\ViewAccount.cshtml" />
     <Content Include="Views\Account\EditAccount.cshtml" />
-    <Content Include="Views\Account\GetFavouriteFacilities.cshtml" />
+    <Content Include="Views\Shared\_GetFavoriteFacilities.cshtml" />
     <Content Include="Views\Account\FacilityNotInFavourites.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_FacilityInFavourites.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPrivate\AddFacility.cshtml" />
@@ -447,7 +447,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
     <Content Include="Views\Shared\_EventPartial.cshtml" />
-    <Content Include="Views\Account\GetFavoriteEvents.cshtml" />
+    <Content Include="Views\Shared\_GetFavoriteEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -61,9 +61,13 @@
     </div>
 }
 
-@Html.Action("GetFavouriteFacilities", "Account")
+@Html.Action("GetFavoriteFacilities", "Account")
 
 @Html.Action("GetFavoriteEvents", "Account")
+
+@Html.Action("GetSubmittedFacilities", "Account")
+
+@Html.Action("GetSubmittedEvents", "Account")
 
     @*<div class="sports-tags">
             @foreach (var category in @Model.)
