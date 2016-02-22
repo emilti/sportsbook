@@ -209,8 +209,13 @@
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
-    <Compile Include="Areas\Events\Controllers\EventsPrivate.cs" />
+    <Compile Include="Areas\Events\Controllers\EventsPrivateController.cs" />
+    <Compile Include="Areas\Events\Controllers\EventsPublicController.cs" />
     <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
+    <Compile Include="Areas\Events\ViewModels\Events\EventChangeViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\Events\EventDetailedViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\Events\EventViewModel.cs" />
+    <Compile Include="Areas\Events\ViewModels\PageableEventList\EventsListViewModel.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
@@ -436,7 +441,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Events\ViewModels\" />
     <Folder Include="Areas\Events\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
