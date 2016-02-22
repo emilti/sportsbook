@@ -487,11 +487,11 @@
             return this.View(model);
         }
 
-        public ActionResult GetFavouriteFacilities()
+        public ActionResult GetFavouriteFacilities(string id)
         {
             List<Facility> foundFacilities = new List<Facility>();
-            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
-            AppUser currentUser = this.users.GetUserDetails(this.User.Identity.GetUserId());
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();           
+            AppUser currentUser = this.users.GetUserDetails(id);
 
             foundFacilities = this.users.GetFacilitiesForUser(currentUser).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);

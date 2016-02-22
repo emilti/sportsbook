@@ -62,4 +62,26 @@
 
     </ul>
 </nav>
+
+@section changeFavorites{
+    <script>
+        $("div[data-action='change']").click(function () {
+            var id = $(this).attr("data-id");
+            var checkClass = $("div[data-id = '" + id + "']").hasClass("remove-from-favorites-button")
+            if (checkClass) {
+                $.post("/FavoriteFacilities/RemoveFromFavorites", { id: id },
+              function (data) {
+                  $("div[data-id = '" + id + "']").removeClass("remove-from-favorites-button");
+                  $("div[data-id = '" + id + "']").addClass("favorites-button");
+              })
+            } else {
+                $.post("/FavoriteFacilities/AddToFavorites", { id: id },
+             function (data) {
+                 $("div[data-id = '" + id + "']").removeClass("favorites-butto");
+                 $("div[data-id = '" + id + "']").addClass("remove-from-favorites-button");
+             })
+            }
+        })
+    </script>
+}
  

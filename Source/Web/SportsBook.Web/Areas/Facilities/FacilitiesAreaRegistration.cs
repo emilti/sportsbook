@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace SportsBook.Web.Areas.Facilities
+﻿namespace SportsBook.Web.Areas.Facilities
 {
+    using System.Web.Mvc;
+
     public class FacilitiesAreaRegistration : AreaRegistration 
     {
         public override string AreaName 

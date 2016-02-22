@@ -209,7 +209,7 @@
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
-    <Compile Include="Areas\Facilities\RegisteredUsersAreaRegistration.cs" />
+    <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
