@@ -1,0 +1,98 @@
+﻿@model SportsBook.Web.Areas.Events.ViewModels.EventsModels.EventDetailedViewModel
+@using Microsoft.AspNet.Identity
+<h3>@Model.Name</h3>
+
+<img src=@Model.Image class="image-in-details">
+<div>@Model.Description</div>
+
+<div>Начало: @Model.Start</div>
+
+@Model.City.Name
+
+<div class="sports-tags">
+    @foreach (var category in @Model.SportCategories)
+    {
+        <button type="button" class="btn btn-primary">
+            <span>@category.Name</span>
+        </button>
+    }
+</div>
+
+
+@if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
+{
+    @Html.ActionLink("Промени", "EditEvent", "EventsPrivate", new { area = "Events", id = Model.Id }, new { @class = "btn btn-primary" })
+}
+
+
+<div>
+    <button id="show-comments-button" class="btn btn-primary">Покажи коментарите</button>
+    <button id="hide-comments-button" class="btn btn-danger" style="display:none">Скрий коментарите</button>
+    @Html.ActionLink("Добави коментар", "AddComment", "Comments", new { area = "Events", id = Model.Id }, new { @class = "btn btn-primary" })
+</div>
+
+<div id="comments-part"></div>
+
+<script id="comments-template" type="text/template"> 
+    @foreach (var comment in Model.EventComments)
+    {
+        if (comment.IsDeleted == false)
+        {    
+            <div class="row">
+                <div class="col-md-2"><img src=@comment.CreatorAvatar width="100" height="100"></div>
+                
+                <div class="panel panel-default col-md-10">
+                    <div class="panel-heading">
+                        <strong>@comment.AuthorName</strong><span class="text-muted pull-right">@Html.DisplayFor(m => comment.CreatedOn, "DateTimeTemplate")</span>
+                    </div>
+
+                    <div class="panel-body">
+                        @comment.Content
+                    </div>
+                    @if (User.Identity.GetUserId() == @comment.AuthorId)
+                    {
+                        <div class="row comments-bottom">
+                            <div class="col-md-offset-10 col-md-2 btn-group">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9 btn-group">
+                                        @Html.ActionLink("Промени", "EditComment", "Comments", new { area = "Events", id = comment.Id }, new { @class = "btn btn-warning" })
+                                        @using (Html.BeginForm("DeleteComment", "Comments", new { area = "Events", id = comment.Id }, FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="submit" class="btn btn-danger" value="Изтрий" />
+                                            @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>    
+            </div>        
+           
+        }
+    }
+</script>
+
+
+@section addComment{
+    <script>
+        $("#show-comments-button").on("click", function () { showComments() });
+        function showComments() {
+            $("#show-comments-button").css("display", "none")
+            var ShowCommentsTemplate = $('#comments-template').html();
+            $("#comments-part").html(ShowCommentsTemplate)
+            $("#hide-comments-button").css("display", "inline-block")
+        }
+
+        $("#hide-comments-button").on("click", function () { hideComments() });
+        function hideComments() {
+            $("#hide-comments-button").css("display", "none")
+            $("#comments-part").empty();
+            $("#show-comments-button").css("display", "inline-block")
+        }
+    </script>
+}
+
+
+

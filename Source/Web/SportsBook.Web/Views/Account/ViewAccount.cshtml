@@ -13,19 +13,19 @@
         <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
             <form class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
+                    <label class="col-lg-3 control-label">Първо име:</label>
                     <div class="col-lg-8">
                         <label class="control-label">@Model.FirstName</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
+                    <label class="col-lg-3 control-label">Фамилия:</label>
                     <div class="col-lg-8">
                         <label class="control-label">@Model.LastName</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Username:</label>
+                    <label class="col-lg-3 control-label">Потребителско име:</label>
                     <div class="col-lg-8">
                         <label class="control-label">@Model.UserName</label>
                     </div>
@@ -51,7 +51,7 @@
                     <label class="col-lg-3 control-label"></label>
                     <div class="col-lg-8">
                         <label class="control-label">
-                            @Html.ActionLink("Edit Account", "EditAccount", "Account", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Промени", "EditAccount", "Account", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-warning" })
                         </label>
                     </div>
                 </div>
@@ -61,36 +61,129 @@
     </div>
 }
 
-@Html.Action("GetFavouriteFacilities", "Account")
+<div id="show-favorite-facilities-button" class="btn btn-primary">Харесани спортни обекти</div>
+<div id="show-favorite-events-button" class="btn btn-primary">Събития, на които ще присъствам</div>
+<div id="show-submitted-facilities-button" class="btn btn-primary">Създадени страници за спортни обекти</div>
+<div id="show-submitted-events-button" class="btn btn-primary">Създадени събития</div>
 
-    @*<div class="sports-tags">
-            @foreach (var category in @Model.)
-            {
-                <button type="button" class="btn btn-primary">
-                    <span>@category.Name</span>
-                </button>
-            }
-        </div>*@
+<script id="favorite-facilities-template"  type="text/template">
+@Html.Action("GetFavoriteFacilities", "Account")
+</script>
+
+<script id="favorite-events-template"  type="text/template">
+@Html.Action("GetFavoriteEvents", "Account")
+</script>
+
+<script id="submitted-facilities-template"  type="text/template">
+@Html.Action("GetSubmittedFacilities", "Account")
+</script>
+
+<script id="submitted-events-template"  type="text/template">
+@Html.Action("GetSubmittedEvents", "Account")
+</script>
 
 
-@section changeFavorites{
+<div id="view-content"></div>
+
+
+@section accountContent{
     <script>
-        $("div[data-action='change']").click(function () {
-            var id = $(this).attr("data-id");
-            var checkClass = $("div[data-id = '" + id + "']").hasClass("remove-from-favorites-button")
-            if (checkClass) {
-                $.post("/FavoriteFacilities/RemoveFromFavorites", { id: id },
-              function (data) {
-                  $("div[data-id = '" + id + "']").removeClass("remove-from-favorites-button");
-                  $("div[data-id = '" + id + "']").addClass("favorites-button");
-              })
-            } else {
-                $.post("/FavoriteFacilities/AddToFavorites", { id: id },
-             function (data) {
-                 $("div[data-id = '" + id + "']").removeClass("favorites-butto");
-                 $("div[data-id = '" + id + "']").addClass("remove-from-favorites-button");
-             })
+        $(document).ready(function () {     
+            $("#show-favorite-facilities-button").on("click", function () { showContent1() });
+            function showContent1() {
+                $("#show-favorite-facilities-button").addClass("btn-success");
+                $("#show-favorite-facilities-button").removeClass("btn-primary");
+                var showTemplate = $('#favorite-facilities-template').html();
+                $("#view-content").empty()
+                $("#view-content").html(showTemplate)
+                if ($("#show-favorite-events-button").hasClass("btn-success")) {
+                    $("#show-favorite-events-button").removeClass("btn-success");
+                    $("#show-favorite-events-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-facilities-button").hasClass("btn-success")) {
+                    $("#show-submitted-facilities-button").removeClass("btn-success");
+                    $("#show-submitted-facilities-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-events-button").hasClass("btn-success")) {
+                    $("#show-submitted-events-button").removeClass("btn-success");
+                    $("#show-submitted-events-button").addClass("btn-primary");
+                }  
             }
-        })
-    </script>
+
+            $("#show-favorite-events-button").on("click", function () { showContent2() });
+            function showContent2() {
+                $("#show-favorite-events-button").addClass("btn-success");
+                $("#show-favorite-events-button").removeClass("btn-primary");
+                var showTemplate = $('#favorite-events-template').html();
+                $("#view-content").empty()
+                $("#view-content").html(showTemplate)
+
+                if ($("#show-favorite-facilities-button").hasClass("btn-success")) {
+                    $("#show-favorite-facilities-button").removeClass("btn-success");
+                    $("#show-favorite-facilities-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-facilities-button").hasClass("btn-success")) {
+                    $("#show-submitted-facilities-button").removeClass("btn-success");
+                    $("#show-submitted-facilities-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-events-button").hasClass("btn-success")) {
+                    $("#show-submitted-events-button").removeClass("btn-success");
+                    $("#show-submitted-events-button").addClass("btn-primary");
+                }
+            }
+
+            $("#show-submitted-facilities-button").on("click", function () { showContent3() });
+            function showContent3() {
+                $("#show-submitted-facilities-button").addClass("btn-success");
+                $("#show-submitted-facilities-button").removeClass("btn-primary");
+                var showTemplate = $('#submitted-facilities-template').html();
+                $("#view-content").empty()
+                $("#view-content").html(showTemplate)
+
+                if ($("#show-favorite-facilities-button").hasClass("btn-success")) {
+                    $("#show-favorite-facilities-button").removeClass("btn-success");
+                    $("#show-favorite-facilities-button").addClass("btn-primary");
+                }
+
+                if ($("#show-favorite-events-button").hasClass("btn-success")) {
+                    $("#show-favorite-events-button").removeClass("btn-success");
+                    $("#show-favorite-events-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-events-button").hasClass("btn-success")) {
+                    $("#show-submitted-events-button").removeClass("btn-success");
+                    $("#show-submitted-events-button").addClass("btn-primary");
+                }
+            }
+
+            $("#show-submitted-events-button").on("click", function () { showContent4() });
+            function showContent4() {
+                $("#show-submitted-events-button").addClass("btn-success");
+                $("#show-submitted-events-button").removeClass("btn-primary");
+                var showTemplate = $('#submitted-events-template').html();
+                $("#view-content").empty()
+                $("#view-content").html(showTemplate)
+
+                if ($("#show-favorite-facilities-button").hasClass("btn-success")) {
+                    $("#show-favorite-facilities-button").removeClass("btn-success");
+                    $("#show-favorite-facilities-button").addClass("btn-primary");
+                }
+
+                if ($("#show-favorite-events-button").hasClass("btn-success")) {
+                    $("#show-favorite-events-button").removeClass("btn-success");
+                    $("#show-favorite-events-button").addClass("btn-primary");
+                }
+
+                if ($("#show-submitted-facilities-button").hasClass("btn-success")) {
+                    $("#show-submitted-facilities-button").removeClass("btn-success");
+                    $("#show-submitted-facilities-button").addClass("btn-primary");
+                }
+            }
+        });
+</script>
 }
+

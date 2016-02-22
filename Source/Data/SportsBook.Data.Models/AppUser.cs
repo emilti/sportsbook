@@ -15,12 +15,16 @@
         private ICollection<SportCategory> sportCategories;
         private ICollection<Facility> favoriteFfacilities;
         private ICollection<Facility> submittedFacilities;
+        private ICollection<Event> favoriteEvents;
+        private ICollection<Event> submittedEvents;
 
         public AppUser()
         {
             this.SportCategories = new HashSet<SportCategory>();
             this.FavoriteFacilities = new HashSet<Facility>();
-            this.submittedFacilities = new HashSet<Facility>();
+            this.SubmittedFacilities = new HashSet<Facility>();
+            this.FavoriteEvents = new HashSet<Event>();
+            this.SubmittedEvents = new HashSet<Event>();
         }
 
         [Required]
@@ -57,6 +61,18 @@
         {
             get { return this.submittedFacilities; }
             set { this.submittedFacilities = value; }
+        }
+
+        public virtual ICollection<Event> FavoriteEvents
+        {
+            get { return this.favoriteEvents; }
+            set { this.favoriteEvents = value; }
+        }
+
+        public virtual ICollection<Event> SubmittedEvents
+        {
+            get { return this.submittedEvents; }
+            set { this.submittedEvents = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)

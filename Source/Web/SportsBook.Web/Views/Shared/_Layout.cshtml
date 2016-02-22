@@ -34,20 +34,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="contactinfo">
-                            <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            <ul class="nav nav-pills">                                
+                                <li><a href="#"><i class="fa fa-envelope"></i> emil_tishinov@mail.bg</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <ul class="nav navbar-nav">                                
                             </ul>
                         </div>
                     </div>
@@ -61,31 +55,8 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="http://themifycloud.com/demos/templates/eshop/index.html"><span>E</span>-Shop</a>
-                        </div>
-                        <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                            <span>SPORTSBOOK</span>
+                        </div>                       
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -115,8 +86,9 @@
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                                 <li class="dropdown">
-                                    <a href="#">Спортни обекти<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
+                                    <a href="#">Спортни Обекти<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">                                        
+                                        <li>@Html.ActionLink("Добави Обект", "AddFacility", "FacilitiesPrivate", new { area = "facilities" }, null)</li>
                                         <li>@Html.ActionLink("Всички", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 0 }, null)</li>
                                         <li>@Html.ActionLink("Футбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 1 }, null)</li>
                                         <li>@Html.ActionLink("Волейбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 2 }, null)</li>
@@ -126,8 +98,21 @@
                                         <li>@Html.ActionLink("Тенис", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 6 }, null)</li>
                                     </ul>
                                 </li>
+                                <li class="dropdown">
+                                    <a href="#">Спортни Събития<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li>@Html.ActionLink("Добави Събитие", "AddEvent", "EventsPrivate", new { area = "Events" }, null)</li>
+                                        <li>@Html.ActionLink("Всички", "SearchEvents", "EventsPublic", new { area = "Events", id = 0 }, null)</li>
+                                        <li>@Html.ActionLink("Футбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 1 }, null)</li>
+                                        <li>@Html.ActionLink("Волейбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 2 }, null)</li>
+                                        <li>@Html.ActionLink("Баскетбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 3 }, null)</li>
+                                        <li>@Html.ActionLink("Фитнес", "SearchEvents", "EventsPublic", new { area = "Events", id = 4 }, null)</li>
+                                        <li>@Html.ActionLink("Плуване", "SearchEvents", "EventsPublic", new { area = "Events", id = 5 }, null)</li>
+                                        <li>@Html.ActionLink("Тенис", "SearchEvents", "EventsPublic", new { area = "Events", id = 6 }, null)</li>
+                                    </ul>
+                                </li>
 
-                                <li>@Html.ActionLink("Добави обект", "AddFacility", "FacilitiesPrivate", new { area = "facilities" }, null)</li>
+                               
                                                                 
                                 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                 {
@@ -176,8 +161,58 @@
             @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
     @RenderSection("addComment", required: false)
-    @RenderSection("changeFavorites", required: false)
+    @RenderSection("accountContent", required: false)    
     @RenderSection("Scripts", required: false)
+
+
+    
+        <script>
+            $(document).ready(function () {
+                $("div[data-action='changeFacility']").click(function () {
+                    var id = $(this).attr("data-id");
+                    var checkClass = $("div[data-context ='facility_" + id + "']").hasClass("remove-from-favorites-button")
+                    if (checkClass) {
+                        $.post("/Facilities/FavoriteFacilities/RemoveFromFavorites", { id: id },
+                      function (data) {
+                          $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
+                          $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
+                      })
+                    } else {
+                        $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
+                     function (data) {
+                         $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
+                         $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
+                     })
+                    }
+                })
+            })
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("div[data-action='changeEvent']").click(function () {
+                    var id = $(this).attr("data-id");
+                    var checkClass = $("div[data-context = 'event_" + id + "']").hasClass("remove-from-favorites-button")
+                    if (checkClass) {
+                        $.post("/Events/FavoriteEvents/RemoveFromFavorites", { id: id },
+                      function (data) {
+                          $("div[data-context = 'event_" + id + "']").removeClass("remove-from-favorites-button");
+                          $("div[data-context = 'event_" + id + "']").addClass("favorites-button");
+                      })
+                    } else {
+                        $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
+                     function (data) {
+                         $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
+                         $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
+                     })
+                    }
+                })
+            })
+        </script>
+    
+
+
+
 
     <script>
         function standBy(id) {

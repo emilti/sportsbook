@@ -30,9 +30,24 @@
             this.users.SaveChanges();
         }
 
-        public IQueryable<Facility> GetFacilitiesForUser(AppUser user)
+        public IQueryable<Facility> GetFavoriteFacilitiesForUser(AppUser user)
         {
             return user.FavoriteFacilities.AsQueryable();
+        }
+
+        public IQueryable<Facility> GetSubmittedFacilitiesForUser(AppUser user)
+        {
+            return user.SubmittedFacilities.AsQueryable();
+        }
+
+        public IQueryable<Event> GetFavoriteEventsForUser(AppUser user)
+        {
+            return user.FavoriteEvents.AsQueryable();
+        }
+
+        public IQueryable<Event> GetSubmittedEventsForUser(AppUser user)
+        {
+            return user.SubmittedEvents.AsQueryable();
         }
 
         public IQueryable<AppUser> All()

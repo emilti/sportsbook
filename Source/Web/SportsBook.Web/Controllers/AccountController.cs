@@ -13,6 +13,7 @@
     using Services.Data.Contracts;
     using SportsBook.Data.Models;
     using SportsBook.Web.ViewModels.Account;
+    using Areas.Events.ViewModels.EventsModels;
 
     [Authorize]
     public class AccountController : BaseController
@@ -487,15 +488,48 @@
             return this.View(model);
         }
 
-        public ActionResult GetFavouriteFacilities(string id)
+        public ActionResult GetFavoriteFacilities(string id)
         {
             List<Facility> foundFacilities = new List<Facility>();
-            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();           
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
             AppUser currentUser = this.users.GetUserDetails(id);
 
-            foundFacilities = this.users.GetFacilitiesForUser(currentUser).ToList();
+            foundFacilities = this.users.GetFavoriteFacilitiesForUser(currentUser).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
-            return this.PartialView(foundFacilitiesToView);
+            return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
+        }
+
+        public ActionResult GetFavoriteEvents(string id)
+        {
+            List<Event> foundEvents = new List<Event>();
+            List<EventViewModel> foundEventsToView = new List<EventViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(id);
+
+            foundEvents = this.users.GetFavoriteEventsForUser(currentUser).ToList();
+            foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
+            return this.PartialView("_GetFavoriteEvents", foundEventsToView);
+        }
+
+        public ActionResult GetSubmittedFacilities(string id)
+        {
+            List<Facility> foundFacilities = new List<Facility>();
+            List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(id);
+
+            foundFacilities = this.users.GetSubmittedFacilitiesForUser(currentUser).ToList();
+            foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
+            return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
+        }
+
+        public ActionResult GetSubmittedEvents(string id)
+        {
+            List<Event> foundEvents = new List<Event>();
+            List<EventViewModel> foundEventsToView = new List<EventViewModel>();
+            AppUser currentUser = this.users.GetUserDetails(id);
+
+            foundEvents = this.users.GetSubmittedEventsForUser(currentUser).ToList();
+            foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
+            return this.PartialView("_GetFavoriteEvents", foundEventsToView);
         }
 
         protected override void Dispose(bool disposing)

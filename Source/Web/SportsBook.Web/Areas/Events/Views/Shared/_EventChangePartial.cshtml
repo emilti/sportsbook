@@ -1,7 +1,6 @@
-﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Facilities.FacilityChangeViewModel
-
+﻿@model SportsBook.Web.Areas.Events.ViewModels.EventsModels.EventChangeViewModel
+@using Kendo.Mvc.UI
 @Html.AntiForgeryToken()
-<h4>Create new facility.</h4>
 <hr />
 <div class="form-group">
     @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
@@ -18,6 +17,15 @@
     </div>
 </div>
 
+<div class="demo-section k-content">
+    @Html.LabelFor(m => m.Start, new { @class = "col-md-2 control-label" })
+    @(Html.Kendo().DateTimePicker()
+        .Name("Start")
+        .Value(DateTime.Now)
+        .HtmlAttributes(new { style = "width:100%;" })
+    )
+</div>
+
 <div class="form-group">
     @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
@@ -29,9 +37,9 @@
 <div class="form-group">
     @Html.LabelFor(m => m.SportCategories, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
-        @Html.ListBoxFor(model => model.SportCategoriesIds, Model.SportCategoriesDropDown, new { @class = "form-control",  required = "required", data_placeholder = "Select one or more sport categories." })
+        @Html.ListBoxFor(model => model.SportCategoriesIds, Model.SportCategoriesDropDown, new { @class = "form-control", required = "required", data_placeholder = "Select one or more sport categories." })
         @Html.ValidationMessageFor(model => model.SportCategoriesIds, "", new { @class = "text-danger" })
-         @*@Html.DropDownListFor(m => m.SportCategories, Model.SportCategoriesDropDown, new { @class = "form-control" })*@
+        @*@Html.DropDownListFor(m => m.SportCategories, Model.SportCategoriesDropDown, new { @class = "form-control" })*@
     </div>
 </div>
 

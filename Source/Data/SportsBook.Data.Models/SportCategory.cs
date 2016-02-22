@@ -2,12 +2,14 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Common.Models;
     using System.Web.Mvc;
+    using Common.Models;
 
     public class SportCategory : BaseModel<int>
     {
         private ICollection<Facility> facilities;
+
+        private ICollection<Event> events;
 
         public SportCategory()
         {
@@ -30,6 +32,12 @@
         {
             get { return this.facilities; }
             set { this.facilities = value; }
+        }
+
+        public virtual ICollection<Event> Events
+        {
+            get { return this.events; }
+            set { this.events = value; }
         }
     }
 }
