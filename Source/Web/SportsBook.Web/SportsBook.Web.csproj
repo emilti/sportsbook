@@ -211,6 +211,7 @@
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
     <Compile Include="Areas\Events\Controllers\EventsPrivateController.cs" />
     <Compile Include="Areas\Events\Controllers\EventsPublicController.cs" />
+    <Compile Include="Areas\Events\Controllers\FavoriteEventsController.cs" />
     <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
     <Compile Include="Areas\Events\ViewModels\EventsModels\EventChangeViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\EventsModels\EventDetailedViewModel.cs" />
@@ -384,6 +385,7 @@
     <Content Include="Areas\Events\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Events\Views\EventsPublic\EventDetails.cshtml" />
     <Content Include="Areas\Events\Views\EventsPublic\SearchEvents.cshtml" />
+    <Content Include="Areas\Events\Views\Shared\_EventInFavourites.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -444,6 +446,7 @@
     <Content Include="Areas\Facilities\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
+    <Content Include="Views\Shared\_EventsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
