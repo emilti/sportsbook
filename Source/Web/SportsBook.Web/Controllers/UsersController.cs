@@ -19,6 +19,7 @@
             this.users = usersService;
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult SearchUsers(string search)
         {
             var foundUsersIndata = this.users.All().Where(a => a.UserName.ToUpper().Contains(search.ToUpper())).OrderBy(u => u.UserName).ToList();

@@ -487,7 +487,7 @@
             List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
             AppUser currentUser = this.users.GetUserDetails(id);
 
-            foundFacilities = this.users.GetFavoriteFacilitiesForUser(currentUser).ToList();
+            foundFacilities = this.users.GetFavoriteFacilitiesForUser(currentUser).OrderBy(x => x.Name).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
         }
@@ -498,7 +498,7 @@
             List<EventViewModel> foundEventsToView = new List<EventViewModel>();
             AppUser currentUser = this.users.GetUserDetails(id);
 
-            foundEvents = this.users.GetFavoriteEventsForUser(currentUser).ToList();
+            foundEvents = this.users.GetFavoriteEventsForUser(currentUser).OrderBy(x => x.Name).ToList();
             foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
             return this.PartialView("_GetFavoriteEvents", foundEventsToView);
         }
@@ -509,7 +509,7 @@
             List<FacilityViewModel> foundFacilitiesToView = new List<FacilityViewModel>();
             AppUser currentUser = this.users.GetUserDetails(id);
 
-            foundFacilities = this.users.GetSubmittedFacilitiesForUser(currentUser).ToList();
+            foundFacilities = this.users.GetSubmittedFacilitiesForUser(currentUser).OrderBy(x => x.Name).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
         }
@@ -520,7 +520,7 @@
             List<EventViewModel> foundEventsToView = new List<EventViewModel>();
             AppUser currentUser = this.users.GetUserDetails(id);
 
-            foundEvents = this.users.GetSubmittedEventsForUser(currentUser).ToList();
+            foundEvents = this.users.GetSubmittedEventsForUser(currentUser).OrderBy(x => x.Name).ToList();
             foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
             return this.PartialView("_GetFavoriteEvents", foundEventsToView);
         }

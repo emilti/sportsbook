@@ -19,25 +19,30 @@
 
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Името е задължително!")]
         [AllowHtml]
-        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
+        [StringLength(50, ErrorMessage = "{0} трябва да е поне {2} символа.", MinimumLength = 2)]
+        [DisplayName("Име")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Описанието е задължително!")]
         [AllowHtml]
-        [StringLength(2000, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [StringLength(2000, ErrorMessage = "{0} трябва да е поне {2} символа.", MinimumLength = 2)]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиде символ")]
+        [DisplayName("Описание")]
         public string Description { get; set; }
 
+        [DisplayName("Град")]
         public int CityId { get; set; }
 
+        [DisplayName("Град")]
         public virtual City City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Снимката е задължителна!")]
         [AllowHtml]
-        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ!")]
+        [DisplayName("Снимка")]
         public string Image { get; set; }
 
         public IEnumerable<SelectListItem> CitiesDropDown { get; set; }
@@ -46,7 +51,7 @@
 
         public IEnumerable<SelectListItem> SportCategoriesDropDown { get; set; }
 
-        [DisplayName("Sport Categries")]
+        [DisplayName("Категории спортове")]
         public virtual ICollection<SportCategory> SportCategories
         {
             get { return this.sportCategories; }
