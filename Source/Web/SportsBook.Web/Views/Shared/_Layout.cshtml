@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css", "~/Content/kendo")
-    <link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
-    <link href="~/Content/KendoUI/kendo.default.min.css" rel="stylesheet" />
-          @Scripts.Render("~/bundles/jquery")
-          @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/jquery")
 
-
-    <script src="~/Scripts/KendoUI/kendo.all.min.js"></script>
-    <script src="~/Scripts/KendoUI/kendo.aspnetmvc.min.js"></script>
-
+    @Scripts.Render("~/bundles/kendo")
     <link href="~/Content/Theme/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Theme/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

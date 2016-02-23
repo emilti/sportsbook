@@ -23,7 +23,7 @@
 
         protected IDbSet<T> DbSet { get; set; }
 
-        private DbContext Context { get; set; }
+        private DbContext Context { get; }
 
         public virtual IQueryable<T> All()
         {
