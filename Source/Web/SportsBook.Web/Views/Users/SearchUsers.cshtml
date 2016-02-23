@@ -1,0 +1,39 @@
+﻿@model List<SportsBook.Web.ViewModels.Account.AppUserViewModel>
+<div class="row">
+    @foreach (var user in Model)
+    {
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="text-center">
+                <a href="@Url.Action("ViewAccount", "Account", new { id = @user.Id, area = "" })">
+                    <img src=@user.Avatar class="profile-image avatar img-circle img-thumbnail" alt="avatar">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>username:@user.UserName</h5>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Favorite Faciities: @user.NumberofFavoritesFacilities</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Favorite Events: @user.NumberofFavoriteEvents</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Submitted facilities: @user.NumberofSubmittedFacilities</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Submitted events: @user.NumberOfSubmittedEvents</span>
+            </div>
+        </div>
+    }
+</div>

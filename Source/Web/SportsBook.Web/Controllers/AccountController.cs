@@ -452,13 +452,6 @@
             return this.View();
         }
 
-        public ActionResult ViewAccount(string id)
-        {
-            AppUser currentUser = this.users.GetUserDetails(id);
-            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
-            return this.View(currentUserForView);
-        }
-
         [HttpGet]
         [Authorize]
         public ActionResult EditAccount(string id)
@@ -530,6 +523,13 @@
             foundEvents = this.users.GetSubmittedEventsForUser(currentUser).ToList();
             foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
             return this.PartialView("_GetFavoriteEvents", foundEventsToView);
+        }
+
+        public ActionResult ViewAccount(string id)
+        {
+            AppUser currentUser = this.users.GetUserDetails(id);
+            var currentUserForView = AutoMapperConfig.Configuration.CreateMapper().Map<AccountDetailsViewModel>(currentUser);
+            return this.View(currentUserForView);
         }
 
         protected override void Dispose(bool disposing)

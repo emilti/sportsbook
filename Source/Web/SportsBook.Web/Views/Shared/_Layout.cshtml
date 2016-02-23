@@ -129,10 +129,14 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input placeholder="Search" type="text">
+                        
 
-                        </div>
+                            @using (Html.BeginForm("SearchUsers", "Users", new { area = string.Empty }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()                                
+                                <input type="text" class="search_box" width:150px;" name="search" placeholder="Търси потребители">                                
+                                
+                            }                        
                     </div>
                 </div>
             </div>
