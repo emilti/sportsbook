@@ -14,7 +14,7 @@ The application have several data models:
 * SportCategory: Name, Description 
 * FacilityComment: Content
 
-![alt tag](https://github.com/emilti/testdoc/blob/master/data.png)
+![alt tag](https://github.com/emilti/sportsbook/blob/master/data.png)
 
 ####3.__Parts of the project:__
 
