@@ -22,13 +22,13 @@
         [Required(ErrorMessage = "Името е задължително!")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
-        [StringLength(50, ErrorMessage = "{0} трябва да е поне {2} символа.", MinimumLength = 2)]
+        [StringLength(50, ErrorMessage = "{0}то трябва да е поне {2} символа.", MinimumLength = 2)]
         [DisplayName("Име")]
         public string Name { get; set; }
 
         [Required(ErrorMessage ="Описанието е задължително!")]
         [AllowHtml]
-        [StringLength(2000, ErrorMessage = "{0} трябва да е поне {2} символа.", MinimumLength = 2)]
+        [StringLength(2000, ErrorMessage = "{0}то трябва да е поне {2} символа.", MinimumLength = 2)]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиде символ")]
         [DisplayName("Описание")]
         public string Description { get; set; }
