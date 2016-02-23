@@ -53,9 +53,8 @@
         public void HardDelete(int id)
         {
             var entity = this.All().FirstOrDefault(x => x.Id == id);
-           
+
                 this.DbSet.Remove(entity);
-            
         }
 
         public void Save()
