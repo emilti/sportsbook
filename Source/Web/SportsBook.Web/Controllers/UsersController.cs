@@ -20,11 +20,16 @@
         }
 
         [ValidateAntiForgeryToken]
-        public ActionResult SearchUsers(string search)
+        public ActionResult SearchUsers(SearchUserInputModel model)
         {
-            var foundUsersIndata = this.users.All().Where(a => a.UserName.ToUpper().Contains(search.ToUpper())).OrderBy(u => u.UserName).ToList();
-            var foundUsersToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<AppUserViewModel>>(foundUsersIndata);
-            return this.View(foundUsersToView);
+            if (this.ModelState.IsValid)
+            {
+                var foundUsersIndata = this.users.All().Where(a => a.UserName.ToUpper().Contains(model.search.ToUpper())).OrderBy(u => u.UserName).ToList();
+                var foundUsersToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<AppUserViewModel>>(foundUsersIndata);
+                return this.View(foundUsersToView);
+            }
+
+            return this.View();
         }
     }
 }
