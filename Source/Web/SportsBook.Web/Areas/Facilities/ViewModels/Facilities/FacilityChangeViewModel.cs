@@ -17,6 +17,8 @@
             this.SportCategories = new HashSet<SportCategory>();
         }
 
+        public int Id { get; set; }
+
         [Required]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]

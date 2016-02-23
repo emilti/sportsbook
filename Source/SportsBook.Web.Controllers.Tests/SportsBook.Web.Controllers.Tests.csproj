@@ -102,6 +102,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventPublicControllerTests.cs" />
+    <Compile Include="EventsPrivateControllerTests.cs" />
     <Compile Include="FacilitiesPrivateControllerTests.cs" />
     <Compile Include="FacilityPublicControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

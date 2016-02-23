@@ -8,7 +8,9 @@ using SportsBook.Web.Infrastructure.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TestStack.FluentMVCTesting;
 
@@ -70,13 +72,13 @@ namespace SportsBook.Web.Controllers.Tests
                 {
                     new City()
                     {
-                        Name = "Test"
+                        Name = "Test1"
                     },
                      new City{
-                        Name = "Test"
+                        Name = "Test2"
                     },                     
                      new City{
-                        Name = "Test"
+                        Name = "Test3"
                     }
                 }.AsQueryable);
 
@@ -92,7 +94,7 @@ namespace SportsBook.Web.Controllers.Tests
         }
 
         [Test]
-        public void AddFacilityPostShouldReutrnCorrectViewWhenModelStateIsNotvalid()
+        public void AddFacilityPostShouldReutrnCorrectViewWhenModelStateIsNotValid()
         {
             AutoMapperConfig autoMapperConfig = GetAutoMapper();
             autoMapperConfig.Execute(typeof(FacilitiesPrivateController).Assembly);
@@ -105,5 +107,84 @@ namespace SportsBook.Web.Controllers.Tests
                 .ShouldRenderView("AddFacility")
                 .WithModel<FacilityChangeViewModel>();
         }
+
+        [Test]
+        public void AddFacilityPostShouldReutrnCorrectViewWhenInvaliDataIsPassed()
+        {
+            AutoMapperConfig autoMapperConfig = GetAutoMapper();
+            autoMapperConfig.Execute(typeof(FacilitiesPrivateController).Assembly);
+
+
+            FacilityChangeViewModel model = new FacilityChangeViewModel();
+            var controller = new FacilitiesPrivateController(facilitiesServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            controller.ModelState.AddModelError("Name", "Exception");
+            controller.WithCallTo(x => x.AddFacility(model))
+                .ShouldRenderView("AddFacility")
+                .WithModel<FacilityChangeViewModel>()
+                .AndModelErrorFor(x => x.Name);
+        }
+
+        public void EditFacilityShouldReutrnCorrectiewWihCorrectNumberOfSportCategories()
+        {
+            AutoMapperConfig autoMapperConfig = GetAutoMapper();
+            autoMapperConfig.Execute(typeof(FacilitiesPrivateController).Assembly);
+
+
+            sportCategoriesServiceMock.Setup(x => x.All())
+                .Returns(new List<SportCategory>
+                {
+                    new SportCategory()
+                    {
+                        Name = "Test", Description = "TestDescription"
+                    },
+                     new SportCategory{
+                        Name = "Test", Description = "TestDescription"
+                    }
+                }.AsQueryable);
+
+
+            var controller = new FacilitiesPrivateController(facilitiesServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            controller.WithCallTo(x => x.EditFacility(1))
+                .ShouldRenderView("EditFacility")
+                .WithModel<FacilityChangeViewModel>(
+                    viewModel =>
+                    {
+                        Assert.AreEqual(2, viewModel.SportCategoriesDropDown.Count());
+                    }).AndNoModelErrors();
+        }
+
+      //  [Test]
+      //  public void EditFacilityShouldReuturnCorrectViewWihCorrectNumberOfCities()
+      //  {
+      //      AutoMapperConfig autoMapperConfig = GetAutoMapper();
+      //      autoMapperConfig.Execute(typeof(FacilitiesPrivateController).Assembly);
+      //
+      //
+      //      citiesServiceMock.Setup(x => x.All())
+      //          .Returns(new List<City>
+      //          {
+      //              new City()
+      //              {
+      //                  Name = "Test"
+      //              },
+      //               new City{
+      //                  Name = "Test"
+      //              },
+      //               new City{
+      //                  Name = "Test"
+      //              }
+      //          }.AsQueryable);
+      //
+      //
+      //      var controller = new FacilitiesPrivateController(facilitiesServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+      //      controller.WithCallTo(x => x.EditFacility(1))
+      //          .ShouldRenderView("EditFacility")
+      //          .WithModel<FacilityChangeViewModel>(
+      //              viewModel =>
+      //              {
+      //                  Assert.AreEqual(3, viewModel.CitiesDropDown.Count());
+      //              }).AndNoModelErrors();
+      //  }
+
     }
 }
