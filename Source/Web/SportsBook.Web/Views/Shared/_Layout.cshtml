@@ -34,15 +34,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="contactinfo">
-                            <ul class="nav nav-pills">                                
+                            <ul class="nav nav-pills">
                                 <li><a href="#"><i class="fa fa-envelope"></i> emil_tishinov@mail.bg</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
-                            <ul class="nav navbar-nav">                                
-                            </ul>
+                            <ul class="nav navbar-nav"></ul>
                         </div>
                     </div>
                 </div>
@@ -56,7 +55,7 @@
                     <div class="col-sm-4">
                         <div class="logo pull-left">
                             <span>SPORTSBOOK</span>
-                        </div>                       
+                        </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -87,7 +86,7 @@
                                 <li>@Html.ActionLink("SportsBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                                 <li class="dropdown">
                                     <a href="#">Спортни Обекти<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">                                        
+                                    <ul role="menu" class="sub-menu">
                                         <li>@Html.ActionLink("Добави Обект", "AddFacility", "FacilitiesPrivate", new { area = "facilities" }, null)</li>
                                         <li>@Html.ActionLink("Всички", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 0 }, null)</li>
                                         <li>@Html.ActionLink("Футбол", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 1 }, null)</li>
@@ -112,13 +111,13 @@
                                     </ul>
                                 </li>
 
-                               
-                                                                
+
+
                                 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                 {
                                     <li class="dropdown">
                                         <a href="#">Администрация<i class="fa fa-angle-down"></i></a>
-                                        <ul role="menu" class="sub-menu"> 
+                                        <ul role="menu" class="sub-menu">
                                             <li>@Html.ActionLink("Потребители", "Index", "AdminAppUsers", new { area = "Administration" }, null)</li>
                                             <li>@Html.ActionLink("Спортове", "Index", "AdminSportCategories", new { area = "Administration" }, null)</li>
                                             <li>@Html.ActionLink("Спортни обекти", "Index", "AdminFacilities", new { area = "Administration" }, null)</li>
@@ -161,55 +160,89 @@
             @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
     @RenderSection("addComment", required: false)
-    @RenderSection("accountContent", required: false)    
+    @RenderSection("accountContent", required: false)
     @RenderSection("Scripts", required: false)
 
 
-    
-        <script>
-            $(document).ready(function () {
-                $("div[data-action='changeFacility']").click(function () {
-                    var id = $(this).attr("data-id");
-                    var checkClass = $("div[data-context ='facility_" + id + "']").hasClass("remove-from-favorites-button")
-                    if (checkClass) {
-                        $.post("/Facilities/FavoriteFacilities/RemoveFromFavorites", { id: id },
-                      function (data) {
-                          $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
-                          $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
-                      })
-                    } else {
-                        $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
-                     function (data) {
-                         $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
-                         $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
-                     })
-                    }
-                })
+    <script>
+        $(document).ready(function () {
+            $("div[data-action='changeFacility']").click(function () {
+                var id = $(this).attr("data-id");
+                var checkClass = $("div[data-context ='facility_" + id + "']").hasClass("remove-from-favorites-button")
+                if (checkClass) {
+                    $.post("/Facilities/FavoriteFacilities/RemoveFromFavorites", { id: id },
+                  function (data) {
+                      $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
+                      $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
+                  })
+                } else {
+                    $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
+                 function (data) {
+                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
+                 })
+                }
             })
-        </script>
 
-        <script>
-            $(document).ready(function () {
-                $("div[data-action='changeEvent']").click(function () {
-                    var id = $(this).attr("data-id");
-                    var checkClass = $("div[data-context = 'event_" + id + "']").hasClass("remove-from-favorites-button")
-                    if (checkClass) {
-                        $.post("/Events/FavoriteEvents/RemoveFromFavorites", { id: id },
-                      function (data) {
-                          $("div[data-context = 'event_" + id + "']").removeClass("remove-from-favorites-button");
-                          $("div[data-context = 'event_" + id + "']").addClass("favorites-button");
-                      })
-                    } else {
-                        $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
-                     function (data) {
-                         $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
-                         $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
-                     })
-                    }
-                })
+            $("div[data-action='changeEvent']").click(function () {
+                var id = $(this).attr("data-id");
+                var checkClass = $("div[data-context = 'event_" + id + "']").hasClass("remove-from-favorites-button")
+                if (checkClass) {
+                    $.post("/Events/FavoriteEvents/RemoveFromFavorites", { id: id },
+                  function (data) {
+                      $("div[data-context = 'event_" + id + "']").removeClass("remove-from-favorites-button");
+                      $("div[data-context = 'event_" + id + "']").addClass("favorites-button");
+                  })
+                } else {
+                    $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
+                 function (data) {
+                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
+                 })
+                }
             })
-        </script>
-    
+        })
+    </script>
+    <script>
+        $(document).on('click', '.btn', function () {
+            $("div[data-action='changeFacility']").click(function () {
+                var id = $(this).attr("data-id");
+                var checkClass = $("div[data-context ='facility_" + id + "']").hasClass("remove-from-favorites-button")
+                if (checkClass) {
+                    $.post("/Facilities/FavoriteFacilities/RemoveFromFavorites", { id: id },
+                  function (data) {
+                      $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
+                      $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
+                  })
+                } else {
+                    $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
+                 function (data) {
+                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
+                 })
+                }
+            })
+
+            $("div[data-action='changeEvent']").click(function () {
+                var id = $(this).attr("data-id");
+                var checkClass = $("div[data-context = 'event_" + id + "']").hasClass("remove-from-favorites-button")
+                if (checkClass) {
+                    $.post("/Events/FavoriteEvents/RemoveFromFavorites", { id: id },
+                  function (data) {
+                      $("div[data-context = 'event_" + id + "']").removeClass("remove-from-favorites-button");
+                      $("div[data-context = 'event_" + id + "']").addClass("favorites-button");
+                  })
+                } else {
+                    $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
+                 function (data) {
+                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
+                 })
+                }
+            })
+        })
+    </script>
+
 
 
 
