@@ -13,15 +13,17 @@
                         <span class="details-caption" id="details">Детайли</span>
                     </div>
                 </a>
+                
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-1">
                    
                     @if (User.Identity.GetUserId() != null)
                     {
                         @Html.Action("CheckEventInFavourites", "FavoriteEvents", new { id = @sportEvent.Id, area = "Events" })
                     }                    
                 </div>
+                <div class="col-md-11 pull-left "><i class="fa fa-calendar fa-2x"></i> @sportEvent.Start</div>
             </div>
         </div>
     }
