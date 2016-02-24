@@ -202,10 +202,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminAppUsersController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminEventsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilitiesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilityCommentsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminSportCategoriesController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AppUserGridViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\EventGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
@@ -389,6 +391,8 @@
     <Content Include="Areas\Events\Views\EventsPublic\EventDetails.cshtml" />
     <Content Include="Areas\Events\Views\EventsPublic\SearchEvents.cshtml" />
     <Content Include="Areas\Events\Views\Shared\_EventInFavourites.cshtml" />
+    <Content Include="Areas\Administration\Views\AdminEvents\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -455,6 +459,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminEvents\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,27 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<SportsBook.Web.Areas.Administration.ViewModels.EventGridViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.Description);
+        columns.Bound(c => c.Start);
+        columns.Bound(c => c.Image);       
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Events_Read", "AdminEvents"))
+          .Update(update => update.Action("Events_Update", "AdminEvents"))
+          .Destroy(destroy => destroy.Action("Events_Destroy", "AdminEvents"))
+      )
+)

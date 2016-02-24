@@ -2,7 +2,7 @@
 @using Microsoft.AspNet.Identity
 <h3>@Model.Name</h3>
 
-<img src=@Model.Image class="image-in-details">
+<img src=@Model.Image class="image-in-details" onError="standBy()" class="image">
 <div>@Model.Description</div>
 
 @Model.City.Name
