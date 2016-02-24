@@ -3,7 +3,7 @@
 
 @using (Html.BeginForm("SearchFacilities", "FacilitiesPublic",new { area = "Facilities" }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
 {
-    <div class="row">
+    @*@<div class="row">
         <div class="form-group col-md-4">    
             <div class="col-lg-8">
                 @Html.TextBoxFor(m => m.Search, Model.Search, new { @class = "form-control", placeholder = "Search " })
@@ -17,7 +17,16 @@
 
             </div>
         </div>
+    </div>*@
+
+    <div class="input-group">
+        <div class="input-group-btn">
+            @Html.TextBoxFor(m => m.Search, Model.Search, new { @class = "form-control btn btn-default", placeholder = "Търси", style = "width: 150px; margin-right:10px" })
+
+        </div>
+        <input class="btn btn-primary" value="Търси" type="submit">
     </div>
+    @Html.ValidationMessageFor(model => model.Search, "", new { @class = "text-danger" })
 
 }
 
@@ -62,3 +71,7 @@
 
     </ul>
 </nav>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

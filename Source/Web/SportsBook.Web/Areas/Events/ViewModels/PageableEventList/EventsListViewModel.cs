@@ -9,6 +9,7 @@
     using Facilities;
     using SportsBook.Data.Models;
     using EventsModels;
+    using System.ComponentModel.DataAnnotations;
 
     public class EventsListViewModel
     {
@@ -24,6 +25,9 @@
         public int CurrentPage { get; set; }
 
         public int TotalPages { get; set; }
+
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
 
         public string Search { get; set; }
 

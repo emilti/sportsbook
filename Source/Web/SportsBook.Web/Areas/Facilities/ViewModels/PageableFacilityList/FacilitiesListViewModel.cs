@@ -8,6 +8,7 @@
     using System.Web.Mvc;
     using Facilities;
     using SportsBook.Data.Models;
+    using System.ComponentModel.DataAnnotations;
 
     public class FacilitiesListViewModel
     {
@@ -24,6 +25,8 @@
 
         public int TotalPages { get; set; }
 
+        [AllowHtml]
+        [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
         public string Search { get; set; }
 
         public IEnumerable<int> SportCategoriesIds { get; set; }
