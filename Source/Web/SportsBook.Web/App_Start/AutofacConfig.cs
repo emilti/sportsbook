@@ -60,10 +60,6 @@
             var servicesAssembly = Assembly.GetAssembly(typeof(IFacilitiesService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
-            builder.RegisterGeneric(typeof(DbRepository<>))
-                .As(typeof(IDbRepository<>))
-                .InstancePerRequest();
-
             builder.RegisterGeneric(typeof(EfGenericRepository<>))
                 .As(typeof(IRepository<>))
                 .InstancePerRequest();

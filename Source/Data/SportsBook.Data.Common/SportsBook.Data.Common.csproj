@@ -51,9 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbRepository{T}.cs" />
     <Compile Include="EfGenericRepository.cs" />
-    <Compile Include="IDbRepository{T}.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />
     <Compile Include="Models\IAuditInfo.cs" />

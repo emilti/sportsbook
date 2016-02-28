@@ -11,9 +11,9 @@
 
     public class EventsService : IEventsService
     {
-        private readonly IDbRepository<Event> events;
+        private readonly IRepository<Event> events;
 
-        public EventsService(IDbRepository<Event> events)
+        public EventsService(IRepository<Event> events)
         {
             this.events = events;
         }
@@ -56,23 +56,23 @@
             eventToUpdate.Name = sportEvent.Name;
             eventToUpdate.SportCategories = sportEvent.SportCategories;
             eventToUpdate.Start = sportEvent.Start;
-            this.events.Save();
+            this.events.SaveChanges();
         }
 
         public void Add(Event sportEvent)
         {
             this.events.Add(sportEvent);
-            this.events.Save();
+            this.events.SaveChanges();
         }
 
         public void Save()
         {
-            this.events.Save();
+            this.events.SaveChanges();
         }
 
         public void Remove(Event sportEvent)
         {
-            this.events.HardDelete(sportEvent.Id);
+            this.events.Delete(sportEvent.Id);
         }
 
         public void Dispose()

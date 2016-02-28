@@ -11,11 +11,10 @@
 
     public class CommentsService : ICommentsService
     {
-        private readonly IDbRepository<FacilityComment> comments;
-
+        private readonly IRepository<FacilityComment> comments;
 
         public CommentsService(
-            IDbRepository<FacilityComment> commentsRepo)
+            IRepository<FacilityComment> commentsRepo)
         {
             this.comments = commentsRepo;
         }
@@ -34,7 +33,7 @@
 
             this.comments.Add(newComment);
             commentedFacility.FacilityComments.Add(newComment);
-            this.comments.Save();
+            this.comments.SaveChanges();
 
             return newComment;
         }
@@ -42,7 +41,7 @@
         public void Add(FacilityComment comment)
         {
             this.comments.Add(comment);
-            this.comments.Save();
+            this.comments.SaveChanges();
         }
 
         public IQueryable<FacilityComment> All()
@@ -53,7 +52,7 @@
         public void DeleteComment(FacilityComment facilityComment)
         {
             this.comments.Delete(facilityComment);
-            this.comments.Save();
+            this.comments.SaveChanges();
         }
 
         public FacilityComment GetById(int commentId)
@@ -66,7 +65,7 @@
         {
             var comment = this.comments.GetById(id);
             comment.Content = newContent;
-            this.comments.Save();
+            this.comments.SaveChanges();
         }
 
         public void Dispose()

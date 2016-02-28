@@ -8,9 +8,9 @@
 
     public class FacilitiesService : IFacilitiesService
     {
-        private readonly IDbRepository<Facility> facilities;
+        private readonly IRepository<Facility> facilities;
 
-        public FacilitiesService(IDbRepository<Facility> facilities)
+        public FacilitiesService(IRepository<Facility> facilities)
         {
             this.facilities = facilities;
         }
@@ -52,23 +52,23 @@
             facilityToUpdate.Image = facility.Image;
             facilityToUpdate.Name = facility.Name;
             facilityToUpdate.SportCategories = facility.SportCategories;
-            this.facilities.Save();
+            this.facilities.SaveChanges();
         }
 
         public void Add(Facility facility)
         {
             this.facilities.Add(facility);
-            this.facilities.Save();
+            this.facilities.SaveChanges();
         }
 
         public void Save()
         {
-            this.facilities.Save();
+            this.facilities.SaveChanges();
         }
 
         public void Remove(Facility facility)
         {
-            this.facilities.HardDelete(facility.Id);
+            this.facilities.Delete(facility.Id);
         }
 
         public void Dispose()

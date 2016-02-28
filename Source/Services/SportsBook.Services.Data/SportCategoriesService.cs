@@ -12,10 +12,10 @@ namespace SportsBook.Services.Data
     public class SportCategoriesService : ISportCategoriesService
     {
 
-        private readonly IDbRepository<SportCategory> sportCategories;
+        private readonly IRepository<SportCategory> sportCategories;
 
         public SportCategoriesService(
-            IDbRepository<SportCategory> sportCategoriesRepo)
+            IRepository<SportCategory> sportCategoriesRepo)
         {
             this.sportCategories = sportCategoriesRepo;
         }
@@ -23,7 +23,7 @@ namespace SportsBook.Services.Data
         public void Add(SportCategory sportCategory)
         {
             this.sportCategories.Add(sportCategory);
-            this.sportCategories.Save();
+            this.sportCategories.SaveChanges();
         }
 
         public IQueryable<SportCategory> All()
@@ -44,12 +44,12 @@ namespace SportsBook.Services.Data
 
         public void Remove(SportCategory sportCategory)
         {
-            this.sportCategories.HardDelete(sportCategory.Id);
+            this.sportCategories.Delete(sportCategory.Id);
         }
 
         public void Save()
         {
-            this.sportCategories.Save();
+            this.sportCategories.SaveChanges();
         }
 
         public void UpdateSportCategory(int id, SportCategory sportCategory)
@@ -57,7 +57,7 @@ namespace SportsBook.Services.Data
             SportCategory sportCategoryToUpdate = this.sportCategories.GetById(id);
             sportCategoryToUpdate.Name = sportCategory.Name;
             sportCategoryToUpdate.Description = sportCategory.Description;
-            this.sportCategories.Save();
+            this.sportCategories.SaveChanges();
         }
     }
 }

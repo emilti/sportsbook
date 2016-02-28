@@ -11,10 +11,10 @@
 
     public class CitiesService : ICitiesService
     {
-        private readonly IDbRepository<City> cities;
+        private readonly IRepository<City> cities;
 
         public CitiesService(
-            IDbRepository<City> citiesRepo)
+            IRepository<City> citiesRepo)
         {
             this.cities = citiesRepo;
         }
