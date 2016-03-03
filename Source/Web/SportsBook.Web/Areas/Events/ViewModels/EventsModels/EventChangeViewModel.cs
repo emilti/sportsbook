@@ -40,6 +40,11 @@
         [DisplayName("Град")]
         public virtual City City { get; set; }
 
+        public int FacilityId { get; set; }
+
+        [DisplayName("Съоръжение")]
+        public virtual Facility Facility { get; set; }
+
         [Required(ErrorMessage = "Снимката е задължителна")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
@@ -51,6 +56,10 @@
         public IEnumerable<int> SportCategoriesIds { get; set; }
 
         public IEnumerable<SelectListItem> SportCategoriesDropDown { get; set; }
+
+        public IEnumerable<int> FacilitiesIds { get; set; }
+
+        public IEnumerable<SelectListItem> FacilitiesDropDown { get; set; }
 
         [DisplayName("Спортни категории")]
         public virtual ICollection<SportCategory> SportCategories

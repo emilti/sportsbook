@@ -35,9 +35,7 @@
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         public string Description { get; set; }
 
-
         public DateTime Start { get; set; }
-
 
         public int CityId { get; set; }
 

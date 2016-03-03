@@ -9,6 +9,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using SportsBook.Data.Models;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     public class SportsBookDbContext : IdentityDbContext<AppUser>
     {

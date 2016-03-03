@@ -18,13 +18,15 @@
         private readonly IUsersService users;
         private readonly ICitiesService cities;
         private readonly ISportCategoriesService sportCategories;
+        private readonly IFacilitiesService facilities;
 
-        public EventsPrivateController(IEventsService eventsService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories)
+        public EventsPrivateController(IEventsService eventsService, IUsersService usersService, ICitiesService citiesService, ISportCategoriesService sportCategories, IFacilitiesService facilitiesService)
         {
             this.events = eventsService;
             this.users = usersService;
             this.cities = citiesService;
             this.sportCategories = sportCategories;
+            this.facilities = facilitiesService;
         }
 
         [HttpGet]
@@ -36,6 +38,8 @@
             model.CitiesDropDown = this.GetSelectListCities(cities);
             var sportCategories = this.sportCategories.All();
             model.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
+            var facilities = this.facilities.All();
+            model.FacilitiesDropDown = this.GetSelectListFacilities(facilities);
             return this.View(model);
         }
 
@@ -72,6 +76,8 @@
             mappedEvent.CitiesDropDown = this.GetSelectListCities(cities);
             var sportCategories = this.sportCategories.All();
             mappedEvent.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
+            var facilities = this.facilities.All();
+            mappedEvent.FacilitiesDropDown = this.GetSelectListFacilities(facilities);
             return this.View(mappedEvent);
         }
 
@@ -111,6 +117,22 @@
             // Create an empty list to hold result of the operation
             var selectList = new List<SelectListItem>();
             foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = element.Id.ToString(),
+                    Text = element.Name
+                });
+            }
+
+            return selectList;
+        }
+
+        private IEnumerable<SelectListItem> GetSelectListFacilities(IEnumerable<Facility> facilities)
+        {
+            // Create an empty list to hold result of the operation
+            var selectList = new List<SelectListItem>();
+            foreach (var element in facilities)
             {
                 selectList.Add(new SelectListItem
                 {
