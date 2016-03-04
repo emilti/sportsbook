@@ -68,13 +68,14 @@
                 newId = userToCreate.Id;
             }
 
-
             var userToDisplay =
              this.users.All()
              .To<AppUserGridViewModel>()
              .FirstOrDefault(x => x.Id == newId);
 
-            return this.Json(new[] { userToDisplay
+            return this.Json(new[]
+            {
+                userToDisplay
     }.ToDataSourceResult(request, this.ModelState));
         }
 
@@ -104,7 +105,6 @@
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AppUsers_Destroy([DataSourceRequest]DataSourceRequest request, AppUser appUser)
         {
-
             this.users.Remove(appUser);
             this.users.SaveChanges();
 

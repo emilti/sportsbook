@@ -20,7 +20,6 @@
         {
             this.SportCategories = new HashSet<SportCategory>();
             this.FacilityComments = new HashSet<FacilityComment>();
-
         }
 
         public int Id { get; set; }
