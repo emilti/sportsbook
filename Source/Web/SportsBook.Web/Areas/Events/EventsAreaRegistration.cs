@@ -17,8 +17,7 @@ namespace SportsBook.Web.Areas.Events
             context.MapRoute(
                 "Events_default",
                 "Events/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }

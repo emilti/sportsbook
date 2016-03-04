@@ -285,7 +285,6 @@
                     Description = "Description"
                 };
 
-
                 SportCategory swimming = new SportCategory
                 {
                     Name = "Swimming",
@@ -303,7 +302,6 @@
                     Name = "Volleyball",
                     Description = "Description"
                 };
-
 
                 SportCategory basketball = new SportCategory
                 {

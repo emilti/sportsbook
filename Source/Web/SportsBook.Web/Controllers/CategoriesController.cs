@@ -18,7 +18,5 @@
             this.facilities = facilitiesService;
             this.users = usersService;
         }
-
-      
     }
 }

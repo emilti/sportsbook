@@ -11,7 +11,6 @@ namespace SportsBook.Services.Data
 {
     public class SportCategoriesService : ISportCategoriesService
     {
-
         private readonly IRepository<SportCategory> sportCategories;
 
         public SportCategoriesService(

@@ -12,6 +12,5 @@
         IQueryable<City> All();
 
         City GetById(int cityId);
-
     }
 }

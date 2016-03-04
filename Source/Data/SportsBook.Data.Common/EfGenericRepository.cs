@@ -48,7 +48,6 @@
             }
         }
 
-
         public virtual void Update(T entity)
         {
             var entry = this.Context.Entry(entity);

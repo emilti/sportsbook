@@ -17,8 +17,7 @@
             context.MapRoute(
                 "Facilities_default",
                 "Facilities/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }
