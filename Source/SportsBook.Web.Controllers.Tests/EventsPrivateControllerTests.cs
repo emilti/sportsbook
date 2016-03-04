@@ -22,6 +22,7 @@ namespace SportsBook.Web.Controllers.Tests
         Mock<IUsersService> usersServiceMock = new Mock<IUsersService>();
         Mock<ICitiesService> citiesServiceMock = new Mock<ICitiesService>();
         Mock<ISportCategoriesService> sportCategoriesServiceMock = new Mock<ISportCategoriesService>();
+        Mock<IFacilitiesService> facilitiesServiceMock = new Mock<IFacilitiesService>();
 
         public AutoMapperConfig GetAutoMapper()
         {
@@ -49,7 +50,7 @@ namespace SportsBook.Web.Controllers.Tests
                 }.AsQueryable);
 
 
-            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object, facilitiesServiceMock.Object);
             controller.WithCallTo(x => x.AddEvent())
                 .ShouldRenderView("AddEvent")
                 .WithModel<EventChangeViewModel>(
@@ -82,7 +83,7 @@ namespace SportsBook.Web.Controllers.Tests
                 }.AsQueryable);
 
 
-            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object, facilitiesServiceMock.Object);
             controller.WithCallTo(x => x.AddEvent())
                 .ShouldRenderView("AddEvent")
                 .WithModel<EventChangeViewModel>(
@@ -100,7 +101,7 @@ namespace SportsBook.Web.Controllers.Tests
 
 
             EventChangeViewModel model = new EventChangeViewModel();
-            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object, facilitiesServiceMock.Object);
             controller.ModelState.AddModelError("key", "error");
             controller.WithCallTo(x => x.AddEvent(model))
                 .ShouldRenderView("AddEvent")
@@ -115,7 +116,7 @@ namespace SportsBook.Web.Controllers.Tests
 
 
             EventChangeViewModel model = new EventChangeViewModel();
-            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object);
+            var controller = new EventsPrivateController(eventsServiceMock.Object, usersServiceMock.Object, citiesServiceMock.Object, sportCategoriesServiceMock.Object, facilitiesServiceMock.Object);
             controller.ModelState.AddModelError("Name", "Exception");
             controller.WithCallTo(x => x.AddEvent(model))
                 .ShouldRenderView("AddEvent")
