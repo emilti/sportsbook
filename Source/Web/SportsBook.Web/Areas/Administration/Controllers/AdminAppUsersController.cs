@@ -1,22 +1,16 @@
 ﻿namespace SportsBook.Web.Areas.Administration.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Data.Entity;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using System.Web.Mvc;
+    using Data;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using SportsBook.Data.Models;
     using SportsBook.Services.Data.Contracts;
     using ViewModels;
-    using Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Data;
 
     [Authorize(Roles ="Admin")]
     public class AdminAppUsersController : Controller
