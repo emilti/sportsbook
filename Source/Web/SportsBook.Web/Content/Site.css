@@ -43,7 +43,7 @@ textarea {
 }
 
 .sports-tags{
-   margin-top:10%;
+   margin-top:5%;
 }
 
 .comments-bottom{
@@ -52,3 +52,6 @@ textarea {
     padding-right:10px
 }
 
+.address-field{   
+    margin-top:5%;
+}

@@ -10,8 +10,10 @@
 <div class="clear"></div>
 <div id="map_canvas" class="map-in-details"></div>
 
+
+<div class="address-field">Адрес: <span id="address"></span> </div>
 <div class="sports-tags">
-    
+       
     @foreach (var category in @Model.SportCategories)
     {
         <button type="button" class="btn btn-primary">
@@ -122,6 +124,27 @@
                 map: map,
                 title: 'Посочен адрес'
             });
+
+            var geocoder = new google.maps.Geocoder;
+          
+            geocodeLatLng(geocoder, map);
+           
+            function geocodeLatLng(geocoder, map) {                
+                var latlng = {lat: @Model.Latitude, lng: @Model.Longitude};
+                geocoder.geocode({'location': latlng}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            console.log(results[1]);
+                            $('#address').html(results[1].formatted_address);
+                        } else {
+                            window.alert('No results found');
+                        }
+                    } else {
+                        window.alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
+
         }
     </script>
 }
