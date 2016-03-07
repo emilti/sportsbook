@@ -7,6 +7,7 @@
 
 @Model.City.Name
 
+
 <div class="sports-tags">
     @foreach (var category in @Model.SportCategories)
     {
@@ -16,6 +17,7 @@
     }
 </div>
 
+<div id="map_canvas" style="display:block;width:300px;height: 300px;"></div>
 
 @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
 {
@@ -91,4 +93,35 @@
         }
     </script>
 }
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Initialize();
+        });
+
+        function Initialize() {
+            var markersArray = [];
+
+            google.maps.visualRefresh = true;
+            var myLatlng = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);           
+            var mapOptions = {
+                zoom: 14,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+           
+            var marker = new google.maps.Marker({
+                draggable: true,
+                position: myLatlng,
+                map: map,
+                title: 'Посочен адрес'
+            });
+        }
+    </script>
+}
+
+
+
 

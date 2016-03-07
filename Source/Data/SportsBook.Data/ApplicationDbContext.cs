@@ -35,6 +35,19 @@
             return new SportsBookDbContext();
         }
 
+        // protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Facility>().Property(x => x.Longitude).HasPrecision(16, 8);
+        //     modelBuilder.Entity<Facility>().Property(x => x.Latitude).HasPrecision(16, 8);
+        // }
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Facility>().Property(x => x.Longitude).HasPrecision(12, 8);
+            modelBuilder.Entity<Facility>().Property(x => x.Latitude).HasPrecision(12, 8);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();

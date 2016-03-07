@@ -42,24 +42,24 @@
     </div>
 </div>
 @*
-<div class="form-group">
-    @Html.Label("Photo", new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        <input type="file" id="photo" name="file" class="photo" />
-    </div>
-</div>*@
+    <div class="form-group">
+        @Html.Label("Photo", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" id="photo" name="file" class="photo" />
+        </div>
+    </div>*@
 
 <div class="form-group">
-    @Html.LabelFor(m => m.lat, new { @class = "col-md-2 control-label" })
+    @Html.LabelFor(m => m.Latitude, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">        
-        <input size="20" type="text" id="latbox" name="lat" />
+        <input size="20" type="text" id="latbox" name="Latitude" />
     </div>
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(m => m.lng, new { @class = "col-md-2 control-label" })
+    @Html.LabelFor(m => m.Longitude, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
-        <input size="20" type="text" id="lngbox" name="lng">
+        <input size="20" type="text" id="lngbox" name="Longitude">
     </div>
 </div>
 

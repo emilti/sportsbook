@@ -62,6 +62,10 @@
             set { this.facilityComments = value; }
         }
 
+        public decimal Longitude { get; set; }
+
+        public decimal Latitude { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Facility, FacilityDetailedViewModel>();

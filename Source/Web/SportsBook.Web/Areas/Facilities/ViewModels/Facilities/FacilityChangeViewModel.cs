@@ -39,12 +39,6 @@
         [DisplayName("Град")]
         public virtual City City { get; set; }
 
-        [DisplayName("Географска дължина")]
-        public decimal lng { get; set; }
-
-        [DisplayName("Географска ширина")]
-        public decimal lat { get; set; }
-
         [Required(ErrorMessage = "Снимката е задължителна!")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ!")]
@@ -63,6 +57,12 @@
             get { return this.sportCategories; }
             set { this.sportCategories = value; }
         }
+
+        [DisplayName("Географска дължина")]
+        public decimal Longitude { get; set; }
+
+        [DisplayName("Географска ширина")]
+        public decimal Latitude { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

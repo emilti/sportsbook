@@ -5,7 +5,6 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web.Mvc;
     using Common.Models;
-    using System.ComponentModel;
 
     public class Facility : BaseModel<int>
     {
@@ -36,12 +35,6 @@
 
         public virtual City City { get; set; }
 
-        [DisplayName("Географска дължина")]
-        public decimal lng { get; set; }
-
-        [DisplayName("Географска ширина")]
-        public decimal lat { get; set; }
-
         public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]
@@ -51,6 +44,10 @@
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Invalid symbol")]
         public string Image { get; set; }
+
+        public decimal Longitude { get; set; }
+
+        public decimal Latitude { get; set; }
 
         public virtual ICollection<SportCategory> SportCategories
         {
