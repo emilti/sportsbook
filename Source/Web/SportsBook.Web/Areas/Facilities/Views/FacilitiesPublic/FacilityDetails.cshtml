@@ -2,13 +2,16 @@
 @using Microsoft.AspNet.Identity
 <h3>@Model.Name</h3>
 
-<img src=@Model.Image class="image-in-details" onError="standBy()" class="image">
+<img src=@Model.Image class="image-in-details" onError="standBy()">
 <div>@Model.Description</div>
 
-@Model.City.Name
 
+
+<div class="clear"></div>
+<div id="map_canvas" class="map-in-details"></div>
 
 <div class="sports-tags">
+    
     @foreach (var category in @Model.SportCategories)
     {
         <button type="button" class="btn btn-primary">
@@ -17,18 +20,19 @@
     }
 </div>
 
-<div id="map_canvas" style="display:block;width:300px;height: 300px;"></div>
-
-@if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
-{
-    @Html.ActionLink("Edit Facility", "EditFacility", "FacilitiesPrivate", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })
-}
 
 
-<div>
+
+<div class="clear" >
     <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
     <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
     @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })
+    @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
+    {
+        @Html.ActionLink("Edit Facility", "EditFacility", "FacilitiesPrivate", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary pull-right" })
+    }
+
+
 </div>
 
 <div id="comments-part"></div>

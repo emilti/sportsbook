@@ -52,6 +52,8 @@
             facilityToUpdate.Image = facility.Image;
             facilityToUpdate.Name = facility.Name;
             facilityToUpdate.SportCategories = facility.SportCategories;
+            facilityToUpdate.Longitude = facility.Longitude;
+            facilityToUpdate.Latitude = facility.Latitude;
             this.facilities.SaveChanges();
         }
 
