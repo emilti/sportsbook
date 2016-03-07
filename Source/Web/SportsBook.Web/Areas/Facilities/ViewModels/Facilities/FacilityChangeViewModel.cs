@@ -39,6 +39,12 @@
         [DisplayName("Град")]
         public virtual City City { get; set; }
 
+        [DisplayName("Географска дължина")]
+        public decimal lng { get; set; }
+
+        [DisplayName("Географска ширина")]
+        public decimal lat { get; set; }
+
         [Required(ErrorMessage = "Снимката е задължителна!")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ!")]

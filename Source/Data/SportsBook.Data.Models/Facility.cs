@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web.Mvc;
     using Common.Models;
+    using System.ComponentModel;
 
     public class Facility : BaseModel<int>
     {
@@ -34,6 +35,12 @@
         public int CityId { get; set; }
 
         public virtual City City { get; set; }
+
+        [DisplayName("Географска дължина")]
+        public decimal lng { get; set; }
+
+        [DisplayName("Географска ширина")]
+        public decimal lat { get; set; }
 
         public string AuthorId { get; set; }
 

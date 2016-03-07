@@ -5,6 +5,49 @@
    @Html.Partial("_FacilityCreateOrChangePartial")
 }
 
+<div id="map_canvas" style="height: 300px;"></div>
+
 @section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Initialize();
+        });
+
+        function Initialize() {
+            var markersArray = [];
+
+            google.maps.Map.prototype.clearOverlays = function () {
+                for (var i = 0; i < markersArray.length; i++) {
+                    markersArray[i].setMap(null);
+                }
+                markersArray.length = 0;
+            }
+
+            google.maps.visualRefresh = true;
+            var sofia = new google.maps.LatLng(42.69704042074099, 23.3215069770813);
+            var mapOptions = {
+                zoom: 14,
+                center: sofia,
+                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);         
+
+            google.maps.event.addListener(map, "click", function (e) {
+                map.clearOverlays();
+
+                document.getElementById("latbox").value = e.latLng.lat();
+                document.getElementById("lngbox").value = e.latLng.lng();
+                var myLatlng = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                var marker = new google.maps.Marker({
+                    draggable: true,
+                    position: myLatlng,
+                    map: map,
+                    title: 'Посочен адрес'
+                });
+
+                markersArray.push(marker);
+            });
+        }
+    </script>
     @Scripts.Render("~/bundles/jqueryval")
 }
