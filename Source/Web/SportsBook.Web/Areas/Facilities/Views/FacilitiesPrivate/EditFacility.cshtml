@@ -24,14 +24,22 @@
             }
 
             google.maps.visualRefresh = true;
-            var sofia = new google.maps.LatLng(42.69704042074099, 23.3215069770813);
+            var currentPosition = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
             var mapOptions = {
                 zoom: 14,
-                center: sofia,
+                center: currentPosition,
                 mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            };      
 
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            var marker = new google.maps.Marker({
+                draggable: true,
+                position: currentPosition,
+                map: map,
+                title: 'Посочен адрес'
+            });
+
+            markersArray.push(marker);
             google.maps.event.addListener(map, "click", function (e) {
                 map.clearOverlays();
 

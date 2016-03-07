@@ -51,15 +51,19 @@
 
 <div class="form-group">
     @Html.LabelFor(m => m.Latitude, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">        
-        <input size="20" type="text" id="latbox" name="Latitude" />
+    <div class="col-md-10">  
+        @Html.TextBoxFor(m => m.Latitude, new { @class = "form-control",id = "latbox" })
+        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+        @*<input size="20" type="text" id="latbox" name="Latitude" />*@
     </div>
 </div>
 
 <div class="form-group">
     @Html.LabelFor(m => m.Longitude, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
-        <input size="20" type="text" id="lngbox" name="Longitude">
+        @Html.TextBoxFor(m => m.Longitude, new { @class = "form-control", id = "lngbox" })
+        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger"})
+        @*<input size="20" type="text" id="lngbox" name="Longitude" value="">*@
     </div>
 </div>
 
