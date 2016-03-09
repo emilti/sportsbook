@@ -26,7 +26,5 @@
         public string AuthorId { get; set; }
 
         public virtual AppUser Author { get; set; }
-
-        public string CreatorAvatar { get; set; }
     }
 }

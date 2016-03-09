@@ -4,16 +4,10 @@
 
 <img src=@Model.Image class="image-in-details" onError="standBy()">
 <div>@Model.Description</div>
-
-
-
 <div class="clear"></div>
 <div id="map_canvas" class="map-in-details"></div>
-
-
 <div class="address-field">Адрес: <span id="address"></span> </div>
-<div class="sports-tags">
-       
+<div class="sports-tags">       
     @foreach (var category in @Model.SportCategories)
     {
         <button type="button" class="btn btn-primary">
@@ -21,22 +15,21 @@
         </button>
     }
 </div>
-
-
-
-
-<div class="clear" >
-    <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
-    <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
-    @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })
-    @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
-    {
-        @Html.ActionLink("Edit Facility", "EditFacility", "FacilitiesPrivate", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary pull-right" })
-    }
-
-
+<div class="clear row">
+    <div class="col-md-offset-5 col-md-3">
+        <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
+        <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
+        @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })        
+    </div>
+    <div class="col-md-4">
+        @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
+        {
+            @Html.ActionLink("Edit Facility", "EditFacility", "FacilitiesPrivate", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary pull-right" })
+        }
+    </div>
 </div>
 
+<div style="height:10px;clear:both;"></div>
 <div id="comments-part"></div>
 
 <script id="comments-template" type="text/template"> 
@@ -45,7 +38,7 @@
         if (comment.IsDeleted == false)
         {    
             <div class="row">
-                <div class="col-md-2"><img src=@comment.CreatorAvatar width="100" height="100"></div>
+                <div class="col-md-2"><img src=@comment.Author.Avatar width="100" height="100"></div>
                 
                 <div class="panel panel-default col-md-10">
                     <div class="panel-heading">
@@ -74,8 +67,7 @@
                         </div>
                     }
                 </div>    
-            </div>        
-           
+            </div>    
         }
     }
 </script>

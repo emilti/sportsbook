@@ -27,8 +27,7 @@
                 Content = content,
                 AuthorName = username,
                 AuthorId = authorId,
-                CreatedOn = DateTime.UtcNow,
-                CreatorAvatar = userAvatar
+                CreatedOn = DateTime.UtcNow
             };
 
             this.comments.Add(newComment);
