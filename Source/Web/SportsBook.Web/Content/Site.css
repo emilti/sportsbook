@@ -55,3 +55,7 @@ textarea {
 .address-field{   
     margin-top:5%;
 }
+
+div>.panel-comment{
+    padding:0px
+}
