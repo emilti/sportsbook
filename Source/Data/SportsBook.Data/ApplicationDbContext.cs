@@ -30,6 +30,8 @@
 
         public virtual IDbSet<EventComment> EventComments { get; set; }
 
+        public virtual IDbSet<FacilityRating> FacilityRating { get; set; }
+
         public static SportsBookDbContext Create()
         {
             return new SportsBookDbContext();
