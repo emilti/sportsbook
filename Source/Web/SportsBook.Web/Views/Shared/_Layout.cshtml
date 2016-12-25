@@ -217,7 +217,12 @@
                 }
             })
 
-           
+            $(".user-rating").on("input", function () {                              
+                var facilityId = $(this).attr("data-id");                
+                var ratingValue = $(this).val();             
+                $.post("/Facilities/Ratings/AddRating",
+                    { facilityId: facilityId, ratingValue: ratingValue })
+            });          
         })
     </script>
     <script>

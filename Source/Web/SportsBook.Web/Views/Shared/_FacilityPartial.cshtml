@@ -5,23 +5,30 @@
     {
         <div class="col-md-4">
             @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
-            <div class="holder caption">              
-                <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">   
-                    <img src=@facility.Image id="image-container-@facility.Id" onError="standBy(@facility.Id)" class="image" />
-                    
-                    <div>                        
-                        <span class="details-caption" id="details">Детайли</span>
+            <div class="holder caption">
+                <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
+                    <img src=@facility.Image id="image-container-@facility.Id" onerror="standBy(@facility.Id)" class="image" />
+
+                    <div>
+                        <span class="details-caption" id="details">Details</span>
                     </div>
                 </a>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                   
+
                     @if (User.Identity.GetUserId() != null)
                     {
                         @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
-                    }                    
+                    }
                 </div>
+                <div class="col-md-4">                    
+                    @facility.Rating
+                </div>
+                @if (User.Identity.GetUserId() != null)
+                {
+                    @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
+                }
             </div>
         </div>
     }

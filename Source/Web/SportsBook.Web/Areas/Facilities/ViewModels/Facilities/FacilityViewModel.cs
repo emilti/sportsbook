@@ -35,6 +35,8 @@
 
         public virtual City City { get; set; }
 
+        public Decimal? Rating { get; set; }
+
         [Required(ErrorMessage = "Снимата е задължителна")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]

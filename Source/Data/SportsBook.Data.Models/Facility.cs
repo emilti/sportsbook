@@ -14,11 +14,14 @@
 
         private ICollection<AppUser> usersLiked;
 
+        private ICollection<FacilityRating> facilityRatings;
+
         public Facility()
         {
             this.SportCategories = new HashSet<SportCategory>();
             this.FacilityComments = new HashSet<FacilityComment>();
             this.UsersLiked = new HashSet<AppUser>();
+            this.FaciltityRatings = new HashSet<FacilityRating>();
         }
 
         [AllowHtml]
@@ -49,6 +52,8 @@
 
         public decimal Latitude { get; set; }
 
+        public decimal? Rating { get; set; }
+
         public virtual ICollection<SportCategory> SportCategories
         {
             get { return this.sportCategories; }
@@ -66,6 +71,12 @@
         {
             get { return this.usersLiked; }
             set { this.usersLiked = value; }
+        }
+
+        public virtual ICollection<FacilityRating> FaciltityRatings
+        {
+            get { return this.facilityRatings; }
+            set { this.facilityRatings = value; }
         }
     }
 }

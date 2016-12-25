@@ -93,11 +93,13 @@
     <Compile Include="Contracts\ICommentsService.cs" />
     <Compile Include="Contracts\IEventsService.cs" />
     <Compile Include="Contracts\IFacilitiesService.cs" />
+    <Compile Include="Contracts\IRatingsService.cs" />
     <Compile Include="Contracts\ISportCategoriesService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="FacilitiesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingsService.cs" />
     <Compile Include="SportCategoriesService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
