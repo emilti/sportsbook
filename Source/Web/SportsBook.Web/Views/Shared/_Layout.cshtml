@@ -11,11 +11,11 @@
 
 
     @*<link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
-    <link href="~/Content/KendoUI/kendo.default.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
-    <script src="~/Scripts/KendoUI/kendo.all.min.js"></script>
-    <script src="~/Scripts/KendoUI/kendo.aspnetmvc.min.js"></script>*@
+        <link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
+        <link href="~/Content/KendoUI/kendo.default.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+        <script src="~/Scripts/KendoUI/kendo.all.min.js"></script>
+        <script src="~/Scripts/KendoUI/kendo.aspnetmvc.min.js"></script>*@
 
     <link href="~/Content/Theme/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Theme/font-awesome.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
     <link href="~/Content/custom-styles.css" rel="stylesheet" />
     <link href="~/Content/box.css" rel="stylesheet" />
 
-    <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> 
+    <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 </head>
 <body>
 
@@ -139,14 +139,14 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        
 
-                            @using (Html.BeginForm("SearchUsers", "Users", new { area = string.Empty }, FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()                                
-                                <input type="text" class="search_box" width:150px;" name="search" placeholder="Търси потребители">                                
-                                
-                            }                        
+
+                        @using (Html.BeginForm("SearchUsers", "Users", new { area = string.Empty }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="text" class="search_box" width:150px;" name="search" placeholder="Търси потребители">
+
+                        }
                     </div>
                 </div>
             </div>
@@ -217,12 +217,12 @@
                 }
             })
 
-            $(".user-rating").on("input", function () {                              
-                var facilityId = $(this).attr("data-id");                
-                var ratingValue = $(this).val();             
+            $(".user-rating").on("input", function () {
+                var facilityId = $(this).attr("data-id");
+                var ratingValue = $(this).val();
                 $.post("/Facilities/Ratings/AddRating",
                     { facilityId: facilityId, ratingValue: ratingValue })
-            });          
+            });
         })
     </script>
     <script>
@@ -272,7 +272,7 @@
     <script>
         function standBy(id) {
             $('#image-container-' + id).attr('src', 'http://naxcore.com/wp-content/themes/Artificial-Reason-WP/img/no_image.png')
-        }       
+        }
     </script>
 
 

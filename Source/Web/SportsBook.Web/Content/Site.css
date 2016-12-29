@@ -3,11 +3,11 @@
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
+/* Set padding to keep content from hitting the edges 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -58,4 +58,10 @@ textarea {
 
 div>.panel-comment{
     padding:0px
+}
+
+/*Syles for Facility and Events information under their pictures*/
+.object-info{
+    padding-left:0;
+    padding-right:0;
 }

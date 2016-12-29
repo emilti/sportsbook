@@ -4,7 +4,17 @@
     @foreach (var facility in Model)
     {
         <div class="col-md-4">
-            @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
+                </div>
+                <div class="col-md-6">
+                    @if (User.Identity.GetUserId() != null)
+                    {
+                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
+                    }
+                </div>
+            </div>
             <div class="holder caption">
                 <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
                     <img src=@facility.Image id="image-container-@facility.Id" onerror="standBy(@facility.Id)" class="image" />
@@ -15,15 +25,16 @@
                 </a>
             </div>
             <div class="row">
-                <div class="col-md-4">
-
-                    @if (User.Identity.GetUserId() != null)
+                <div class="col-md-12" style="padding-left:15px">
+                    Average Rating:
+                    @if (@facility.Rating != null)
                     {
-                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
+                        @facility.Rating
                     }
-                </div>
-                <div class="col-md-4">                    
-                    @facility.Rating
+                    else
+                    {
+                        <span>Not rated</span>
+                    }
                 </div>
                 @if (User.Identity.GetUserId() != null)
                 {

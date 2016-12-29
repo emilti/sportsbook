@@ -10,6 +10,7 @@
 
 .favorites-button {  
     background: url('../Content/images/add-to-favorites.jpg');
+    margin-left:5%;
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -18,6 +19,7 @@
 
 .remove-from-favorites-button {   
     background: url('../Content/images/remove-from-favorites.jpg');
+    margin-left:5%;
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -28,3 +30,8 @@ ul>li>a.profile-link{
     display:inline-block
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
