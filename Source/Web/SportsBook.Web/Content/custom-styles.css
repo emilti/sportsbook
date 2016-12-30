@@ -26,6 +26,13 @@
     text-indent: -9999px; /* hides the link text */
 }
 
+.rating-star{  
+    background: url('../Content/images/rating-star.jpg');    
+    display: inline-block;
+    width: 30px;
+    height: 30px;    
+}
+
 ul>li>a.profile-link{
     display:inline-block
 }

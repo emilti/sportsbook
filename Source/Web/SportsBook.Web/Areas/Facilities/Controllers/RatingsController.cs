@@ -27,7 +27,6 @@
         [HttpGet]        
         public ActionResult CheckFacilityRating(int id)
         {
-
             return this.View();
         }
 
@@ -41,15 +40,16 @@
             FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
             if (facilityRating == null)
             {   
-                this.ratings.Add(facilityId, user.Id, ratingValue);
+                this.ratings.Add(facilityId, user.Id, ratingValue);   
+                
             }
             else
             {
                 this.ratings.UpdateRating(facilityRating.Id, ratingValue);
             }
-
+            
             int ratingsSum = facility.FaciltityRatings.Sum(x => x.RatingValue);
-            facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;
+            facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;            
             facilities.UpdateFacility(facility.Id, facility);
         }
 

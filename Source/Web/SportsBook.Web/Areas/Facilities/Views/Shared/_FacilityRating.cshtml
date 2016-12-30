@@ -1,19 +1,24 @@
 ﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Ratings.FacilityRatingViewModel
-<br />
-<div class="row" style="padding-left:15px">
-    <div class="col-md-12">
-        Your rating:
-        @if (@Model != null)
-        {
-            <input style="width:25px;padding-right:0;padding-left:8px;padding-top:0;padding-bottom:0;border-radius:5px" data-id="@this.ViewBag.facilityId" type="number" value="@Model.RatingValue" />
+<div style="padding-top:5px;padding-bottom:0;padding-left:0;padding-right:0">
+    @if (@Model != null)
+    {
+        <input style="width:25px;padding-right:0;padding-left:8px;padding-top:0px;padding-bottom:0;border-radius:5px" data-id="@this.ViewBag.facilityId" class="user-rating" type="number" placeholder="@Model.RatingValue" />
 
-        }
-        else
-        {
-            <input style="width:65px;padding:0;border-radius:5px" data-id="@this.ViewBag.facilityId" class="user-rating" type="number" placeholder="Not Rated" />
-        }
-    </div>
+    }
+    else
+    {
+        <input style="width:25px;padding-right:0;padding-left:8px;padding-top:0px;padding-bottom:0;border-radius:5px" data-id="@this.ViewBag.facilityId" class="user-rating" type="number" placeholder="-" />
+    }
 </div>
+
+
+
+
+
+
+
+
+
 
 
 
