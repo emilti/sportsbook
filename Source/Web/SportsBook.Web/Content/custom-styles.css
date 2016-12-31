@@ -1,40 +1,40 @@
-﻿.btn{
-    border-radius:0;
-    margin-top:15px;
+﻿.btn {
+    border-radius: 0;
+    margin-top: 15px;
 }
 
-.profile-image{
-    width:200px;
-    height:200px
+.profile-image {
+    width: 200px;
+    height: 200px;
 }
 
-.favorites-button {  
+.favorites-button {
     background: url('../Content/images/add-to-favorites.jpg');
-    margin-left:5%;
+    margin-left: 5%;
     display: inline-block;
     width: 30px;
     height: 30px;
     text-indent: -9999px; /* hides the link text */
 }
 
-.remove-from-favorites-button {   
+.remove-from-favorites-button {
     background: url('../Content/images/remove-from-favorites.jpg');
-    margin-left:5%;
+    margin-left: 5%;
     display: inline-block;
     width: 30px;
     height: 30px;
     text-indent: -9999px; /* hides the link text */
 }
 
-.rating-star{  
-    background: url('../Content/images/rating-star.jpg');    
+.rating-star {
+    background: url('../Content/images/rating-star.jpg');
     display: inline-block;
     width: 30px;
-    height: 30px;    
+    height: 30px;
 }
 
-ul>li>a.profile-link{
-    display:inline-block
+ul > li > a.profile-link {
+    display: inline-block;
 }
 
 input[type=number]::-webkit-inner-spin-button,
