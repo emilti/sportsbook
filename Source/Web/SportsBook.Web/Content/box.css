@@ -1,18 +1,17 @@
-﻿body
-{
+﻿body {
     background-color: white;
-    font-family: Tahoma, Calibri, 'Trebuchet MS' , Arial;
+    font-family: Tahoma, Calibri, 'Trebuchet MS', Arial;
     margin: 20px;
     color: #666666;
 }
-h1, h2
-{
+
+h1, h2 {
     clear: both;
     font-weight: normal;
     text-shadow: 1px 1px 0px #FFFFFF;
 }
 
-/* Common division block */
+/* Common division block 
 .holder
 {
     border: 0px solid #FFFFFF;    
@@ -25,51 +24,91 @@ h1, h2
     -o-transition: 0.5s Ease;
     transition: 0.5s Ease;    
     width:200px;
-    height:200px
+    height:210px
+}*/
 
-}
-
-/* Caption and Light */
-.caption
-{
+/* Caption and Light 
+.caption{
     color: white;
     line-height: 200px;    
-}
-.caption:hover
-{
-    border: 10px solid #E0E0E0;
+}*/
+
+.caption:hover {
     color: rgb(255,255,255);
-    line-height: 40px;
-    box-shadow: 0px 0px 10px 7px #FFFFFF;    
-   
+    box-shadow: 0px 0px 10px 7px #FFFFFF;
 }
 
-.caption:hover div{
-    display:inline
-}
 
-.caption:hover img{
-    -webkit-filter: brightness(0.4);
-}
 
-.caption div
-{
-    display:none;
+/* .image:hover .details-caption-holder{
+      display:inline-block;     
+ }
+
+.image:hover + .details-caption-holder {
+    -webkit-animation: shake 1s;
+    animation: shake 1s;
+    display:inline-block
+}*/
+
+
+
+
+.caption .details-caption-holder {
+    display: none;
     position: absolute;
-    top: 140px;
-    left: 60px;
-    font-size: 30px;    
+    top: 0px;
+    left: 0px;
+    font-size: 30px;
+    width: 200px;
+    height: 70px;
+    background-color: #172431;
+    opacity: 0.9
 }
 
-.image{
-    width:200px;
-    height:200px;
-   
+.caption .user-rating-holder {
+    padding-right: 0;
+    padding-left: 0;
+    display: none;
+    position: absolute;
+    top: 175px;
+    left: 15px;
+    font-size: 18px;
+    width: 200px;
+    height: 70px;
+    background-color: #172431;
+    opacity: 0.9
 }
 
-
-div div div span.details-caption{
-    color:white;
-    font-size:18px;
-    
+.image {
+    width: 200px;
+    height: 210px;
 }
+
+/*
+.user-rating-holder {
+    display: inline-block;
+    position: absolute;
+    width: 200px;
+    height: 210px;
+}*/
+
+
+.details-caption {
+    position:absolute;
+    left:56px;
+    top:10px;
+    color: white;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.details-caption-holder:hover {
+    opacity:1;
+}
+
+.details-caption-holder:hover  .details-caption{
+    opacity:1;
+    font-size:22px;  
+    left:45px;
+}
+

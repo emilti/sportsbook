@@ -15,14 +15,24 @@
                     }
                 </div>
             </div>
-            <div class="holder caption">
-                <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
-                    <img src=@facility.Image id="image-container-@facility.Id" onerror="standBy(@facility.Id)" class="image" />
+            <div>
 
-                    <div>
-                        <span class="details-caption" id="details">Details</span>
+
+                <div class="holder caption">
+                    <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
+                        <img src=@facility.Image id="image-container-@facility.Id" onerror="standBy(@facility.Id)" class="image" />
+
+                        <div class="details-caption-holder">
+                            <span class="details-caption" id="details">Information</span>
+                        </div>
+                    </a>
+                    <div class="user-rating-holder" style="padding-right:0;padding-left:0">
+                        @if (User.Identity.GetUserId() != null)
+                        {
+                            @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
+                        }
                     </div>
-                </a>
+                </div>
             </div>
             <div class="row" style="padding:0">
                 <div class="col-md-2"></div>
@@ -50,12 +60,7 @@
                                 <span>votes</span>
                             }
                         </div>
-                        <div class="col-md-7" style="padding-right:0;padding-left:0">
-                            @if (User.Identity.GetUserId() != null)
-                            {
-                                @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
-                            }
-                        </div>
+                      
                     </div>
                 </div>
             </div>
