@@ -13,6 +13,13 @@
     }
     else
     {
-        <input style="width:25px;padding-right:0;padding-left:8px;padding-top:0px;padding-bottom:0;border-radius:5px" data-id="@this.ViewBag.facilityId" class="user-rating" type="number" placeholder="-" />
+        <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
+            <span class="star">☆</span>
+            <span class="star">☆</span>
+            <span class="star">☆</span>
+            <span class="star">☆</span>
+            <span class="star">☆</span>
+        </div>
+        <!--input style="width:25px;padding-right:0;padding-left:8px;padding-top:0px;padding-bottom:0;border-radius:5px" data-id="this.ViewBag.facilityId" class="user-rating" type="number" placeholder="-" /-->
     }
 </div>

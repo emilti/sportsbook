@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('.image').each(function () {
         animationHover(this, 'bounce');
-    });
+    });   
 });
 
 
@@ -27,8 +27,28 @@ function animationHover(element, animation) {
             }
         },
         function () {
+
+            // var result = underElement('.details-caption-holder', ".user-rating-holder");
+            // var timer;
+            // $(".details-caption-holder", ".user-rating-holder").mouseleave(function () {
+            //     timer = setTimeout(setDisplayNone, 10);
+            // }).mouseenter(function () {
+            //     clearTimeout(timer);
+            // });
+            // 
+            // function setDisplayNone() {
+            //     $(".details-caption-holder", ".user-rating-holder").css("display", "none");
+            // }
+
             //wait for animation to finish before removing classes
             window.setTimeout(function () {
+
+
+
+                window.isHovering = function (selector) {
+                    return $(selector).data('hover') ? true : false; //check element for hover property
+                }
+
                 for (var i = 0; i < siblings.length; i++) {
                     if ($(siblings[i]).hasClass("details-caption-holder")) {                        
                         $(siblings[i]).removeClass("animated " + animation)
@@ -40,7 +60,8 @@ function animationHover(element, animation) {
                         $(parentCaptionChildren[i]).removeClass("animated " + animation)
                     }
                 }
-            }, 1000);
+
+            }, 1000);          
         });
 }
 

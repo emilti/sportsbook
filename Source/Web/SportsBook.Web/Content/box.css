@@ -56,8 +56,8 @@ h1, h2 {
 .caption .details-caption-holder {
     display: none;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 20px;
+    left: 15px;
     font-size: 30px;
     width: 200px;
     height: 70px;
@@ -102,13 +102,23 @@ h1, h2 {
     line-height: 40px;
 }
 
-.details-caption-holder:hover {
+.details-caption-holder:hover  .details-caption{
+    opacity:1;
+    font-size:20px;  
+    left:45px;
+}
+
+.caption:hover .details-caption-holder {
+    display:inline-block;
+}
+
+.details-caption-holder:hover{
+    display:inline-block;
     opacity:1;
 }
 
-.details-caption-holder:hover  .details-caption{
-    opacity:1;
-    font-size:22px;  
-    left:45px;
+
+.caption:hover .user-rating-holder{
+    display:inline-block;
 }
 

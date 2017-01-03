@@ -1,6 +1,6 @@
 ﻿@model List<SportsBook.Web.Areas.Facilities.ViewModels.Facilities.FacilityViewModel>
 @using Microsoft.AspNet.Identity
-<div class="row">
+<div class="row row-container">
     @foreach (var facility in Model)
     {
         <div class="col-md-4">
@@ -19,14 +19,13 @@
 
 
                 <div class="holder caption">
+                    <img class="image" src="@facility.Image" id="image-container-@facility.Id" onerror="standBy(@facility.Id)">
                     <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
-                        <img src=@facility.Image id="image-container-@facility.Id" onerror="standBy(@facility.Id)" class="image" />
-
-                        <div class="details-caption-holder">
+                        <div class="details-caption-holder  animated bounce">
                             <span class="details-caption" id="details">Information</span>
                         </div>
                     </a>
-                    <div class="user-rating-holder" style="padding-right:0;padding-left:0">
+                    <div class="user-rating-holder animated bounce" style="padding-right:0;padding-left:0">
                         @if (User.Identity.GetUserId() != null)
                         {
                             @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
@@ -60,7 +59,7 @@
                                 <span>votes</span>
                             }
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
