@@ -12,11 +12,10 @@ $(document).ready(function () {
             if (j < 5 - ratingValue) {
                 $(childrenStars[j]).html("&#9734;");
                 $(childrenStars[j]).css("color", "black");
-            } else
-            {
+            } else {
                 $(childrenStars[j]).html("&#9733;");
                 $(childrenStars[j]).css("color", "aqua");
-            }            
+            }
         }
     }
 
@@ -28,9 +27,18 @@ $(document).ready(function () {
         var previousElements = clickedStar.nextAll();
         var ratingValue = previousElements.length + 1;
         $.post("/Facilities/Ratings/AddRating",
-            { facilityId: facilityId, ratingValue: ratingValue }, function success() {
+            { facilityId: facilityId, ratingValue: ratingValue }, function success(data, textStatus, jqXHR) {
                 starDivHolder.attr("rating-value", ratingValue);
                 setStars(starDivHolder);
             })
+            .done(function () {
+                alert("second success");
+            })
+            .fail(function () {
+                alert("error");
+            })
+            .always(function () {
+                alert("finished");
+            });
     });
 })

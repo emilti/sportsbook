@@ -26,10 +26,12 @@
                         </div>
                     </a>
                     <div class="user-rating-holder animated bounce" style="padding-right:0;padding-left:0">
-                        @if (User.Identity.GetUserId() != null)
-                        {
+                        @*@ @if (User.Identity.GetUserId() != null)
+                         {
                             @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
-                        }
+                         }*@
+
+                        @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
                     </div>
                 </div>
             </div>

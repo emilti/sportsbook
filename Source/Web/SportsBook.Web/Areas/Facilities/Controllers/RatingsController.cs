@@ -13,7 +13,7 @@
 
     public class RatingsController : Controller
     {
-       private readonly IRatingsService ratings;
+        private readonly IRatingsService ratings;
         private readonly IFacilitiesService facilities;
         private readonly IUsersService users;
 
@@ -24,7 +24,7 @@
             this.users = usersService;
         }
 
-        [HttpGet]        
+        [HttpGet]
         public ActionResult CheckFacilityRating(int id)
         {
             return this.View();
@@ -39,31 +39,38 @@
             Facility facility = this.facilities.GetFacilityDetails(facilityId);
             FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
             if (facilityRating == null)
-            {   
-                this.ratings.Add(facilityId, user.Id, ratingValue);   
-                
+            {
+                this.ratings.Add(facilityId, user.Id, ratingValue);
+
             }
             else
             {
                 this.ratings.UpdateRating(facilityRating.Id, ratingValue);
             }
-            
+
             int ratingsSum = facility.FaciltityRatings.Sum(x => x.RatingValue);
-            facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;            
+            facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;
             facilities.UpdateFacility(facility.Id, facility);
         }
 
         [HttpGet]
-        [Authorize]
+        // [Authorize]
         public ActionResult GetUserFacilityRating(int id)
         {
             AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
             Facility facility = this.facilities.GetFacilityDetails(id);
-            FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
-           
-            var facilityRatingForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityRatingViewModel>(facilityRating);
             ViewBag.facilityId = facility.Id;
-            return this.PartialView("_FacilityRating", facilityRatingForView);              
+            if (user != null)
+            {
+                FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
+                var facilityRatingForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityRatingViewModel>(facilityRating);
+              
+                return this.PartialView("_FacilityRating", facilityRatingForView);
+            }
+            else
+            {
+                return this.PartialView("_FacilityRating", null);
+            }
         }
     }
 }
