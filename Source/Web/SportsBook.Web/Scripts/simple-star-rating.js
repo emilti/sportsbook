@@ -30,15 +30,6 @@ $(document).ready(function () {
             { facilityId: facilityId, ratingValue: ratingValue }, function success(data, textStatus, jqXHR) {
                 starDivHolder.attr("rating-value", ratingValue);
                 setStars(starDivHolder);
-            })
-            .done(function () {
-                alert("second success");
-            })
-            .fail(function () {
-                alert("error");
-            })
-            .always(function () {
-                alert("finished");
             });
     });
-})
+});

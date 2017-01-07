@@ -30,31 +30,44 @@
             return this.View();
         }
 
-        [HttpPost]
-        [Authorize]
-        // [ValidateAntiForgeryToken]
-        public void AddRating(int facilityId, int ratingValue)
-        {
-            AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
-            Facility facility = this.facilities.GetFacilityDetails(facilityId);
-            FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
-            if (facilityRating == null)
-            {
-                this.ratings.Add(facilityId, user.Id, ratingValue);
-
-            }
-            else
-            {
-                this.ratings.UpdateRating(facilityRating.Id, ratingValue);
-            }
-
-            int ratingsSum = facility.FaciltityRatings.Sum(x => x.RatingValue);
-            facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;
-            facilities.UpdateFacility(facility.Id, facility);
+        [HttpGet]
+        public ActionResult AddRating(int id)
+        {          
+            return RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
         }
 
-        [HttpGet]
-        // [Authorize]
+        // [ValidateAntiForgeryToken]
+        
+        [HttpPost]
+        [Authorize]
+        public void AddRating(int? facilityId, int? ratingValue)
+        {
+            AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
+
+            if (facilityId != null)
+            {
+                Facility facility = this.facilities.GetFacilityDetails((int)facilityId);
+                if (facility != null)
+                {
+                    FacilityRating facilityRating = facility.FaciltityRatings.FirstOrDefault(x => x.AuthorId == user.Id);
+                    if (facilityRating == null)
+                    {
+                        this.ratings.Add((int)facilityId, user.Id, (int)ratingValue);
+
+                    }
+                    else
+                    {
+                        this.ratings.UpdateRating(facilityRating.Id, (int)ratingValue);
+                    }
+
+                    int ratingsSum = facility.FaciltityRatings.Sum(x => x.RatingValue);
+                    facility.Rating = (decimal)ratingsSum / (decimal)facility.FaciltityRatings.Count;
+                    facilities.UpdateFacility(facility.Id, facility);
+                }
+            }     
+        }
+
+        [HttpGet]        
         public ActionResult GetUserFacilityRating(int id)
         {
             AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());

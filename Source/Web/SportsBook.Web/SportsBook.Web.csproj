@@ -223,6 +223,7 @@
     <Compile Include="Areas\Facilities\Controllers\RatingsController.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Areas\Facilities\ViewModels\Ratings\FacilityRatingViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Ratings\UnregisteredUserRatingViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -401,6 +402,7 @@
     <Content Include="Areas\Administration\Views\AdminEvents\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
