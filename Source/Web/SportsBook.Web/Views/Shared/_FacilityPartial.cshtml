@@ -7,13 +7,7 @@
             <div class="row">
                 <div class="col-md-6">
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
-                </div>
-                <div class="col-md-6">
-                    @if (User.Identity.GetUserId() != null)
-                    {
-                        @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
-                    }
-                </div>
+                </div>                
             </div>
             <div>
 
@@ -25,6 +19,12 @@
                             <span class="details-caption" id="details">Information</span>
                         </div>
                     </a>
+                    <div class="favorites-holder">
+                        @if (User.Identity.GetUserId() != null)
+                        {
+                            @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
+                        }
+                    </div>
                     <div class="user-rating-holder animated bounce" style="padding-right:0;padding-left:0">
                         @*@ @if (User.Identity.GetUserId() != null)
                          {

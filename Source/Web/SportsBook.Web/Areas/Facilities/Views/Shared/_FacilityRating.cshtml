@@ -4,26 +4,25 @@
     {
         <!--input style="width:25px;padding-right:0;padding-left:8px;padding-top:0px;padding-bottom:0;border-radius:5px" data-id="@this.ViewBag.facilityId" class="user-rating" type="number" placeholder="@Model.RatingValue" /-->
         <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="@Model.RatingValue">
-            <span class="star">☆</span>
-            <span class="star">☆</span>
-            <span class="star">☆</span>
-            <span class="star">☆</span>
-            <span class="star">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
         </div>
     }
     else
-    {       
+    {
         using (Html.BeginForm("AddRating", "Ratings", new { id = this.ViewBag.facilityId, area = "Facilities" }, FormMethod.Post))
-        {  
-        <div data-id="@this.ViewBag.facilityId" rating-value="0">
-            <span class="">☆</span>
-            <span class="">☆</span>
-            <span class="">☆</span>
-            <span class="">☆</span>
-            <span class="">☆</span>
-        </div>
-
-        <input type="submit" value="aa" />
+        {
+            <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
+                <span class="star-style">☆</span>
+                <span class="star-style">☆</span>
+                <span class="star-style">☆</span>
+                <span class="star-style">☆</span>
+                <span class="star-style">☆</span>
+            </div>
+        <input class="rating-submit-button" type="submit" value="aa"/>
         }
     }
 </div>

@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 
 
-    $(".star").on("click", function (event) {
+    $(".star-click").on("click", function (event) {
         var starDivHolder = $(this).parent();
         var facilityId = $(this).parent().attr("data-id");
         var clickedStar = $(event.target);
