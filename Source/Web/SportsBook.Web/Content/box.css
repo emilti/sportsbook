@@ -81,6 +81,18 @@ h1, h2 {
     opacity: 0.9
 }
 
+.caption .favorites-holder{
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    font-size: 30px;
+    width: 200px;
+    height: 70px;
+    background-color: #172431;
+    opacity: 0.9
+}
+
 .image {
     width: 200px;
     height: 210px;
@@ -121,6 +133,10 @@ h1, h2 {
 
 
 .caption:hover .user-rating-holder{
+    display:inline-block;
+}
+
+.caption:hover .favorites-holder{
     display:inline-block;
 }
 

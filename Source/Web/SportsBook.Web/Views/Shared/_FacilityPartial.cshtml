@@ -15,7 +15,7 @@
                 <div class="holder caption">
                     <img class="image" src="@facility.Image" id="image-container-@facility.Id" onerror="standBy(@facility.Id)">
                     <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
-                        <div class="details-caption-holder  animated bounce">
+                        <div class="details-caption-holder">
                             <span class="details-caption" id="details">Information</span>
                         </div>
                     </a>
@@ -25,7 +25,7 @@
                             @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
                         }
                     </div>
-                    <div class="user-rating-holder animated bounce" style="padding-right:0;padding-left:0">
+                    <div class="user-rating-holder">
                         @*@ @if (User.Identity.GetUserId() != null)
                          {
                             @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
