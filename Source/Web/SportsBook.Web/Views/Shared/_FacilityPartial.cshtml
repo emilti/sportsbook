@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-6">
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
-                </div>                
+                </div>
             </div>
             <div>
 
@@ -24,20 +24,23 @@
                         {
                             @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" })
                         }
+                        else
+                        {
+
+                        }
                     </div>
                     <div class="user-rating-holder">
                         @*@ @if (User.Identity.GetUserId() != null)
-                         {
-                            @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
-                         }*@
-
+                            {
+                               @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
+                            }*@
                         @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
                     </div>
                 </div>
             </div>
             <div class="row" style="padding:0">
                 <div class="col-md-2"></div>
-                <div class="rating-star col-md-1"></div>
+                <div class="rating-star col-md-1"><img src="~/Content/images/rating-star.png" /></div>
                 <div class="col-md-5" style="padding-left:10px;padding-right:0">
                     <div class="row">
                         <div class="col-md-5" style="padding-right:0">

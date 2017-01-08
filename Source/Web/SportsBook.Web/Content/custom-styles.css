@@ -38,11 +38,9 @@
     display: inline-block;
 }
 
-.rating-star {
-    background: url('../Content/images/rating-star.jpg');
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+
+.rating-star{
+    padding-top:2px;
 }
 
 ul > li > a.profile-link {
