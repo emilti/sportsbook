@@ -279,8 +279,10 @@
     <Content Include="Content\box.css" />
     <Content Include="Content\custom-styles.css" />
     <Content Include="Content\images\add-to-favorites.jpg" />
+    <Content Include="Content\images\add-to-favorites.png" />
     <Content Include="Content\images\rating-star.jpg" />
     <Content Include="Content\images\remove-from-favorites.jpg" />
+    <Content Include="Content\images\remove-from-favorites.png" />
     <Content Include="Content\KendoUI\Default\editor.png" />
     <Content Include="Content\KendoUI\Default\imagebrowser.png" />
     <Content Include="Content\KendoUI\Default\indeterminate.gif" />

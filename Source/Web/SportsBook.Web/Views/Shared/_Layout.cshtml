@@ -191,12 +191,14 @@
                   function (data) {
                       $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
                       $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
+                      $("span[data-text = 'facility_" + id + "']").text("Add To Favorites")
                   })
                 } else {
                     $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
                  function (data) {
-                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-button");
                      $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
+                     $("span[data-text = 'facility_" + id + "']").text("Remove From Favorites")
                  })
                 }
             })
@@ -213,7 +215,7 @@
                 } else {
                     $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
                  function (data) {
-                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-button");
                      $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
                  })
                 }
@@ -230,12 +232,14 @@
                   function (data) {
                       $("div[data-context = 'facility_" + id + "']").removeClass("remove-from-favorites-button");
                       $("div[data-context = 'facility_" + id + "']").addClass("favorites-button");
+                      $("span[data-text = 'facility_" + id + "']").text("Add To Favorites")
                   })
                 } else {
                     $.post("/Facilities/FavoriteFacilities/AddToFavorites", { id: id },
                  function (data) {
-                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'facility_" + id + "']").removeClass("favorites-button");
                      $("div[data-context = 'facility_" + id + "']").addClass("remove-from-favorites-button");
+                     $("span[data-text = 'facility_" + id + "']").text("Remove From Favorites")
                  })
                 }
             })
@@ -252,7 +256,7 @@
                 } else {
                     $.post("/Events/FavoriteEvents/AddToFavorites", { id: id },
                  function (data) {
-                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-butto");
+                     $("div[data-context = 'event_" + id + "']").removeClass("favorites-button");
                      $("div[data-context = 'event_" + id + "']").addClass("remove-from-favorites-button");
                  })
                 }

@@ -9,8 +9,9 @@
 }
 
 .favorites-button {
-    background: url('../Content/images/add-to-favorites.jpg');
-    margin-left: 5%;
+    background: url('../Content/images/add-to-favorites.png');
+    margin-top: 20px;
+    margin-left: 5px;
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -18,12 +19,23 @@
 }
 
 .remove-from-favorites-button {
-    background: url('../Content/images/remove-from-favorites.jpg');
-    margin-left: 5%;
+    background: url('../Content/images/remove-from-favorites.png');
+    margin-top:20px;
+    margin-left: 5px;
     display: inline-block;
+    font-size: 12px;
     width: 30px;
     height: 30px;
     text-indent: -9999px; /* hides the link text */
+}
+
+.favorites-text {
+    position: absolute;
+    height: 100%;
+    left: 40px;
+    top: 25px;
+    font-size: 15px;
+    display: inline-block;
 }
 
 .rating-star {
