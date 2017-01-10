@@ -26,7 +26,15 @@
                         }
                         else
                         {
-
+                            <div id="fav-field" class="row favorites-button">
+                            </div>
+                            <div class="favorites-text">
+                                <span>Add To Favorites</span>
+                            </div>
+                            using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" }, FormMethod.Post))
+                            {
+                                <input class="favorites-submit-button" type="submit" value="aa" />
+                            }
                         }
                     </div>
                     <div class="user-rating-holder">
