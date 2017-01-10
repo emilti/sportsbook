@@ -27,6 +27,7 @@
             this.sportCategories = sportCategories;
         }
 
+        [HttpGet]
         public ActionResult FacilityDetails(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);

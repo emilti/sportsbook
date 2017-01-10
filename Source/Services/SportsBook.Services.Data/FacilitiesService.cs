@@ -36,7 +36,7 @@
 
         public IQueryable<Facility> GetTopFacilities()
         {
-            return this.facilities.All().OrderByDescending(x => x.CreatedOn).Take(6);
+            return this.facilities.All().OrderByDescending(x => x.Rating).Take(6);
         }
 
         public Facility GetFacilityDetails(int id)
@@ -52,6 +52,7 @@
             facilityToUpdate.Image = facility.Image;
             facilityToUpdate.Name = facility.Name;
             facilityToUpdate.SportCategories = facility.SportCategories;
+            facilityToUpdate.Rating = facility.Rating;
             facilityToUpdate.Longitude = facility.Longitude;
             facilityToUpdate.Latitude = facility.Latitude;
             this.facilities.SaveChanges();

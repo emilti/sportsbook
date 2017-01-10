@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" />
@@ -220,7 +220,10 @@
     <Compile Include="Areas\Events\ViewModels\EventsModels\EventDetailedViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\EventsModels\EventViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\PageableEventList\EventsListViewModel.cs" />
+    <Compile Include="Areas\Facilities\Controllers\RatingsController.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Ratings\FacilityRatingViewModel.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\Ratings\UnregisteredUserRatingViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Facilities\Controllers\FacilitiesPublicController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -267,14 +270,18 @@
     <Compile Include="Areas\Facilities\ViewModels\PageableFacilityList\FacilitiesListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\animation.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\box.css" />
     <Content Include="Content\custom-styles.css" />
-    <Content Include="Content\images\add-to-favorites.jpg" />
-    <Content Include="Content\images\remove-from-favorites.jpg" />
+    <Content Include="Content\images\add-to-favorites.png" />
+    <Content Include="Content\images\rating-star.jpg" />
+    <Content Include="Content\images\rating-star.png" />
+    <Content Include="Content\images\remove-from-favorites.png" />
     <Content Include="Content\KendoUI\Default\editor.png" />
     <Content Include="Content\KendoUI\Default\imagebrowser.png" />
     <Content Include="Content\KendoUI\Default\indeterminate.gif" />
@@ -327,6 +334,7 @@
     <Content Include="Content\KendoUI\textures\stripe6.png" />
     <Content Include="Content\KendoUI\textures\transparency.png" />
     <Content Include="Content\KendoUI\textures\transtexture.png" />
+    <Content Include="Content\star-rating-styles.css" />
     <Content Include="Content\Theme\animate.css" />
     <Content Include="Content\Theme\bootstrap.css" />
     <Content Include="Content\Theme\bootstrap.js" />
@@ -344,6 +352,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\animation-controller.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -394,6 +403,8 @@
     <Content Include="Areas\Events\Views\Shared\_EventInFavourites.cshtml" />
     <Content Include="Areas\Administration\Views\AdminEvents\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -404,15 +415,20 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\KendoUI\kendo.all.min.js" />
     <Content Include="Scripts\KendoUI\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\simple-star-rating.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -460,6 +476,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Facilities\Views\Ratings\" />
     <Folder Include="Views\AdminEvents\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -543,10 +560,10 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
-   <PropertyGroup>
-  	<PostBuildEvent>
+  <PropertyGroup>
+    <PostBuildEvent>
   		if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
   		start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
   	</PostBuildEvent>
-</PropertyGroup>
+  </PropertyGroup>
 </Project>

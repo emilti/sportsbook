@@ -1,0 +1,15 @@
+﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Ratings.UnregisteredUserRatingViewModel
+
+@{
+    TempData["Facility"] = this.ViewBag.facilityId;
+}
+
+<div data-id="@this.ViewBag.facilityId" rating-value="0">
+    <span class="">☆</span>
+    <span class="">☆</span>
+    <span class="">☆</span>
+    <span class="">☆</span>
+    <span class="">☆</span>
+</div>
+
+<input type="submit" value="aa" />

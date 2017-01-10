@@ -66,6 +66,8 @@
 
         public decimal Latitude { get; set; }
 
+        public decimal? Rating { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Facility, FacilityDetailedViewModel>();

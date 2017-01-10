@@ -35,6 +35,10 @@
 
         public virtual City City { get; set; }
 
+        public Decimal? Rating { get; set; }
+
+        public int VotesCount { get; set; }
+
         [Required(ErrorMessage = "Снимата е задължителна")]
         [AllowHtml]
         [RegularExpression(@"^[^<>]*$", ErrorMessage = "Невалиден символ")]
@@ -48,7 +52,9 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Facility, FacilityViewModel>();
+            configuration.CreateMap<Facility, FacilityViewModel>()          
+            .ForMember(dest => dest.VotesCount,
+               opts => opts.MapFrom(src => src.FaciltityRatings.Count));
         }
     }
 }

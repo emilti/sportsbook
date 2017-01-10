@@ -14,7 +14,7 @@
     public class SportsBookDbContext : IdentityDbContext<AppUser>
     {
         public SportsBookDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Sportsbook", throwIfV1Schema: false)
         {
         }
 
@@ -29,6 +29,8 @@
         public virtual IDbSet<FacilityComment> FacilityComments { get; set; }
 
         public virtual IDbSet<EventComment> EventComments { get; set; }
+
+        public virtual IDbSet<FacilityRating> FacilityRating { get; set; }
 
         public static SportsBookDbContext Create()
         {
@@ -58,7 +60,7 @@
         {
             // Approach via @julielerman: http://bit.ly/123661P
             foreach (var entry in
-                this.ChangeTracker.Entries()
+                this.ChangeTracker.Entries() 
                     .Where(
                         e =>
                         e.Entity is IAuditInfo && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))

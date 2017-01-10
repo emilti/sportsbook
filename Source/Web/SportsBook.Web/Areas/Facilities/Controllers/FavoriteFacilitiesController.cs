@@ -51,8 +51,17 @@
             // return this.PartialView(foundFacilitiesToView);
         }
 
+        [HttpGet]
+        public ActionResult AddToFavorites(int id)
+        {
+            return RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
+        }
+
+
+        [HttpPost]
         [Authorize]
-        public void AddToFavorites(int id)
+        [ActionName("AddToFavorites")]
+        public void AddToFavoritesPost(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var userId = this.User.Identity.GetUserId();

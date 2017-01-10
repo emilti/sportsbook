@@ -2,3 +2,18 @@
 
 <div id="fav-field" class="row @this.ViewBag.className" data-context="facility_@Model.Id" data-id="@Model.Id" data-action="changeFacility">
 </div>
+<div class="favorites-text">
+    
+        @if (this.ViewBag.className == "favorites-button")
+        {
+            <span data-text="facility_@Model.Id">
+                Add To Favorites
+            </span>
+        }
+        else
+        {
+            <span data-text="facility_@Model.Id">
+                Remove From Favorites
+            </span>
+        }            
+</div>
