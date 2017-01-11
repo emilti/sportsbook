@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{99FC36D3-D963-4263-BF69-8BD11F801E2B}"
 EndProject
@@ -30,6 +30,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsBook.Common", "SportsBook.Common\SportsBook.Common.csproj", "{0304527D-5938-4A5D-B433-01BE9AB5B852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsBook.Web.Controllers.Tests", "SportsBook.Web.Controllers.Tests\SportsBook.Web.Controllers.Tests.csproj", "{FFF6A3DF-31B2-4BD2-BA99-0BDE5002ADA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9EF5DF8C-F44E-4103-AD64-72C7CF52FF60}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

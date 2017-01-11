@@ -9,10 +9,8 @@
                     @Html.ActionLink(@facility.Name, "FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" }, new { @class = "details-name" })
                 </div>
             </div>
-            <div>
-
-
-                <div class="holder caption">
+            <div class="row">
+                <div class="holder caption col-md-6">
                     <img class="image" src="@facility.Image" id="image-container-@facility.Id" onerror="standBy(@facility.Id)">
                     <a href="@Url.Action("FacilityDetails", "FacilitiesPublic", new { id = @facility.Id, area = "Facilities" })">
                         <div class="details-caption-holder">
@@ -45,6 +43,21 @@
                         @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
                     </div>
                 </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div>
+                @{int i = 0;
+                foreach (var category in facility.SportCategories)
+                {
+                    i++;
+                    <span>@category.Name</span>
+                    if (i < facility.SportCategories.Count)
+                    {
+                        <span>|</span>
+                    }
+                }
+                }
+
             </div>
             <div class="row" style="padding:0">
                 <div class="col-md-2"></div>

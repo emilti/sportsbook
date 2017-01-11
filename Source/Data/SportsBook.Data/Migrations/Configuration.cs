@@ -305,7 +305,7 @@
 
                 SportCategory basketball = new SportCategory
                 {
-                    Name = "basketball",
+                    Name = "Basketball",
                     Description = "Description"
                 };
 
