@@ -2,31 +2,33 @@
 @using Microsoft.AspNet.Identity
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h3>@Model.Name</h3>
     </div>
-    <div class="col-md-2">
-        @if (User.Identity.GetUserId() != null)
-        {
-            @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" })
-        }
-        else
-        {
-            <div id="fav-field" class="row favorites-button">
-            </div>
-            <div class="favorites-text">
-                <span>Add To Favorites</span>
-            </div>
-            using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" }, FormMethod.Post))
+    <div class="col-md-3">
+        <div class="details-favorites-button">
+            @if (User.Identity.GetUserId() != null)
             {
-                <input class="favorites-submit-button" type="submit" value="aa" />
+                @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" })
             }
-        }
+            else
+            {
+                <div id="fav-field" class="row favorites-button">
+                </div>
+                <div class="favorites-text">
+                    <span>Add To Favorites</span>
+                </div>
+                using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" }, FormMethod.Post))
+                {
+                    <input class="favorites-submit-button" type="submit" value="aa" />
+                }
+            }
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-       
+
     </div>
     <div class="col-md-8">
         @{int i = 0;
@@ -50,19 +52,19 @@
 
     <div>@Model.Description</div>
 </div>
-    <div class="clear"></div>
-    <div id="map_canvas" class="map-in-details"></div>
-    <div class="address-field">Адрес: <span id="address"></span> </div>
-    <div class="sports-tags">
-      
-    </div>
+<div class="clear"></div>
+<div id="map_canvas" class="map-in-details"></div>
+<div class="address-field">Адрес: <span id="address"></span> </div>
+<div class="sports-tags">
+
+</div>
 
 
 <div class="clear row">
     <div class="col-md-offset-5 col-md-3">
         <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
         <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
-        @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })        
+        @Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })
     </div>
     <div class="col-md-4">
         @if (Request.IsAuthenticated && Model.AuthorId == User.Identity.GetUserId())
@@ -75,12 +77,12 @@
 <div style="height:10px;clear:both;"></div>
 <div id="comments-part"></div>
 
-<script id="comments-template" type="text/template"> 
+<script id="comments-template" type="text/template">
     @foreach (var comment in Model.FacilityComments)
     {
         if (comment.IsDeleted == false)
-        {    
-            <div class="row">                
+        {
+            <div class="row">
                 <div class="col-md-offset-2 panel panel-default col-md-8 panel-comment">
                     <div class="panel-heading">
                         <strong>@comment.AuthorName</strong><span class="text-muted pull-right">@Html.DisplayFor(m => comment.CreatedOn, "DateTimeTemplate")</span>
@@ -88,11 +90,11 @@
 
                     <div class="panel-body row">
                         <div class="col-md-1"><img src=@comment.Author.Avatar width="100" height="100"></div>
-                       <div class="col-md-1"></div>
-                         <div class="col-md-9">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
                             @comment.Content
                         </div>
-                        
+
                     </div>
                     @if (User.Identity.GetUserId() == @comment.AuthorId)
                     {
@@ -113,8 +115,8 @@
                         </div>
                     }
                 </div>
-                <div class="col-md-2"></div>    
-            </div>    
+                <div class="col-md-2"></div>
+            </div>
         }
     }
 </script>
@@ -149,14 +151,14 @@
             var markersArray = [];
 
             google.maps.visualRefresh = true;
-            var myLatlng = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);           
+            var myLatlng = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
             var mapOptions = {
                 zoom: 14,
                 center: myLatlng,
                 mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-           
+
             var marker = new google.maps.Marker({
                 draggable: true,
                 position: myLatlng,
@@ -165,10 +167,10 @@
             });
 
             var geocoder = new google.maps.Geocoder;
-          
+
             geocodeLatLng(geocoder, map);
-           
-            function geocodeLatLng(geocoder, map) {                
+
+            function geocodeLatLng(geocoder, map) {
                 var latlng = {lat: @Model.Latitude, lng: @Model.Longitude};
                 geocoder.geocode({'location': latlng}, function(results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
