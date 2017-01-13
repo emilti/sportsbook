@@ -1,20 +1,63 @@
 ﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Facilities.FacilityDetailedViewModel
 @using Microsoft.AspNet.Identity
-<h3>@Model.Name</h3>
-
-<img src=@Model.Image class="image-in-details" onError="standBy()">
-<div>@Model.Description</div>
-<div class="clear"></div>
-<div id="map_canvas" class="map-in-details"></div>
-<div class="address-field">Адрес: <span id="address"></span> </div>
-<div class="sports-tags">       
-    @foreach (var category in @Model.SportCategories)
-    {
-        <button type="button" class="btn btn-primary">
-            <span>@category.Name</span>
-        </button>
-    }
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
+        <h3>@Model.Name</h3>
+    </div>
+    <div class="col-md-2">
+        @if (User.Identity.GetUserId() != null)
+        {
+            @Html.Action("CheckFacilityInFavourites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" })
+        }
+        else
+        {
+            <div id="fav-field" class="row favorites-button">
+            </div>
+            <div class="favorites-text">
+                <span>Add To Favorites</span>
+            </div>
+            using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" }, FormMethod.Post))
+            {
+                <input class="favorites-submit-button" type="submit" value="aa" />
+            }
+        }
+    </div>
 </div>
+<div class="row">
+    <div class="col-md-4">
+       
+    </div>
+    <div class="col-md-8">
+        @{int i = 0;
+        foreach (var category in Model.SportCategories)
+        {
+            i++;
+            <span>@category.Name</span>
+            if (i < Model.SportCategories.Count)
+            {
+                <span>|</span>
+            }
+        }
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div>
+        <img src=@Model.Image class="image-in-details" onerror="standBy()">
+    </div>
+
+    <div>@Model.Description</div>
+</div>
+    <div class="clear"></div>
+    <div id="map_canvas" class="map-in-details"></div>
+    <div class="address-field">Адрес: <span id="address"></span> </div>
+    <div class="sports-tags">
+      
+    </div>
+
+
 <div class="clear row">
     <div class="col-md-offset-5 col-md-3">
         <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
