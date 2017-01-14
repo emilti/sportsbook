@@ -2,10 +2,10 @@
 @using Microsoft.AspNet.Identity
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <h3>@Model.Name</h3>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="details-favorites-button">
             @if (User.Identity.GetUserId() != null)
             {
@@ -25,12 +25,7 @@
             }
         </div>
         <div>
-            <div>
-                <span>Your Raiting: @Model.Rating</span>
-            </div>
-            <div>
-                @Html.Action("GetUserFacilityRating", "Ratings", new { id = Model.Id, area = "Facilities" })
-            </div>           
+            
         </div>
 
     </div>
@@ -39,18 +34,54 @@
     <div class="col-md-4">
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-8">
         @{int i = 0;
         foreach (var category in Model.SportCategories)
         {
             i++;
-            <span>@category.Name</span>
+            <span style="font-size:15px">@category.Name</span>
             if (i < Model.SportCategories.Count)
             {
                 <span>|</span>
             }
         }
         }
+
+        <span style="font-size:15px">| @Model.City.Name</span>
+
+        @if (Model.Rating != null)
+        {
+            <span style="font-size:15px">| Overall Rating: @Model.Rating</span>
+        }
+        else
+        {
+            <span style="font-size:15px">| -</span>
+        }
+        /5
+        
+        | @Model.VotesCount
+        @if (Model.VotesCount == 1)
+        {
+            <span>vote</span>
+        }
+        else
+        {
+            <span>votes</span>
+        }
+
+        <div style="display:inline-block">
+            @if (User.Identity.GetUserId() != null)
+            {
+                <span>| Your Raiting: </span>
+            }
+            else
+            {
+                <span>| Your Raiting: -</span>
+            }
+        </div>
+        <div style="display:inline-block;">
+            @Html.Action("GetUserFacilityRating", "Ratings", new { id = Model.Id, area = "Facilities" })
+        </div>
     </div>
 </div>
 

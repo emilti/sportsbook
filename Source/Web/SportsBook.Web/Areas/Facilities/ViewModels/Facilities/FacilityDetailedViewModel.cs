@@ -66,11 +66,15 @@
 
         public decimal Latitude { get; set; }
 
-        public decimal? Rating { get; set; }
+        public decimal? Rating { get; set; }       
+
+        public int VotesCount { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Facility, FacilityDetailedViewModel>();
+            configuration.CreateMap<Facility, FacilityDetailedViewModel>(). 
+               ForMember(dest => dest.VotesCount,
+               opts => opts.MapFrom(src => src.FaciltityRatings.Count));;
         }
     }
 }
