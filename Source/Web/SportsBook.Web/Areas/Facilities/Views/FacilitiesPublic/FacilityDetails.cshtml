@@ -24,13 +24,22 @@
                 }
             }
         </div>
+        <div>
+            <div>
+                <span>Your Raiting: @Model.Rating</span>
+            </div>
+            <div>
+                @Html.Action("GetUserFacilityRating", "Ratings", new { id = Model.Id, area = "Facilities" })
+            </div>           
+        </div>
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
 
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
         @{int i = 0;
         foreach (var category in Model.SportCategories)
         {
