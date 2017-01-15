@@ -69,15 +69,8 @@
             <span>votes</span>
         }
 
-        <div style="display:inline-block">
-            @if (User.Identity.GetUserId() != null)
-            {
-                <span>| Your Raiting: </span>
-            }
-            else
-            {
-                <span>| Your Raiting: -</span>
-            }
+        <div style="display:inline-block">          
+                <span>| Your Raiting: </span>           
         </div>
         <div style="display:inline-block;">
             @Html.Action("GetUserFacilityRating", "Ratings", new { id = Model.Id, area = "Facilities" })

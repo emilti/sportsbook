@@ -31,3 +31,8 @@
    color:royalblue;   
 }
 
+.user-rating-in-detailed-view {
+    display:inline-block;
+    width:120px
+}
+

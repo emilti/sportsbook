@@ -19,6 +19,20 @@ $(document).ready(function () {
         }
     }
 
+    function updateFacilityRating(starDivHolder, facilityId) {        
+        var boxHolder = starDivHolder.parent().parent().parent().parent().parent().children();
+        var overallRatingElements = $(boxHolder[3]).children();
+        var totalRatingContainer = $(overallRatingElements).children();
+        var totalRatingContainerElements = $(totalRatingContainer[1]).children();
+        var totalRatingElementContainer = $(totalRatingContainerElements[0]).children();
+        var spanContainer = totalRatingElementContainer[0];
+        //var spanContainerElements = $(spanContainer).children();
+        //var spanRating = $(spanContainerElements).html();
+        $.get("/Facilities/Ratings/GetFacilityRating", { id: facilityId}, function (data) {
+            $(spanContainer).text(data);
+        });
+    }
+
 
     $(".star-click").on("click", function (event) {
         var starDivHolder = $(this).parent();
@@ -29,7 +43,9 @@ $(document).ready(function () {
         $.post("/Facilities/Ratings/AddRating",
             { facilityId: facilityId, ratingValue: ratingValue }, function success(data, textStatus, jqXHR) {
                 starDivHolder.attr("rating-value", ratingValue);
-                setStars(starDivHolder);
+                setStars(starDivHolder);               
+                var facilityId = $(starDivHolder).attr("data-id");
+                updateFacilityRating(starDivHolder, facilityId)
             });
     });
 });

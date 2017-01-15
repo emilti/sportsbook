@@ -35,11 +35,7 @@
                             }
                         }
                     </div>
-                    <div class="user-rating-holder">
-                        @*@ @if (User.Identity.GetUserId() != null)
-                            {
-                               @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
-                            }*@
+                    <div class="user-rating-holder"> 
                         @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
                     </div>
                 </div>

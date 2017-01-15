@@ -31,6 +31,13 @@
         }
 
         [HttpGet]
+        public Decimal? GetFacilityRating(int id)
+        {
+            Facility facility = this.facilities.GetFacilityDetails(id);
+            return facility.Rating;
+        }
+
+        [HttpGet]
         public ActionResult AddRating(int id)
         {          
             return RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
