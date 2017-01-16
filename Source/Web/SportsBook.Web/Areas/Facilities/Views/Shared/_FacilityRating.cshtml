@@ -1,27 +1,41 @@
 ﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Ratings.FacilityRatingViewModel
+@using Microsoft.AspNet.Identity
 <div style="padding-top:5px;padding-bottom:0;padding-left:0;padding-right:0">
     @if (@Model != null)
-    {       
-    <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="@Model.RatingValue">
-        <span class="star-style star-click">☆</span>
-        <span class="star-style star-click">☆</span>
-        <span class="star-style star-click">☆</span>
-        <span class="star-style star-click">☆</span>
-        <span class="star-style star-click">☆</span>
-    </div>
+    {
+        <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="@Model.RatingValue">
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+            <span class="star-style star-click">☆</span>
+        </div>
     }
     else
     {
-        using (Html.BeginForm("AddRating", "Ratings", new { id = this.ViewBag.facilityId, area = "Facilities" }, FormMethod.Post))
+        if (User.Identity.GetUserId() != null)
         {
             <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
-                <span class="star-style">☆</span>
-                <span class="star-style">☆</span>
-                <span class="star-style">☆</span>
-                <span class="star-style">☆</span>
-                <span class="star-style">☆</span>
+                <span class="star-style star-click">☆</span>
+                <span class="star-style star-click">☆</span>
+                <span class="star-style star-click">☆</span>
+                <span class="star-style star-click">☆</span>
+                <span class="star-style star-click">☆</span>
             </div>
-        <input class="rating-submit-button" type="submit" value="aa"/>
+        }
+        else
+        {
+            using (Html.BeginForm("AddRating", "Ratings", new { id = this.ViewBag.facilityId, area = "Facilities" }, FormMethod.Post))
+            {
+                <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
+                    <span class="star-style">☆</span>
+                    <span class="star-style">☆</span>
+                    <span class="star-style">☆</span>
+                    <span class="star-style">☆</span>
+                    <span class="star-style">☆</span>
+                </div>
+                <input class="rating-submit-button" type="submit" value="aa" />
+            }
         }
     }
 </div>
