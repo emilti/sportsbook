@@ -121,7 +121,7 @@ h1, h2 {
 .details-caption-holder:hover  .details-caption{
     opacity:1;
     font-size:20px;  
-    left:45px;
+    left:47px;
 }
 
 .caption:hover .details-caption-holder {
@@ -130,7 +130,7 @@ h1, h2 {
 
 .details-caption-holder:hover{
     display:inline-block;
-    opacity:1;
+    opacity:0.95;
 }
 
 
