@@ -11,7 +11,7 @@
 .favorites-button {
     background: url('../Content/images/add-to-favorites.png');
     margin-top: 20px;
-    margin-left: 5px;
+    margin-left: 0;
     display: inline-block;
     width: 30px;
     height: 30px;
