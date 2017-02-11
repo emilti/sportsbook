@@ -14,7 +14,7 @@
     public class SportsBookDbContext : IdentityDbContext<AppUser>
     {
         public SportsBookDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Sportsbook", throwIfV1Schema: false)
         {
         }
 
