@@ -36,6 +36,13 @@
         }
 
         [HttpGet]
+        public string GetFacilityName(int id)
+        {
+            Facility foundFacility = this.facilities.GetFacilityDetails(id);
+            return foundFacility.Name;
+        }
+
+        [HttpGet]
         public ActionResult SearchFacilities(FacilitiesListViewModel model, int id = 0)
         {
            if (model.CurrentPage == 0)

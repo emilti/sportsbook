@@ -16,7 +16,7 @@ $(document).ready(function () {
                 $(childrenStars[j]).html("&#9733;");
                 $(childrenStars[j]).css("color", "aqua");
             }
-        }
+        }        
     }
 
     function updateFacilityRating(starDivHolder, facilityId) {        
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     $(".star-click").on("click", function (event) {
         var starDivHolder = $(this).parent();
-        var facilityId = $(this).parent().attr("data-id");
+        var facilityId = $(this).parent().attr("data-id");       
         var clickedStar = $(event.target);
         var previousElements = clickedStar.nextAll();
         var ratingValue = previousElements.length + 1;
@@ -45,7 +45,12 @@ $(document).ready(function () {
                 starDivHolder.attr("rating-value", ratingValue);
                 setStars(starDivHolder);               
                 var facilityId = $(starDivHolder).attr("data-id");
+                
                 updateFacilityRating(starDivHolder, facilityId)
             });
+
+        $.get("/Facilities/FacilitiesPublic/GetFacilityName", { id: facilityId }, function (data) {
+            alertify.success("You rated " + data + " with " + ratingValue + " stars.");            
+        });
     });
 });
