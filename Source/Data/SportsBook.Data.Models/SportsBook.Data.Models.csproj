@@ -89,8 +89,6 @@
   <ItemGroup>
     <Compile Include="AppUser.cs" />
     <Compile Include="City.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="EventComment.cs" />
     <Compile Include="Facility.cs" />
     <Compile Include="FacilityComment.cs" />
     <Compile Include="FacilityRating.cs" />

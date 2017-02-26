@@ -203,23 +203,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminAppUsersController.cs" />
-    <Compile Include="Areas\Administration\Controllers\AdminEventsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilitiesController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminFacilityCommentsController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminSportCategoriesController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AppUserGridViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModels\EventGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityCommentGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\FacilityGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
-    <Compile Include="Areas\Events\Controllers\EventsPrivateController.cs" />
-    <Compile Include="Areas\Events\Controllers\EventsPublicController.cs" />
-    <Compile Include="Areas\Events\Controllers\FavoriteEventsController.cs" />
-    <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
-    <Compile Include="Areas\Events\ViewModels\EventsModels\EventChangeViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\EventsModels\EventDetailedViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\EventsModels\EventViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\PageableEventList\EventsListViewModel.cs" />
     <Compile Include="Areas\Facilities\Controllers\RatingsController.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
     <Compile Include="Areas\Facilities\ViewModels\Ratings\FacilityRatingViewModel.cs" />
@@ -396,15 +386,6 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\AppUserGridViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\AdminFacilityComments\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityCommentGridViewModel.cshtml" />
-    <Content Include="Areas\Events\Views\web.config" />
-    <Content Include="Areas\Events\Views\EventsPrivate\AddEvent.cshtml" />
-    <Content Include="Areas\Events\Views\EventsPrivate\EditEvent.cshtml" />
-    <Content Include="Areas\Events\Views\Shared\_EventChangePartial.cshtml" />
-    <Content Include="Areas\Events\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Events\Views\EventsPublic\EventDetails.cshtml" />
-    <Content Include="Areas\Events\Views\EventsPublic\SearchEvents.cshtml" />
-    <Content Include="Areas\Events\Views\Shared\_EventInFavourites.cshtml" />
-    <Content Include="Areas\Administration\Views\AdminEvents\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
@@ -475,13 +456,11 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
     <Content Include="Views\Shared\_EventPartial.cshtml" />
-    <Content Include="Views\Shared\_GetFavoriteEvents.cshtml" />
     <Content Include="Views\Users\SearchUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Facilities\Views\Ratings\" />
-    <Folder Include="Views\AdminEvents\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

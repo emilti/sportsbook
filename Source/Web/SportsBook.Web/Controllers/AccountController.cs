@@ -12,8 +12,7 @@
     using Microsoft.Owin.Security;
     using Services.Data.Contracts;
     using SportsBook.Data.Models;
-    using SportsBook.Web.ViewModels.Account;
-    using Areas.Events.ViewModels.EventsModels;
+    using SportsBook.Web.ViewModels.Account;    
 
     [Authorize]
     public class AccountController : BaseController
@@ -490,18 +489,7 @@
             foundFacilities = this.users.GetFavoriteFacilitiesForUser(currentUser).OrderBy(x => x.Name).ToList();
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
-        }
-
-        public ActionResult GetFavoriteEvents(string id)
-        {
-            List<Event> foundEvents = new List<Event>();
-            List<EventViewModel> foundEventsToView = new List<EventViewModel>();
-            AppUser currentUser = this.users.GetUserDetails(id);
-
-            foundEvents = this.users.GetFavoriteEventsForUser(currentUser).OrderBy(x => x.Name).ToList();
-            foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
-            return this.PartialView("_GetFavoriteEvents", foundEventsToView);
-        }
+        }      
 
         public ActionResult GetSubmittedFacilities(string id)
         {
@@ -513,17 +501,7 @@
             foundFacilitiesToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<FacilityViewModel>>(foundFacilities);
             return this.PartialView("_GetFavoriteFacilities", foundFacilitiesToView);
         }
-
-        public ActionResult GetSubmittedEvents(string id)
-        {
-            List<Event> foundEvents = new List<Event>();
-            List<EventViewModel> foundEventsToView = new List<EventViewModel>();
-            AppUser currentUser = this.users.GetUserDetails(id);
-
-            foundEvents = this.users.GetSubmittedEventsForUser(currentUser).OrderBy(x => x.Name).ToList();
-            foundEventsToView = AutoMapperConfig.Configuration.CreateMapper().Map<List<EventViewModel>>(foundEvents);
-            return this.PartialView("_GetFavoriteEvents", foundEventsToView);
-        }
+      
 
         public ActionResult ViewAccount(string id)
         {

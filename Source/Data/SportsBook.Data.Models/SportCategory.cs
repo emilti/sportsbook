@@ -7,9 +7,7 @@
 
     public class SportCategory : BaseModel<int>
     {
-        private ICollection<Facility> facilities;
-
-        private ICollection<Event> events;
+        private ICollection<Facility> facilities;       
 
         public SportCategory()
         {
@@ -32,12 +30,6 @@
         {
             get { return this.facilities; }
             set { this.facilities = value; }
-        }
-
-        public virtual ICollection<Event> Events
-        {
-            get { return this.events; }
-            set { this.events = value; }
         }
     }
 }

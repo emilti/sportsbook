@@ -18,22 +18,14 @@
 
         public string NumberofFavoritesFacilities { get; set; }
 
-        public string NumberofFavoriteEvents { get; set; }
-
         public string NumberofSubmittedFacilities { get; set; }
-
-        public string NumberOfSubmittedEvents { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<AppUser, AppUserViewModel>()
-                .ForMember(x => x.NumberofFavoritesFacilities, opt => opt.MapFrom(x => x.FavoriteFacilities.Count));
+                .ForMember(x => x.NumberofFavoritesFacilities, opt => opt.MapFrom(x => x.FavoriteFacilities.Count));           
             configuration.CreateMap<AppUser, AppUserViewModel>()
-                .ForMember(x => x.NumberofFavoriteEvents, opt => opt.MapFrom(x => x.FavoriteEvents.Count));
-            configuration.CreateMap<AppUser, AppUserViewModel>()
-               .ForMember(x => x.NumberofSubmittedFacilities, opt => opt.MapFrom(x => x.SubmittedFacilities.Count));
-            configuration.CreateMap<AppUser, AppUserViewModel>()
-                .ForMember(x => x.NumberOfSubmittedEvents, opt => opt.MapFrom(x => x.SubmittedEvents.Count));
+               .ForMember(x => x.NumberofSubmittedFacilities, opt => opt.MapFrom(x => x.SubmittedFacilities.Count));           
         }
     }
 }

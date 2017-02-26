@@ -110,22 +110,6 @@
                                         <li>@Html.ActionLink("Тенис", "SearchFacilities", "FacilitiesPublic", new { area = "Facilities", id = 6 }, null)</li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#">Спортни Събития<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li>@Html.ActionLink("Добави Събитие", "AddEvent", "EventsPrivate", new { area = "Events" }, null)</li>
-                                        <li>@Html.ActionLink("Всички", "SearchEvents", "EventsPublic", new { area = "Events", id = 0 }, null)</li>
-                                        <li>@Html.ActionLink("Футбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 1 }, null)</li>
-                                        <li>@Html.ActionLink("Волейбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 2 }, null)</li>
-                                        <li>@Html.ActionLink("Баскетбол", "SearchEvents", "EventsPublic", new { area = "Events", id = 3 }, null)</li>
-                                        <li>@Html.ActionLink("Фитнес", "SearchEvents", "EventsPublic", new { area = "Events", id = 4 }, null)</li>
-                                        <li>@Html.ActionLink("Плуване", "SearchEvents", "EventsPublic", new { area = "Events", id = 5 }, null)</li>
-                                        <li>@Html.ActionLink("Тенис", "SearchEvents", "EventsPublic", new { area = "Events", id = 6 }, null)</li>
-                                    </ul>
-                                </li>
-
-
-
                                 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                 {
                                     <li class="dropdown">
@@ -186,10 +170,6 @@
             @RenderSection("Scripts", required: false)
    
 <script src="~/Scripts/favorites-controller.js"></script>
-    <script>
-        function standBy(id) {
-            $('#image-container-' + id).attr('src', 'http://naxcore.com/wp-content/themes/Artificial-Reason-WP/img/no_image.png')
-        }
-    </script>
+    
 </body>
 </html>

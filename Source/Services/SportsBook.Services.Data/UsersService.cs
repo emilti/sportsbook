@@ -40,16 +40,6 @@
             return user.SubmittedFacilities.AsQueryable();
         }
 
-        public IQueryable<Event> GetFavoriteEventsForUser(AppUser user)
-        {
-            return user.FavoriteEvents.AsQueryable();
-        }
-
-        public IQueryable<Event> GetSubmittedEventsForUser(AppUser user)
-        {
-            return user.SubmittedEvents.AsQueryable();
-        }
-
         public IQueryable<AppUser> All()
         {
             return this.users.All();

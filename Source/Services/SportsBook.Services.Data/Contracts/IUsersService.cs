@@ -17,11 +17,7 @@
 
         IQueryable<Facility> GetFavoriteFacilitiesForUser(AppUser user);
 
-        IQueryable<Facility> GetSubmittedFacilitiesForUser(AppUser user);
-
-        IQueryable<Event> GetFavoriteEventsForUser(AppUser user);
-
-        IQueryable<Event> GetSubmittedEventsForUser(AppUser user);
+        IQueryable<Facility> GetSubmittedFacilitiesForUser(AppUser user);      
 
         void Remove(AppUser appUser);
 

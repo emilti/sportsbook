@@ -62,27 +62,15 @@
 }
 
 <div id="show-favorite-facilities-button" class="btn btn-primary">Харесани спортни обекти</div>
-<div id="show-favorite-events-button" class="btn btn-primary">Събития, на които ще присъствам</div>
 <div id="show-submitted-facilities-button" class="btn btn-primary">Създадени страници за спортни обекти</div>
-<div id="show-submitted-events-button" class="btn btn-primary">Създадени събития</div>
 
 <script id="favorite-facilities-template"  type="text/template">
 @Html.Action("GetFavoriteFacilities", "Account")
 </script>
 
-<script id="favorite-events-template"  type="text/template">
-@Html.Action("GetFavoriteEvents", "Account")
-</script>
-
 <script id="submitted-facilities-template"  type="text/template">
 @Html.Action("GetSubmittedFacilities", "Account")
 </script>
-
-<script id="submitted-events-template"  type="text/template">
-@Html.Action("GetSubmittedEvents", "Account")
-</script>
-
-
 <div id="view-content"></div>
 
 
@@ -110,31 +98,7 @@
                     $("#show-submitted-events-button").removeClass("btn-success");
                     $("#show-submitted-events-button").addClass("btn-primary");
                 }  
-            }
-
-            $("#show-favorite-events-button").on("click", function () { showContent2() });
-            function showContent2() {
-                $("#show-favorite-events-button").addClass("btn-success");
-                $("#show-favorite-events-button").removeClass("btn-primary");
-                var showTemplate = $('#favorite-events-template').html();
-                $("#view-content").empty()
-                $("#view-content").html(showTemplate)
-
-                if ($("#show-favorite-facilities-button").hasClass("btn-success")) {
-                    $("#show-favorite-facilities-button").removeClass("btn-success");
-                    $("#show-favorite-facilities-button").addClass("btn-primary");
-                }
-
-                if ($("#show-submitted-facilities-button").hasClass("btn-success")) {
-                    $("#show-submitted-facilities-button").removeClass("btn-success");
-                    $("#show-submitted-facilities-button").addClass("btn-primary");
-                }
-
-                if ($("#show-submitted-events-button").hasClass("btn-success")) {
-                    $("#show-submitted-events-button").removeClass("btn-success");
-                    $("#show-submitted-events-button").addClass("btn-primary");
-                }
-            }
+            }            
 
             $("#show-submitted-facilities-button").on("click", function () { showContent3() });
             function showContent3() {
@@ -158,31 +122,7 @@
                     $("#show-submitted-events-button").removeClass("btn-success");
                     $("#show-submitted-events-button").addClass("btn-primary");
                 }
-            }
-
-            $("#show-submitted-events-button").on("click", function () { showContent4() });
-            function showContent4() {
-                $("#show-submitted-events-button").addClass("btn-success");
-                $("#show-submitted-events-button").removeClass("btn-primary");
-                var showTemplate = $('#submitted-events-template').html();
-                $("#view-content").empty()
-                $("#view-content").html(showTemplate)
-
-                if ($("#show-favorite-facilities-button").hasClass("btn-success")) {
-                    $("#show-favorite-facilities-button").removeClass("btn-success");
-                    $("#show-favorite-facilities-button").addClass("btn-primary");
-                }
-
-                if ($("#show-favorite-events-button").hasClass("btn-success")) {
-                    $("#show-favorite-events-button").removeClass("btn-success");
-                    $("#show-favorite-events-button").addClass("btn-primary");
-                }
-
-                if ($("#show-submitted-facilities-button").hasClass("btn-success")) {
-                    $("#show-submitted-facilities-button").removeClass("btn-success");
-                    $("#show-submitted-facilities-button").addClass("btn-primary");
-                }
-            }          
+            }  
         });
 </script>
 }
