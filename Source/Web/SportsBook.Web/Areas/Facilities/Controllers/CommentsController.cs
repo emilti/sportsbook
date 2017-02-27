@@ -34,9 +34,8 @@
         }
 
         [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddComment(int id, CommentViewModel model)
+        [Authorize]      
+        public void AddComment(int id, string content)
         {
             if (this.ModelState.IsValid)
             {
@@ -44,11 +43,11 @@
                 Facility commentedFacility = this.facilities.GetFacilityDetails(id);
                 AppUser user = this.users.GetUserDetails(this.User.Identity.GetUserId());
                 string username = user.UserName;
-                var comment = this.comments.Add(id, model.Content, this.User.Identity.GetUserId(), username, commentedFacility, user.Avatar);
-                return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
+                var comment = this.comments.Add(id, content, this.User.Identity.GetUserId(), username, commentedFacility, user.Avatar);
+                // return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
             }
 
-            return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
+            // return this.RedirectToAction("FacilityDetails", "FacilitiesPublic", new { id = id, area = "Facilities" });
         }
 
         [HttpGet]

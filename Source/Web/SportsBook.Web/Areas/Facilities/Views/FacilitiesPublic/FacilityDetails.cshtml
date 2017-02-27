@@ -22,10 +22,10 @@
                 {
                     <input class="favorites-submit-button" type="submit" value="aa" />
                 }
-            }http://localhost:2509/Facilities/Comments/AddComment/7
+            }
         </div>
         <div>
-            
+
         </div>
 
     </div>
@@ -58,7 +58,7 @@
             <span style="font-size:15px">| -</span>
         }
         /5
-        
+
         | @Model.VotesCount
         @if (Model.VotesCount == 1)
         {
@@ -69,8 +69,8 @@
             <span>votes</span>
         }
 
-        <div style="display:inline-block">          
-                <span>| Your Raiting: </span>           
+        <div style="display:inline-block">
+            <span>| Your Raiting: </span>
         </div>
         <div style="display:inline-block;">
             @Html.Action("GetUserFacilityRating", "Ratings", new { id = Model.Id, area = "Facilities" })
@@ -97,7 +97,6 @@
     <div class="col-md-offset-5 col-md-3">
         <button id="show-comments-button" class="btn btn-primary">Show Comments</button>
         <button id="hide-comments-button" class="btn btn-danger" style="display:none">Hide Comments</button>
-        <button class="add-comment-button btn btn-primary">Add comment</button>
         @*Html.ActionLink("Add Comment", "AddComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-primary" })*@
     </div>
     <div class="col-md-4">
@@ -108,15 +107,20 @@
     </div>
 </div>
 
-<div class="add-comment-container" style="display:none">
-    <textarea class="add-comment-box" placeholder="Add Comment"></textarea>
-    <button class="submit-comment-button btn btn-primary">Add comment</button>
-</div>
-
 <div style="height:10px;clear:both;"></div>
+<div class="row">
+    <div class="col-md-offset-2 panel panel-default col-md-8">
+        <div class="add-comment-container">
+            <textarea class="add-comment-box" placeholder="Add Comment" name="Content"></textarea>
+            <button class="submit-comment-button btn btn-primary" data-id="@Model.Id">Add comment</button>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
 <div id="comments-part"></div>
 
 <script id="comments-template" type="text/template">
+    
     @foreach (var comment in Model.FacilityComments)
     {
         if (comment.IsDeleted == false)
@@ -133,7 +137,6 @@
                         <div class="col-md-9">
                             @comment.Content
                         </div>
-
                     </div>
                     @if (User.Identity.GetUserId() == @comment.AuthorId)
                     {
@@ -181,20 +184,7 @@
 }
 
 @section AddCommentSection{
-    <script>
-        $(".add-comment-button").on("click", function () { addComment() });
-        function addComment() {
-            $(".add-comment-container").css("display", "inline-block");        
-           
-        }
-
-        $(".submit-comment-button").on("click", function () {              
-            $(".add-comment-container").css("display", "none");
-        });
-
-      
-      
-    </script>
+    <script src="~/Scripts/comments-controller.js"></script>
 }
 
 @section Scripts {
