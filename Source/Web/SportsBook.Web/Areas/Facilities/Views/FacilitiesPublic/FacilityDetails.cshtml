@@ -110,9 +110,11 @@
 <div style="height:10px;clear:both;"></div>
 <div class="row">
     <div class="col-md-offset-2 panel panel-default col-md-8">
-        <div class="add-comment-container">
-            <textarea class="add-comment-box" placeholder="Add Comment" name="Content"></textarea>
-            <button class="submit-comment-button btn btn-primary" data-id="@Model.Id">Add comment</button>
+        <div class="add-comment-container" style="padding:1%;">
+            <textarea class="add-comment-box" placeholder="Add Comment" name="Content" style="width:500px"></textarea>
+            <div>
+                <button class="submit-comment-button btn btn-primary" data-id="@Model.Id">Add comment</button>
+            </div>
         </div>
     </div>
     <div class="col-md-2"></div>
@@ -120,7 +122,7 @@
 <div id="comments-part"></div>
 
 <script id="comments-template" type="text/template">
-    
+
     @foreach (var comment in Model.FacilityComments)
     {
         if (comment.IsDeleted == false)
