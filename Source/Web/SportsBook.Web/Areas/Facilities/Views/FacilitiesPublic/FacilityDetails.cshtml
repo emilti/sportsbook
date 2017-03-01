@@ -106,25 +106,23 @@
         }
     </div>
 </div>
-
 <div style="height:10px;clear:both;"></div>
-<div class="row">
-    <div class="col-md-offset-2 panel panel-default col-md-8">
-        <div class="add-comment-container" style="padding:1%;">
-            <textarea class="add-comment-box" placeholder="Add Comment" name="Content" style="width:500px"></textarea>
-            <div>
-                <button class="submit-comment-button btn btn-primary" data-id="@Model.Id">Add comment</button>
-            </div>
+<div id="comments-part">
+    <div class="row">
+        <div class="col-md-offset-2 panel panel-default col-md-8 add-comment-container">           
+                <textarea class="add-comment-textarea" placeholder="Add Comment" name="Content"></textarea>
+                <div>
+                    <button class="submit-comment-button btn btn-primary" data-id="@Model.Id">Add comment</button>
+                </div>
+          
         </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-2"></div>
-</div>
-<div id="comments-part"></div>
-
-<script id="comments-template" type="text/template">
 
     @foreach (var comment in Model.FacilityComments)
     {
+
+
         if (comment.IsDeleted == false)
         {
             <div class="row">
@@ -163,80 +161,88 @@
             </div>
         }
     }
-</script>
+
+</div>
 
 
-@section ToggleCommentsSection{
-    <script>
-        $("#show-comments-button").on("click", function () { showComments() });
-        function showComments() {
-            $("#show-comments-button").css("display", "none")
-            var ShowCommentsTemplate = $('#comments-template').html();
-            $("#comments-part").html(ShowCommentsTemplate)
-            $("#hide-comments-button").css("display", "inline-block")
-        }
 
-        $("#hide-comments-button").on("click", function () { hideComments() });
-        function hideComments() {
-            $("#hide-comments-button").css("display", "none")
-            $("#comments-part").empty();
-            $("#show-comments-button").css("display", "inline-block")
-        }
-    </script>
-}
 
-@section AddCommentSection{
-    <script src="~/Scripts/comments-controller.js"></script>
-}
 
-@section Scripts {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            Initialize();
-        });
 
-        function Initialize() {
-            var markersArray = [];
 
-            google.maps.visualRefresh = true;
-            var myLatlng = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
-            var mapOptions = {
-                zoom: 14,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    @section ToggleCommentsSection{
+        <script>
+            $("#show-comments-button").on("click", function () { showComments() });
+            function showComments() {
+                $("#show-comments-button").css("display", "none")
+                // var commentsTemplate = $('#comments-template').html();
+                $("#comments-part").css("display", "inline-block")
+                $("#hide-comments-button").css("display", "inline-block")
+                // var eventsCommentsTemplate = $('#events-comments-template').html();
 
-            var marker = new google.maps.Marker({
-                draggable: true,
-                position: myLatlng,
-                map: map,
-                title: 'Посочен адрес'
-            });
-
-            var geocoder = new google.maps.Geocoder;
-
-            geocodeLatLng(geocoder, map);
-
-            function geocodeLatLng(geocoder, map) {
-                var latlng = {lat: @Model.Latitude, lng: @Model.Longitude};
-                geocoder.geocode({'location': latlng}, function(results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                        if (results[1]) {
-                            console.log(results[1]);
-                            $('#address').html(results[1].formatted_address);
-                        } else {
-                            window.alert('No results found');
-                        }
-                    } else {
-                        window.alert('Geocoder failed due to: ' + status);
-                    }
-                });
             }
 
-        }
-    </script>
-}
+            $("#hide-comments-button").on("click", function () { hideComments() });
+            function hideComments() {
+                $("#hide-comments-button").css("display", "none")
+                $("#comments-part").css("display", "none")
+                $("#show-comments-button").css("display", "inline-block")
+            }
+        </script>
+    }
+
+    @section AddCommentSection{
+        <script src="~/Scripts/comments-controller.js"></script>
+    }
+
+    @section Scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Initialize();
+            });
+
+            function Initialize() {
+                var markersArray = [];
+
+                google.maps.visualRefresh = true;
+                var myLatlng = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
+                var mapOptions = {
+                    zoom: 14,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                };
+                var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                var marker = new google.maps.Marker({
+                    draggable: true,
+                    position: myLatlng,
+                    map: map,
+                    title: 'Посочен адрес'
+                });
+
+                var geocoder = new google.maps.Geocoder;
+
+                geocodeLatLng(geocoder, map);
+
+                function geocodeLatLng(geocoder, map) {
+                    var latlng = {lat: @Model.Latitude, lng: @Model.Longitude};
+                    geocoder.geocode({'location': latlng}, function(results, status) {
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            if (results[1]) {
+                                console.log(results[1]);
+                                $('#address').html(results[1].formatted_address);
+                            } else {
+                                window.alert('No results found');
+                            }
+                        } else {
+                            window.alert('Geocoder failed due to: ' + status);
+                        }
+                    });
+                }
+
+            }
+        </script>
+    }
 
 
 

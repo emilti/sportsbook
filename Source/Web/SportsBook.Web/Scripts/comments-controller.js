@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {  
+﻿// $(document).ready(function () {  
     $(".submit-comment-button").on("click", function (event) {
         var id = $(this).attr("data-id"),
         commentBoxes = $(".add-comment-box"),
@@ -14,4 +14,4 @@
              alertify.success("You commented.")
            });
     })
-});
+// });

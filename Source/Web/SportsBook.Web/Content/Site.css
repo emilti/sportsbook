@@ -53,6 +53,12 @@ textarea {
     padding-right:10px
 }
 
+#comments-part{
+    display:none;
+    width:100%
+}
+
+
 .address-field{   
     margin-top:5%;
 }
@@ -65,4 +71,13 @@ div>.panel-comment{
 .object-info{
     padding-left:0;
     padding-right:0;
+}
+
+.add-comment-container{
+   padding:1%
+}
+
+.add-comment-textarea{
+    max-width: 100%;
+    width:100%
 }
