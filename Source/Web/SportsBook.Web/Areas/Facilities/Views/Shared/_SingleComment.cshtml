@@ -1,0 +1,34 @@
+﻿@model SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel
+@using Microsoft.AspNet.Identity
+
+<div class="col-md-offset-2 panel panel-default col-md-8 panel-comment">
+    <div class="panel-heading">
+        <strong>@Model.AuthorName</strong><span class="text-muted pull-right">@Html.DisplayFor(m => @Model.CreatedOn, "DateTimeTemplate")</span>
+    </div>
+    <div class="panel-body row">
+        <div class="col-md-1"><img src=@Model.Author.Avatar width="100" height="100"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            @Model.Content
+        </div>
+    </div>
+    @if (User.Identity.GetUserId() == @Model.AuthorId)
+    {
+        <div class="row comments-bottom">
+            <div class="col-md-offset-9 col-md-3 btn-group">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9 btn-group">
+                        @Html.ActionLink("Edit", "EditComment", "Comments", new { area = "Facilities", id = Model.Id }, new { @class = "btn btn-warning" })
+                        @using (Html.BeginForm("DeleteComment", "Comments", new { area = "Facilities", id = Model.Id }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" class="btn btn-danger" value="Delete" />
+                            @*@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger"})*@
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="col-md-2"></div>

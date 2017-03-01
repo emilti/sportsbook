@@ -1,7 +1,7 @@
 ﻿// $(document).ready(function () {  
     $(".submit-comment-button").on("click", function (event) {
         var id = $(this).attr("data-id"),
-        commentBoxes = $(".add-comment-box"),
+        commentBoxes = $(".add-comment-textarea"),
         commentBox,
         content;
         if (commentBoxes.length > 0) {
