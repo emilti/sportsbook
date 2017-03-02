@@ -118,13 +118,14 @@
         </div>
         <div class="col-md-2"></div>
     </div>
+    <div id="latest-comment-container"></div>
 
     @foreach (var comment in Model.FacilityComments)
     {
         if (comment.IsDeleted == false)
         {
             <div class="row">
-                <!--div class="col-md-offset-2 panel panel-default col-md-8 panel-comment">
+                <div class="col-md-offset-2 panel panel-default col-md-8 panel-comment">
                     <div class="panel-heading">
                         <strong>@comment.AuthorName</strong><span class="text-muted pull-right">@Html.DisplayFor(m => comment.CreatedOn, "DateTimeTemplate")</span>
                     </div>
@@ -153,17 +154,16 @@
                             </div>
                         </div>
                     }
-                </div-->
-                <!--div class="col-md-2"></div-->
-                @{
-                    var commentViewModel = SportsBook.Web.Infrastructure.Mapping.AutoMapperConfig.Configuration.CreateMapper().Map<SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel>(comment);
-                    @Html.Partial("_SingleComment", commentViewModel)
-                }
+                </div>
+                <div class="col-md-2"></div>
+
             </div>
 
         }
     }
 </div>
+
+
 
 
 

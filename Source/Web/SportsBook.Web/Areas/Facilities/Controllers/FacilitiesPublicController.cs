@@ -36,6 +36,12 @@
         }
 
         [HttpGet]
+        public ActionResult RedirectToLatestGetCommentAction(int id)
+        {
+            return this.RedirectToAction("GetLatestComment", "Comments", new { area = "Facilities", id = id });
+        }
+
+        [HttpGet]
         public string GetFacilityName(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);

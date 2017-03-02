@@ -59,8 +59,7 @@
             return this.View(foundCommentForView);
         }
 
-        [HttpGet]
-        [Authorize]
+        [HttpGet]       
         public ActionResult GetLatestComment(int id)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
