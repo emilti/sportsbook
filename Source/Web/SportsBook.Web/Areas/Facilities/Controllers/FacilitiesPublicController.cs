@@ -10,6 +10,8 @@
     using ViewModels.Facilities;
     using ViewModels.PageableFacilityList;
     using Web.Controllers;
+    using SportsBook.Web.Areas.Facilities.ViewModels.Comments;
+    using SportsBook.Web.Areas.Facilities.ViewModels.PageableComments;
 
     public class FacilitiesPublicController : BaseController
     {
@@ -36,9 +38,23 @@
         }
 
         [HttpGet]
-        public ActionResult RedirectToLatestGetCommentAction(int id)
+        public ActionResult RedirectToGetLastComment(int id)
         {
-            return this.RedirectToAction("GetLatestComment", "Comments", new { area = "Facilities", id = id });
+            return this.RedirectToAction("GetLastComment", "Comments", new { area = "Facilities", id = id });
+        }
+
+        [HttpGet]
+        public ActionResult RedirectToGetLatestComments(int id)
+        {
+            //return this.RedirectToAction("GetLatestComment", "Comments", new { area = "Facilities", id = id });
+            Facility foundFacility = this.facilities.GetFacilityDetails(id);
+            foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
+            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
+            CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
+            commentsListViewModel.Comments = commentsViewModel.Take(5).ToList();
+            CommentViewModel test = commentsListViewModel.Comments.ToList()[0];
+            // return this.PartialView("_SingleCommentPartial", test);
+            return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
         }
 
         [HttpGet]

@@ -212,6 +212,7 @@
     <Compile Include="Areas\Administration\ViewModels\SportCategoryGridViewModel.cs" />
     <Compile Include="Areas\Facilities\Controllers\RatingsController.cs" />
     <Compile Include="Areas\Facilities\FacilitiesAreaRegistration.cs" />
+    <Compile Include="Areas\Facilities\ViewModels\PageableComments\CommentsListViewModel.cs" />
     <Compile Include="Areas\Facilities\ViewModels\Ratings\FacilityRatingViewModel.cs" />
     <Compile Include="Areas\Facilities\ViewModels\Ratings\UnregisteredUserRatingViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -390,6 +391,7 @@
     <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_SingleCommentPartial.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_PageableCommentsPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\comments-controller.js" />
     <Content Include="Scripts\favorites-controller.js" />

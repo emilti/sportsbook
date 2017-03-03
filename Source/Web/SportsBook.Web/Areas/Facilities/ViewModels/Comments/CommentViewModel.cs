@@ -25,6 +25,8 @@ using System;
 
         public virtual AppUser Author { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<FacilityComment, CommentViewModel>();

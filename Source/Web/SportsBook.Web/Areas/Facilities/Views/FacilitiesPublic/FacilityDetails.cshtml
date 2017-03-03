@@ -117,41 +117,26 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-    <div id="latest-comments-container" class="row"></div>
-    @foreach (var comment in Model.FacilityComments)
-    {
-        if (comment.IsDeleted == false)
+    <div id="latest-comments-container" class="row">
+
+    </div>
+    
+    <div id="comments-container" data-id="@Model.Id"></div>
+   
+       @*@ @foreach (var comment in Model.FacilityComments)
         {
-            <div class="row">               
-                @{
-                    var commentViewModel = SportsBook.Web.Infrastructure.Mapping.AutoMapperConfig.Configuration.CreateMapper().Map<SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel>(comment);
-                    @Html.Partial("_SingleCommentPartial", commentViewModel)
-                }
-            </div>
-        }
-    }
+           @Html.Action("RedirectToGetLatestComments", "FacilitiesPublic", new { area = "Facilities", id = Model.Id })
+            if (comment.IsDeleted == false)
+            {
+                <div class="row">
+                    @{
+                        var commentViewModel = SportsBook.Web.Infrastructure.Mapping.AutoMapperConfig.Configuration.CreateMapper().Map<SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel>(comment);
+                        @Html.Partial("_SingleCommentPartial", commentViewModel)
+                    }
+                </div>
+            }
+        }*@
 </div>
-
-@section ToggleComments{
-    <script>
-        $("#show-comments-button").on("click", function () { showComments() });
-        function showComments() {
-            $("#show-comments-button").css("display", "none")
-            // var commentsTemplate = $('#comments-template').html();
-            $("#comments-part").css("display", "inline-block")
-            $("#hide-comments-button").css("display", "inline-block")
-            // var eventsCommentsTemplate = $('#events-comments-template').html();
-
-        }
-
-        $("#hide-comments-button").on("click", function () { hideComments() });
-        function hideComments() {
-            $("#hide-comments-button").css("display", "none")
-            $("#comments-part").css("display", "none")
-            $("#show-comments-button").css("display", "inline-block")
-        }
-    </script>
-}
 
 @section AddComment{
     <script src="~/Scripts/comments-controller.js"></script>

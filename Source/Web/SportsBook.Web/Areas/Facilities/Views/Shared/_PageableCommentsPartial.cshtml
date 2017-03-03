@@ -1,0 +1,13 @@
+﻿@model SportsBook.Web.Areas.Facilities.ViewModels.PageableComments.CommentsListViewModel
+
+@foreach(var comment in Model.Comments)
+    {
+        if (comment.IsDeleted == false)
+        {
+            <div class="row">
+                @{
+                    @Html.Partial("_SingleCommentPartial", comment)
+                }
+            </div>
+    }
+}
