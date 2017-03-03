@@ -125,14 +125,14 @@
             <div class="row">               
                 @{
                     var commentViewModel = SportsBook.Web.Infrastructure.Mapping.AutoMapperConfig.Configuration.CreateMapper().Map<SportsBook.Web.Areas.Facilities.ViewModels.Comments.CommentViewModel>(comment);
-                    @Html.Partial("_SingleComment", commentViewModel)
+                    @Html.Partial("_SingleCommentPartial", commentViewModel)
                 }
             </div>
         }
     }
 </div>
 
-@section ToggleCommentsSection{
+@section ToggleComments{
     <script>
         $("#show-comments-button").on("click", function () { showComments() });
         function showComments() {
@@ -153,11 +153,11 @@
     </script>
 }
 
-@section AddCommentSection{
+@section AddComment{
     <script src="~/Scripts/comments-controller.js"></script>
 }
 
-@section Scripts {
+@section GoogleMapsSettings{
     <script type="text/javascript">
         $(document).ready(function () {
             Initialize();

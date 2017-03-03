@@ -389,7 +389,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
-    <Content Include="Areas\Facilities\Views\Shared\_SingleComment.cshtml" />
+    <Content Include="Areas\Facilities\Views\Shared\_SingleCommentPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\comments-controller.js" />
     <Content Include="Scripts\favorites-controller.js" />

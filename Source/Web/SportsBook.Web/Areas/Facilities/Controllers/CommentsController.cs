@@ -65,7 +65,7 @@
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             FacilityComment latestFacilityComment = foundFacility.FacilityComments.Last();
             CommentViewModel latestFacilityCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<CommentViewModel>(latestFacilityComment);
-            return this.PartialView("_SingleComment", latestFacilityCommentForView);
+            return this.PartialView("_SingleCommentPartial", latestFacilityCommentForView);
         }
 
         [HttpPost]

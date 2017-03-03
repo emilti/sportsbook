@@ -165,9 +165,10 @@
             @*@Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
-            @RenderSection("ToggleCommentsSection", required: false);
-            @RenderSection("AddCommentSection", required: false);
+            @RenderSection("ToggleComments", required: false);
+            @RenderSection("AddComment", required: false);
             @RenderSection("accountContent", required: false); 
+            @RenderSection("GoogleMapsSettings", required: false);
             @RenderSection("Scripts", required: false);
    
     <script src="~/Scripts/favorites-controller.js"></script>   
