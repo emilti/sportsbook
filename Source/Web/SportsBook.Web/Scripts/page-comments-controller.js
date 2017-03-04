@@ -13,4 +13,6 @@ $(document).on("click", ".page-number-element", function (e) {
     var pageNumber = $(this).html();
     history.pushState({}, null, "/Facilities/FacilitiesPublic/");
     $("#comments-container").load("RedirectToGetSelectedPageComments/" + facilityId + "?pageNumber=" + pageNumber);
+    $("#latest-comments-container").empty();
+    history.pushState({}, null, "/Facilities/FacilitiesPublic/FacilityDetails/" + facilityId);
 });
