@@ -1,6 +1,13 @@
 ﻿.page-number-element{
-    display: inline-block
+    display: inline-block;    
+    text-decoration: underline
 }
+
+.current-page-element{
+     display: inline-block;    
+}
+
+
 
 .page-numbers-container{    
     position: absolute;

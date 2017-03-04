@@ -9,9 +9,9 @@ $(".submit-comment-button").on("click", function (event) {
         content = $(commentBox).val()
     }
 
-   
+
     $.post("/Facilities/Comments/AddComment",
-       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) {          
+       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) {
            var url = '@Url.Action("GetLatestComment", "Comments", new { area= "Facilities", id="facilityId" });';
            url = url.replace("facilityId", facilityId);
            history.pushState({}, null, "/Facilities/FacilitiesPublic/");
@@ -25,13 +25,12 @@ $(".submit-comment-button").on("click", function (event) {
 $("#show-comments-button").on("click", function () { showComments() });
 function showComments() {
     var facilityId = $("#comments-container").attr("data-id");
-    $("#show-comments-button").css("display", "none");   
+    $("#show-comments-button").css("display", "none");
     $("#comments-part").css("display", "inline-block");
     $("#hide-comments-button").css("display", "inline-block")
-    history.pushState({}, null, "/Facilities/FacilitiesPublic/"); 
-    $("#comments-container").load("RedirectToGetLatestComments/" + facilityId);
+    history.pushState({}, null, "/Facilities/FacilitiesPublic/");
+    $("#comments-container").load("GetLatestComments/" + facilityId);
     history.pushState({}, null, "/Facilities/FacilitiesPublic/FacilityDetails/" + facilityId);
-
 }
 
 $("#hide-comments-button").on("click", function () { hideComments() });

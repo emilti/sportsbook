@@ -405,6 +405,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\KendoUI\kendo.all.min.js" />
     <Content Include="Scripts\KendoUI\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\page-comments-controller.js" />
     <Content Include="Scripts\simple-star-rating.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

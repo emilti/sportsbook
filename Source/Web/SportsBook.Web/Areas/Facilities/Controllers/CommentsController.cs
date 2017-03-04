@@ -83,6 +83,19 @@
         //     return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
         // }
 
+        public ActionResult GetSelectedPageComments(int id,int pageNumber)
+        {
+            Facility foundFacility = this.facilities.GetFacilityDetails(id);
+            foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
+            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
+            CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
+            decimal totalCommentsCount = (decimal)commentsViewModel.Count();
+            commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));
+            commentsListViewModel.CurrentPage = pageNumber;
+            commentsListViewModel.Comments = commentsViewModel.Skip((int)(pageNumber - 1) * 5).Take(5).ToList();           
+            return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]

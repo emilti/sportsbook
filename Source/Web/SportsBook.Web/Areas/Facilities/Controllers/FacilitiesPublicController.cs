@@ -44,7 +44,7 @@
         }
 
         [HttpGet]
-        public ActionResult RedirectToGetLatestComments(int id)
+        public ActionResult GetLatestComments(int id)
         {
             //return this.RedirectToAction("GetLatestComment", "Comments", new { area = "Facilities", id = id });
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
@@ -53,8 +53,15 @@
             CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
             commentsListViewModel.Comments = commentsViewModel.Take(5).ToList();
             decimal totalCommentsCount = (decimal)commentsViewModel.Count();
+            commentsListViewModel.CurrentPage = 1;
             commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));
             return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
+        }
+
+        [HttpGet]
+        public ActionResult RedirectToGetSelectedPageComments(int id, int pageNumber)
+        {
+            return this.RedirectToAction("GetSelectedPageComments", "Comments", new { area = "Facilities", id = id, pageNumber = pageNumber});
         }
 
         [HttpGet]
