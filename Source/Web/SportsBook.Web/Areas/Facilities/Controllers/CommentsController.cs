@@ -35,7 +35,7 @@
         }
 
         [HttpPost]
-        [Authorize]      
+        [Authorize]
         public void AddComment(int id, string content)
         {
             if (this.ModelState.IsValid)
@@ -69,16 +69,19 @@
             return this.PartialView("_SingleCommentPartial", latestFacilityCommentForView);
         }
 
-        [HttpGet]
-        public ActionResult GetLatestComments(int id)
-        {
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);           
-            foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
-            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
-            CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
-            commentsListViewModel.Comments = commentsViewModel.Take(5);           
-            return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
-        }
+        // [HttpGet]
+        // public ActionResult GetLatestComments(int id)
+        // {
+        //     Facility foundFacility = this.facilities.GetFacilityDetails(id);
+        //     foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
+        //     List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
+        //     CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
+        //     commentsListViewModel.Comments = commentsViewModel.Take(5);
+        //     commentsListViewModel.CurrentPage = 0;
+        //     decimal totalCommentsCount = (decimal)commentsViewModel.Count();
+        //     commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));
+        //     return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
+        // }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

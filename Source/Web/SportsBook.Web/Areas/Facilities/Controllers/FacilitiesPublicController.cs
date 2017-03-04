@@ -52,8 +52,8 @@
             List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
             CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
             commentsListViewModel.Comments = commentsViewModel.Take(5).ToList();
-            CommentViewModel test = commentsListViewModel.Comments.ToList()[0];
-            // return this.PartialView("_SingleCommentPartial", test);
+            decimal totalCommentsCount = (decimal)commentsViewModel.Count();
+            commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));
             return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
         }
 

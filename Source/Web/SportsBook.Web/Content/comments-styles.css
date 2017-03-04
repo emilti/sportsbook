@@ -1,0 +1,8 @@
+﻿.page-number-element{
+    display: inline-block
+}
+
+.page-numbers-container{    
+    position: absolute;
+    left: 50%;
+}

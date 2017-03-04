@@ -270,6 +270,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\box.css" />
+    <Content Include="Content\comments-styles.css" />
     <Content Include="Content\custom-styles.css" />
     <Content Include="Content\images\add-to-favorites.png" />
     <Content Include="Content\images\rating-star.jpg" />
@@ -500,6 +501,10 @@
     <ProjectReference Include="..\..\Services\SportsBook.Services.Web\SportsBook.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
       <Name>SportsBook.Services.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SportsBook.Common\SportsBook.Common.csproj">
+      <Project>{0304527d-5938-4a5d-b433-01be9ab5b852}</Project>
+      <Name>SportsBook.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportsBook.Web.Infrastructure\SportsBook.Web.Infrastructure.csproj">
       <Project>{6813dc53-5eee-4507-8604-5301ee51a0d3}</Project>
