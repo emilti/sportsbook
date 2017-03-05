@@ -1,15 +1,4 @@
-﻿.page-number-element{
-    display: inline-block;    
-    text-decoration: underline
-}
-
-.current-page-element{
-     display: inline-block;    
-}
-
-
-
-.page-numbers-container{    
+﻿.page-numbers-container{    
     position: absolute;
-    left: 50%;
+    left: 35%;
 }
