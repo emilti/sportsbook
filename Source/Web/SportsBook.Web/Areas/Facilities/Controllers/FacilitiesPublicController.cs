@@ -35,13 +35,7 @@
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
             var facilityForView = AutoMapperConfig.Configuration.CreateMapper().Map<FacilityDetailedViewModel>(foundFacility);
             return this.View(facilityForView);
-        }
-
-        [HttpGet]
-        public ActionResult RedirectToGetLastComment(int id)
-        {
-            return this.RedirectToAction("GetLastComment", "Comments", new { area = "Facilities", id = id });
-        }
+        }       
 
         [HttpGet]
         public ActionResult GetLatestComments(int id)

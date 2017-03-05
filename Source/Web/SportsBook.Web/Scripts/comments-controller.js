@@ -11,14 +11,8 @@ $(".submit-comment-button").on("click", function (event) {
 
 
     $.post("/Facilities/Comments/AddComment",
-       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) {
-           var url = '@Url.Action("GetLatestComment", "Comments", new { area= "Facilities", id="facilityId" });';
-           url = url.replace("facilityId", facilityId);
-           history.pushState({}, null, "/Facilities/FacilitiesPublic/");
-           $("#latest-comments-container").prepend("<div></div>");
-           var recentlyAddedComments = $("#latest-comments-container").children();
-           $(recentlyAddedComments[0]).load("RedirectToGetLastComment/" + facilityId);
-           history.pushState({}, null, "/Facilities/FacilitiesPublic/FacilityDetails/" + facilityId);
+       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) { 
+           handleActionCall(facilityId);
        });
 })
 
@@ -28,9 +22,7 @@ function showComments() {
     $("#show-comments-button").css("display", "none");
     $("#comments-part").css("display", "inline-block");
     $("#hide-comments-button").css("display", "inline-block")
-    history.pushState({}, null, "/Facilities/FacilitiesPublic/");
-    $("#comments-container").load("GetLatestComments/" + facilityId);
-    history.pushState({}, null, "/Facilities/FacilitiesPublic/FacilityDetails/" + facilityId);
+    handleActionCall(facilityId);
 }
 
 $("#hide-comments-button").on("click", function () { hideComments() });
@@ -38,4 +30,10 @@ function hideComments() {
     $("#hide-comments-button").css("display", "none")
     $("#comments-part").css("display", "none")
     $("#show-comments-button").css("display", "inline-block")
+}
+
+function handleActionCall(facilityId) {
+    history.pushState({}, null, "/Facilities/FacilitiesPublic/");
+    $("#comments-container").load("GetLatestComments/" + facilityId);
+    history.pushState({}, null, "/Facilities/FacilitiesPublic/FacilityDetails/" + facilityId);
 }

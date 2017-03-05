@@ -60,29 +60,6 @@
             return this.View(foundCommentForView);
         }
 
-        [HttpGet]
-        public ActionResult GetLastComment(int id)
-        {
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);
-            FacilityComment latestFacilityComment = foundFacility.FacilityComments.Last();
-            CommentViewModel latestFacilityCommentForView = AutoMapperConfig.Configuration.CreateMapper().Map<CommentViewModel>(latestFacilityComment);
-            return this.PartialView("_SingleCommentPartial", latestFacilityCommentForView);
-        }
-
-        // [HttpGet]
-        // public ActionResult GetLatestComments(int id)
-        // {
-        //     Facility foundFacility = this.facilities.GetFacilityDetails(id);
-        //     foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
-        //     List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
-        //     CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
-        //     commentsListViewModel.Comments = commentsViewModel.Take(5);
-        //     commentsListViewModel.CurrentPage = 0;
-        //     decimal totalCommentsCount = (decimal)commentsViewModel.Count();
-        //     commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));
-        //     return this.PartialView("_PageableCommentsPartial", commentsListViewModel);
-        // }
-
         public ActionResult GetSelectedPageComments(int id,int pageNumber)
         {
             Facility foundFacility = this.facilities.GetFacilityDetails(id);
