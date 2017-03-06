@@ -8,10 +8,9 @@ $(".submit-comment-button").on("click", function (event) {
         commentBox = commentBoxes[0];
         content = $(commentBox).val()
     }
-
-
     $.post("/Facilities/Comments/AddComment",
-       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) { 
+       { id: facilityId, content: content }, function success(data, textStatus, jqXHR) {
+           $(".add-comment-textarea").val("");
            handleActionCall(facilityId);
        });
 })
