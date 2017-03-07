@@ -11,6 +11,8 @@
 
         Facility GetFacilityDetails(int id);
 
+        IQueryable<FacilityComment> GetLatestFacilityComments(int id);
+
         void UpdateFacility(int id, Facility facility);
 
         void Add(Facility facility);

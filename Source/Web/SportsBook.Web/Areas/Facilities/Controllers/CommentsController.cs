@@ -60,11 +60,10 @@
             return this.View(foundCommentForView);
         }
 
-        public ActionResult GetSelectedPageComments(int id,int pageNumber)
+        public ActionResult GetSelectedPageComments(int id, int pageNumber)
         {
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);
-            foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
-            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
+            var facilityComments = this.facilities.GetLatestFacilityComments(id);
+            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(facilityComments);
             CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
             decimal totalCommentsCount = (decimal)commentsViewModel.Count();
             commentsListViewModel.TotalPages = (int)Math.Ceiling((totalCommentsCount / (decimal)SportsBook.Data.Common.Constants.Constants.COUNT_OF_COMMENTS_PER_PAGE));

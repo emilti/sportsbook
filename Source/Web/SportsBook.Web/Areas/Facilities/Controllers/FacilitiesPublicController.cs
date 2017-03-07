@@ -40,10 +40,8 @@
         [HttpGet]
         public ActionResult GetLatestComments(int id)
         {
-            //return this.RedirectToAction("GetLatestComment", "Comments", new { area = "Facilities", id = id });
-            Facility foundFacility = this.facilities.GetFacilityDetails(id);
-            foundFacility.FacilityComments = foundFacility.FacilityComments.OrderByDescending(x => x.CreatedOn).ToList();
-            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(foundFacility.FacilityComments);
+            var facilityComments = this.facilities.GetLatestFacilityComments(id);
+            List<CommentViewModel> commentsViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<List<CommentViewModel>>(facilityComments);
             CommentsListViewModel commentsListViewModel = new CommentsListViewModel();
             commentsListViewModel.Comments = commentsViewModel.Take(5).ToList();
             decimal totalCommentsCount = (decimal)commentsViewModel.Count();

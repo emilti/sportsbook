@@ -9,10 +9,12 @@
     public class FacilitiesService : IFacilitiesService
     {
         private readonly IRepository<Facility> facilities;
+        private readonly IRepository<FacilityComment> comments;
 
-        public FacilitiesService(IRepository<Facility> facilities)
+        public FacilitiesService(IRepository<Facility> facilities, IRepository<FacilityComment> comments)
         {
             this.facilities = facilities;
+            this.comments = comments;
         }
 
         public Facility Add(string content, string authorId, string username, Facility commentedFacility)
@@ -44,6 +46,12 @@
             return this.facilities.GetById(id);
         }
 
+        public IQueryable<FacilityComment> GetLatestFacilityComments(int id)
+        {
+            Facility foundFacility = GetFacilityDetails(id);
+            foundFacility.FacilityComments = foundFacility.FacilityComments.AsQueryable().OrderByDescending(x => x.CreatedOn).ToList();
+            return foundFacility.FacilityComments.AsQueryable();
+        }
 
 
         public void UpdateFacility(int id, Facility facility)
