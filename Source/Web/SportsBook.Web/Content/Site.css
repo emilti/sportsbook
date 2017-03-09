@@ -81,3 +81,7 @@ div>.panel-comment{
     max-width: 100%;
     width:100%
 }
+
+ .dialog-title .ui-dialog-titlebar {
+          background:#172431;
+    }

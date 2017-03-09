@@ -64,22 +64,22 @@
         }
 
         [HttpGet]
-        public ActionResult SearchFacilities(FacilitiesListViewModel model, int id = 0)
+        public ActionResult SearchFacilities(FacilitiesListViewModel model, int sportCategoryId = 0)
         {
-           if (model.CurrentPage == 0)
+            if (model.CurrentPage == 0)
             {
                 model.CurrentPage = 1;
             }
 
-            var sportCategory = this.sportCategories.All().FirstOrDefault(x => x.Id == id);
+            var sportCategory = this.sportCategories.All().FirstOrDefault(x => x.Id == sportCategoryId);
 
             var sportCategories = this.sportCategories.All();
             model.SportCategoriesDropDown = this.GetSelectListSportCategories(sportCategories);
             var foundFacilities = new List<Facility>();
 
-            if (id > 0)
+            if (sportCategoryId > 0)
                 {
-                foundFacilities = this.facilities.All().Where(y => y.SportCategories.Where(x => x.Id == id).Count() > 0).ToList();
+                foundFacilities = this.facilities.All().Where(y => y.SportCategories.Where(x => x.Id == sportCategoryId).Count() > 0).ToList();
             }
             else
             {
