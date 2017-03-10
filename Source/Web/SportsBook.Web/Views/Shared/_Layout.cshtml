@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPORTSBOOK</title>
-    @Styles.Render("~/Content/css", "~/Content/kendo")  
-    <link href="~/Content/jquery-ui.css" rel="stylesheet" /> 
+    @Styles.Render("~/Content/css", "~/Content/kendo")
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
 
@@ -38,17 +38,7 @@
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
     <link href="~/Content/alertify.default.css" rel="stylesheet" />
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
-    <script>
-        $(function () {
-            $("#dialog-form").dialog({
-                width:200,
-                height: 400,
-                modal: true,
-                dialogClass: 'dialog-title'
-            })
-        });
-    </script>
-
+    <script src="~/Scripts/dialog-controller.js"></script>
 </head>
 <body>
     <span class="rating" data-stars="2">aa</span>
@@ -163,7 +153,6 @@
 
         <div id="dialog-form" title="Create new user">
             <p class="validateTips">All form fields are required.</p>
-
             <form>
                 <fieldset>
                     <label for="name">Name</label>
@@ -196,12 +185,12 @@
     @*@Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
-    @RenderSection("ToggleComments", required: false);
-    @RenderSection("AddComment", required: false);
-    @RenderSection("accountContent", required: false);
-    @RenderSection("GoogleMapsSettings", required: false);
-    @RenderSection("Scripts", required: false);
-
+    @RenderSection("ToggleComments", required: false)
+    @RenderSection("AddComment", required: false)
+    @RenderSection("accountContent", required: false)
+    @RenderSection("GoogleMapsSettings", required: false)
+    @RenderSection("Scripts", required: false)
+    @RenderSection("Login", required:false)
     <script src="~/Scripts/favorites-controller.js"></script>
     <script src="~/Scripts/page-comments-controller.js"></script>
 </body>

@@ -30,13 +30,20 @@
                             <div class="favorites-text">
                                 <span>Add To Favorites</span>
                             </div>
-                            using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" }, FormMethod.Post))
-                            {
-                                <input class="favorites-submit-button" type="submit" value="aa" />
-                            }
+                            
+                                <script>
+                                    $(document).on("click", ".favorites-holder", function (e) {
+                                        $("#dialog-form").dialog('open');
+                                    });
+                                </script>
+                            
+                            // using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" }, FormMethod.Post))
+                            // {
+                            //     <input class="favorites-submit-button" type="submit" value="aa" />
+                            // }
                         }
                     </div>
-                    <div class="user-rating-holder"> 
+                    <div class="user-rating-holder">
                         @Html.Action("GetUserFacilityRating", "Ratings", new { id = @facility.Id, area = "Facilities" })
                     </div>
                 </div>

@@ -23,23 +23,23 @@ textarea {
     max-width: 280px;
 }
 
-.image-in-details{
-    width:300px;
-    height:300px;
-    float:left;
-    margin:20px;
+.image-in-details {
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin: 20px;
 }
 
 
-.map-in-details{
-    width:300px;
-    height:300px;    
-    margin:20px;
-    float:left
+.map-in-details {
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    float: left;
 }
 
-.clear{
-    clear:both;
+.clear {
+    clear: both;
 }
 
 /*
@@ -47,41 +47,41 @@ textarea {
    margin-top:5%;
 }*/
 
-.comments-bottom{
-    clear:both;
-    padding-bottom:10px;
-    padding-right:10px
+.comments-bottom {
+    clear: both;
+    padding-bottom: 10px;
+    padding-right: 10px;
 }
 
-#comments-part{
-    display:none;
-    width:100%
+#comments-part {
+    display: none;
+    width: 100%;
 }
 
 
-.address-field{   
-    margin-top:5%;
+.address-field {
+    margin-top: 5%;
 }
 
-div>.panel-comment{
-    padding:0px
+div > .panel-comment {
+    padding: 0px;
 }
 
 /*Syles for Facility and Events information under their pictures*/
-.object-info{
-    padding-left:0;
-    padding-right:0;
+.object-info {
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.add-comment-container{
-   padding:1%
+.add-comment-container {
+    padding: 1%;
 }
 
-.add-comment-textarea{
+.add-comment-textarea {
     max-width: 100%;
-    width:100%
+    width: 100%;
 }
 
- .dialog-title .ui-dialog-titlebar {
-          background:#172431;
-    }
+.dialog-title .ui-dialog-titlebar {
+    background: #172431;
+}
