@@ -29,13 +29,19 @@
                             </div>
                             <div class="favorites-text">
                                 <span>Add To Favorites</span>
-                            </div>                            
-                                <script>
-                                    $(document).on("click", ".favorites-holder", function (e) {
-                                        $("#dialog-form").dialog('open');
-                                    });
-                                </script>
-                            
+                            </div>
+                            <script>
+                                $(document).on("click", ".favorites-holder", function (e) {
+                                    $("#dialog-form").dialog('open');
+                                });
+
+                                function gettoken() {
+                                    var token = '@Html.AntiForgeryToken()';
+                                    token = $(token).val();
+                                    return token;
+                                }
+                            </script>
+
                             // using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = @facility.Id, area = "Facilities" }, FormMethod.Post))
                             // {
                             //     <input class="favorites-submit-button" type="submit" value="aa" />
