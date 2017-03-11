@@ -84,4 +84,5 @@ div > .panel-comment {
 
 .dialog-title .ui-dialog-titlebar {
     background: #172431;
+    display:none;
 }

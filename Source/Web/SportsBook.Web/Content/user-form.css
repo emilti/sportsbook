@@ -1,0 +1,21 @@
+﻿.login-button{
+    margin:10px;
+    text-align:center;
+    display:inline-block;
+    width:45%;
+    border:4px solid #172431; 
+    border-radius:10px
+}
+
+.go-to-register-form {
+    margin:10px;
+    text-align:center;
+    display:inline-block;
+    width:75%;
+    border:4px solid #172431;
+    border-radius:10px
+}
+
+#login-form .button-container{
+    text-align:center
+}

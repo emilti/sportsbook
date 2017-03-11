@@ -37,6 +37,7 @@
 
     <link href="~/Content/alertify.core.css" rel="stylesheet" />
     <link href="~/Content/alertify.default.css" rel="stylesheet" />
+    <link href="~/Content/user-form.css" rel="stylesheet" />
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script src="~/Scripts/dialog-controller.js"></script>
 </head>
@@ -150,10 +151,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-
-        <div id="dialog-form" title="Create new user">
-            <p class="validateTips">All form fields are required.</p>
-            <form>
+        <div id="dialog-form" title="Create new user">  
+            <form id="register-form" style="display:none">
                 <fieldset>
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
@@ -162,8 +161,19 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
 
-                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+            <form id="login-form">
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
+                    <div class="button-container">
+                        <div class="menu-buttons login-button">Login</div>
+                        <div>or</div>
+                        <div class="menu-buttons go-to-register-form">New registration</div>
+                    </div>
                 </fieldset>
             </form>
         </div>
@@ -190,7 +200,7 @@
     @RenderSection("accountContent", required: false)
     @RenderSection("GoogleMapsSettings", required: false)
     @RenderSection("Scripts", required: false)
-    @RenderSection("Login", required:false)
+    @RenderSection("Login", required: false)
     <script src="~/Scripts/favorites-controller.js"></script>
     <script src="~/Scripts/page-comments-controller.js"></script>
 </body>

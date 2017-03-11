@@ -384,6 +384,7 @@
     <Content Include="Content\Theme\price-range.css" />
     <Content Include="Content\Theme\price-range.js" />
     <Content Include="Content\Theme\responsive.css" />
+    <Content Include="Content\user-form.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
