@@ -68,6 +68,13 @@
 
         private IAuthenticationManager AuthenticationManager => this.HttpContext.GetOwinContext().Authentication;
 
+        [AllowAnonymous]
+        public ActionResult GetPopupLogin(string returnUrl)
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            return this.PartialView("_LoginPopupPartial", loginViewModel);
+        }
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -84,7 +91,13 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(model);
+                foreach (ModelState modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError error in modelState.Errors) {
+                    Response.Write(error.ErrorMessage);
+                }
+            }                
+                return this.View();
             }
 
             // This doesn't count login failures towards account lockout

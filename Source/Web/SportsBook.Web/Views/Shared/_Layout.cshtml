@@ -8,6 +8,7 @@
     @Styles.Render("~/Content/css", "~/Content/kendo")
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/kendo")
 
 
@@ -41,7 +42,7 @@
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script src="~/Scripts/dialog-controller.js"></script>
 </head>
-<body>   
+<body>
     <header id="header">
         <!--header-->
         <div class="header_top">
@@ -150,7 +151,10 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <div id="dialog-form" title="Create new user">  
+        <div id="dialog-form">@Html.Action("GetPopupLogin", "Account")</div>
+       
+        <!--div id="dialog-form" title="Create new user">
+            
             <form id="register-form" style="display:none">
                 <fieldset>
                     <label for="name">Name</label>
@@ -175,7 +179,7 @@
                     </div>
                 </fieldset>
             </form>
-        </div>
+        </div-->
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>

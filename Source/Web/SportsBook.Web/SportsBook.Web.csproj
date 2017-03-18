@@ -510,6 +510,7 @@
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
     <Content Include="Views\Shared\_EventPartial.cshtml" />
     <Content Include="Views\Users\SearchUsers.cshtml" />
+    <Content Include="Views\Shared\_LoginPopupPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
