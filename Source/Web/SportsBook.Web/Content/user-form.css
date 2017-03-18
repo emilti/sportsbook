@@ -19,3 +19,7 @@
 #login-form .button-container{
     text-align:center
 }
+
+.validation-row{
+    height:60px;
+}
