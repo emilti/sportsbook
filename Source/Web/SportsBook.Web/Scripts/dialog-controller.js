@@ -2,7 +2,7 @@
     var dialog = $("#dialog-form").dialog({
         autoOpen: false,
         width: 600,
-        height: 600,
+        height: 500,
         modal: true,
         dialogClass: 'dialog-title'        
     })
@@ -21,13 +21,12 @@ $(document).on("click", "#login-form .login-button", function (e) {
 })
 
 $(document).on("click", ".favorites-holder", function (e) {   
-    // var url = 'Account/GetPopupLogin';     
-    $("#dialog-form").dialog('open');
-    $.validator.unobtrusive.parse("#dialog-form");
-    // $("#dialog-form").dialog("option", "show", { effect: "blind", duration: 800 });
-    // $.get(url, function (data) {
-    //     $("#dialog-form").html(data)
-    //     $("#dialog-form").dialog('open');
-    // });
+    $.get("/account/CheckLogin", "", function (result) {        
+        var isUserLoggedIn = result;
+        if (isUserLoggedIn === "False") {
+            $("#dialog-form").dialog('open');
+            $.validator.unobtrusive.parse("#dialog-form");
+        }      
+    });   
 })
 

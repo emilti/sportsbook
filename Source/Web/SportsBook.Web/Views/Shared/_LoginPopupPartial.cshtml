@@ -12,7 +12,7 @@
                     <div class="col-md-8  validation-row">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                    </div>   
+                    </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
@@ -29,19 +29,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
                 <div class="button-container">
-                    <div class="menu-buttons login-button">Login</div>
-                    <div>or</div>
-                    <div class="menu-buttons go-to-register-form">New registration</div>
-                </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class=" login-button" />
+                        <div class="or-row">or</div>
+                        <input class="menu-buttons go-to-register-form" value="New registration">
+                    </div>
+                </div>                
             }
         </section>
-    </div>   
+    </div>
 </div>
 
 @section Scripts {

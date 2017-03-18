@@ -75,6 +75,13 @@
             return this.PartialView("_LoginPopupPartial", loginViewModel);
         }
 
+        [AllowAnonymous]
+        public bool CheckLogin()
+        {
+            bool isUserLoggedIn = this.User.Identity.IsAuthenticated;
+            return isUserLoggedIn;
+        }
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
