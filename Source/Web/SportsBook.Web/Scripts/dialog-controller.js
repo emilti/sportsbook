@@ -4,20 +4,7 @@
         width: 600,
         height: 500,
         modal: true,
-        dialogClass: 'dialog-title',
-        buttons: [
-            {
-                text: "Ok",
-                icons: {
-                    primary: "ui-icon-heart"
-                },
-                click: function () {
-                    $(this).dialog("close");
-                    $("#dialog-register-form").dialog('open');
-                    $.validator.unobtrusive.parse("#dialog-register-form");
-                }
-            }
-        ]
+        dialogClass: 'dialog-title'
     })
     $(".ui-dialog-titlebar").hide()
 });
@@ -32,19 +19,6 @@ $(function () {
     })
     $(".ui-dialog-titlebar").hide()
 });
-
-// $(document).on("click", "#login-form .login-button", function (e) {
-//     var username = $("#login-form .username").val(),
-//     password = $("#login-form .password").val();
-//     var loginModel = { UserName: username, Password: password, __RequestVerificationToken: gettoken() };
-//     $.post("/Account/Login",
-//        loginModel, function success(data, textStatus, jqXHR) {
-//            $("#dialog-form").dialog("close");
-//            location.reload();
-//        });
-// })
-
-
 
 $(document).on("click", ".favorites-holder", function (e) {
     $.get("/account/CheckLogin", "", function (result) {
@@ -62,4 +36,9 @@ $(".go-to-register-form").on("click", function (e) {
     $.validator.unobtrusive.parse("#dialog-register-form");
 })
 
+$(document).on("click", "#go-to-register-form", function (e) {
+    $("#dialog-form").dialog("close");
+    $("#dialog-register-form").dialog("open");
+    $.validator.unobtrusive.parse("#dialog-register-form");
+})
 
