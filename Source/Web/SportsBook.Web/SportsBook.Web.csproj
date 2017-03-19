@@ -511,6 +511,7 @@
     <Content Include="Views\Shared\_EventPartial.cshtml" />
     <Content Include="Views\Users\SearchUsers.cshtml" />
     <Content Include="Views\Shared\_LoginPopupPartial.cshtml" />
+    <Content Include="Views\Shared\_RegisterPopupPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

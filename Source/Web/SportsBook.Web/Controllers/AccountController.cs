@@ -76,6 +76,13 @@
         }
 
         [AllowAnonymous]
+        public ActionResult GetPopupRegister(string returnUrl)
+        {
+            RegisterViewModel registerViewModel = new RegisterViewModel();
+            return this.PartialView("_RegisterPopupPartial", registerViewModel);
+        }
+
+        [AllowAnonymous]
         public bool CheckLogin()
         {
             bool isUserLoggedIn = this.User.Identity.IsAuthenticated;

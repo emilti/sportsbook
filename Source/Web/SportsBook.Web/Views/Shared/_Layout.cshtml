@@ -11,14 +11,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/kendo")
 
-
-    @*<link href="~/Content/Site.css" rel="stylesheet" />
-        <link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
-        <link href="~/Content/KendoUI/kendo.default.min.css" rel="stylesheet" />
-        <script src="~/Scripts/jquery-2.2.0.min.js"></script>
-        <script src="~/Scripts/KendoUI/kendo.all.min.js"></script>
-        <script src="~/Scripts/KendoUI/kendo.aspnetmvc.min.js"></script>*@
-
     <link href="~/Content/Theme/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Theme/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -152,6 +144,7 @@
         @RenderBody()
         <hr />
         <div id="dialog-form">@Html.Action("GetPopupLogin", "Account")</div>
+        <div id="dialog-register-form">@Html.Action("GetPopupRegister", "Account")</div>
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
