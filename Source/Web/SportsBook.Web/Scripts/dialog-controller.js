@@ -13,8 +13,8 @@
 $(function () {
     var dialog = $("#dialog-register-form").dialog({
         autoOpen: false,
-        width: 600,
-        height: 500,
+        width: 350,
+        height: 650,
         modal: true,
         dialogClass: 'dialog-title'
     })

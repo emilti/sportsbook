@@ -2,9 +2,12 @@
     overflow: hidden;
 } 
 
+#dialog-register-form{
+    overflow: hidden;
+} 
+
 .login-button{
-    margin:10px;
-    margin-left:22%;
+    margin:10px;    
     text-align:center;
     display:inline-block;
     width:45%;
@@ -27,8 +30,7 @@
 }
 
 .go-to-register-form {
-    margin:10px;
-    margin-left:20%;
+    margin:10px;    
     text-align:center;
     display:inline-block;
     width:60%;
@@ -47,6 +49,5 @@
 }
 
 .or-row{      
-    text-align:center;
-    padding-left:10%;
+    text-align:center;    
 }
