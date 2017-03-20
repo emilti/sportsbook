@@ -143,7 +143,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <div id="dialog-form" style="overflow: hidden;">@Html.Action("GetPopupLogin", "Account")</div>
+        <div id="dialog-login-form">@Html.Action("GetPopupLogin", "Account")</div>
         <div id="dialog-register-form">@Html.Action("GetPopupRegister", "Account")</div>
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

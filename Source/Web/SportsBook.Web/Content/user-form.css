@@ -1,6 +1,10 @@
-﻿.login-button{
+﻿#dialog-login-form{
+    overflow: hidden;
+} 
+
+.login-button{
     margin:10px;
-    margin-left:28%;
+    margin-left:22%;
     text-align:center;
     display:inline-block;
     width:45%;
@@ -34,7 +38,7 @@
     color: white
 }
 
-#login-form .button-container{
+#dialog-login-form .button-container{
     text-align:center
 }
 
@@ -42,6 +46,7 @@
     height:60px;
 }
 
-.or-row{    
+.or-row{      
     text-align:center;
+    padding-left:10%;
 }

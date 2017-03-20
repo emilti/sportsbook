@@ -1,5 +1,5 @@
 ﻿$(function () {
-    var dialog = $("#dialog-form").dialog({
+    var dialog = $("#dialog-login-form").dialog({
         autoOpen: false,
         draggable: true,        
         width: 350,
@@ -25,8 +25,8 @@ $(document).on("click", ".favorites-holder", function (e) {
     $.get("/account/CheckLogin", "", function (result) {
         var isUserLoggedIn = result;
         if (isUserLoggedIn === "False") {
-            $("#dialog-form").dialog('open');
-            $.validator.unobtrusive.parse("#dialog-form");
+            $("#dialog-login-form").dialog('open');
+            $.validator.unobtrusive.parse("#dialog-login-form");
         }
     });
 })
@@ -38,7 +38,7 @@ $(".go-to-register-form").on("click", function (e) {
 })
 
 $(document).on("click", "#go-to-register-form", function (e) {
-    $("#dialog-form").dialog("close");
+    $("#dialog-login-form").dialog("close");
     $("#dialog-register-form").dialog("open");
     $.validator.unobtrusive.parse("#dialog-register-form");
 })
