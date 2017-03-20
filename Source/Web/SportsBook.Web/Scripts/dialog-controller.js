@@ -1,8 +1,9 @@
 ﻿$(function () {
     var dialog = $("#dialog-form").dialog({
         autoOpen: false,
-        width: 600,
-        height: 500,
+        draggable: true,        
+        width: 350,
+        height: 390,
         modal: true,
         dialogClass: 'dialog-title'
     })
