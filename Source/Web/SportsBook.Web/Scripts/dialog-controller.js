@@ -43,3 +43,14 @@ $(document).on("click", "#go-to-register-form", function (e) {
     $.validator.unobtrusive.parse("#dialog-register-form");
 })
 
+$(".go-to-login-form").on("click", function (e) {
+    $("#dialog-login-form").dialog('open');
+    $.validator.unobtrusive.parse("#dialog-login-form");
+})
+
+$(document).on("click", "#go-to-login-form", function (e) {
+    $("#dialog-register-form").dialog("close");
+    $("#dialog-login-form").dialog("open");
+    $.validator.unobtrusive.parse("#dialog-login-form");
+})
+
