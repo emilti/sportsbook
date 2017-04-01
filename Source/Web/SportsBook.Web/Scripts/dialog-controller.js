@@ -58,3 +58,10 @@ $(document).on("click", "#go-to-login-form", function (e) {
     $.validator.unobtrusive.parse("#dialog-login-form");
 })
 
+
+$(document).on("click", ".close-button-container", function (e) {
+    $("#dialog-register-form").dialog("close");
+    $("#dialog-login-form").dialog("close");   
+})
+
+

@@ -61,4 +61,48 @@
     height:60px;
 }
 
+.close-button {    
+    height: 10px;
+    width: 10px;
+    position: relative;
+    box-sizing: border-box;
+    line-height: 10px;
+    display: inline-block;    
+}
+
+.close-button:before, .close-button:after {   
+    background-color:black;
+    transform: rotate(-45deg);
+    content: '';
+    position: absolute;  
+    display: block;
+    height: 6px;
+    width: 25px;
+    transition: all 0.25s ease-out;
+}
+
+.close-button:after {
+    transform: rotate(-135deg);
+}
+
+.close-button-container {  
+    margin-left:300px;  
+    width: 35px;
+    padding-top: 10px;
+    margin-bottom:10px
+}
+
+.close-button-container:hover :before {  
+   transform: rotate(225deg);
+}
+
+.close-button-container:hover :after {
+   transform: rotate(135deg);
+}
+
+body {  
+    background-color: white;    
+}
+
+
 
