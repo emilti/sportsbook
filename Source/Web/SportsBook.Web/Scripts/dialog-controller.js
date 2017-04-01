@@ -5,7 +5,9 @@
         width: 350,
         height: 390,
         modal: true,
-        dialogClass: 'dialog-title'
+        dialogClass: 'dialog-title',
+        show: { effect: "drop", duration: 800 },
+        hide: { effect: "drop", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });
@@ -16,7 +18,9 @@ $(function () {
         width: 350,
         height: 650,
         modal: true,
-        dialogClass: 'dialog-title'
+        dialogClass: 'dialog-title',
+        show: { effect: "drop", duration: 800 },
+        hide: { effect: "drop", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });

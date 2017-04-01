@@ -3,7 +3,7 @@
 <div class="row" style="margin-top:50px">
     <div class="col-md-12">
         <section id="loginForm">
-            <a href="#" class="close-button"></a>
+            
             @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
