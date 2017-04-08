@@ -16,7 +16,7 @@ $(function () {
     var dialog = $("#dialog-register-form").dialog({
         autoOpen: false,
         width: 350,
-        height: 650,
+        height: 700,
         modal: true,
         dialogClass: 'dialog-title',
         show: { effect: "drop", duration: 800 },
