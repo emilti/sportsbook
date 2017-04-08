@@ -431,7 +431,6 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\AppUserGridViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\AdminFacilityComments\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\FacilityCommentGridViewModel.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EventGridViewModel.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_FacilityRating.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_UnregisteredUserRatingPartial.cshtml" />
     <Content Include="Areas\Facilities\Views\Shared\_SingleCommentPartial.cshtml" />
