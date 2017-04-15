@@ -24,18 +24,6 @@
                         }
                         else
                         {
-
-                            <script>
-                                // $(document).on("click", ".favorites-holder", function (e) {
-                                //     $("#dialog-form").dialog('open');
-                                // });
-
-                                function gettoken() {
-                                    var token = '@Html.AntiForgeryToken()';
-                                    token = $(token).val();
-                                    return token;
-                                }
-                            </script>
                             @*@Html.ActionLink("Text", "GetPopupLogin", "Account", new AjaxOptions { UpdateTargetId = "dialog-form" })
                                 *@
                             <div id="fav-field" class="row">
