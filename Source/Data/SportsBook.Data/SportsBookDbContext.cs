@@ -2,19 +2,16 @@
 {
     using System;
     using System.Data.Entity;
-    using System.Linq;
-
-    using Common.Models;
-
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    using SportsBook.Data.Models;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Linq;
+    using Common.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using SportsBook.Data.Models;
 
     public class SportsBookDbContext : IdentityDbContext<AppUser>
     {
         public SportsBookDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Sportsbook", throwIfV1Schema: false)
         {
         }
 
@@ -24,7 +21,7 @@
 
         public virtual IDbSet<SportCategory> SportCategories { get; set; }
 
-        public virtual IDbSet<FacilityComment> FacilityComments { get; set; }   
+        public virtual IDbSet<FacilityComment> FacilityComments { get; set; }
 
         public virtual IDbSet<FacilityRating> FacilityRating { get; set; }
 
