@@ -64,7 +64,12 @@ h1, h2 {
     width: 200px;
     height: 70px;
     background-color: #172431;
-    opacity: 0.9
+    opacity: 0.5;
+	-webkit-transition: opacity 0.8s ease-in-out, font-size 1.2s;
+  -moz-transition: opacity 0.8s ease-in-out, font-size 1.2s;
+  -ms-transition: opacity 0.8s ease-in-out, font-size 1.2s;
+  -o-transition: opacity 0.8s ease-in-out, font-size 1.2s;
+  transition: opacity 0.8s ease-in-out, font-size 1.2s 
 }
 
 .caption .user-rating-holder {
@@ -78,7 +83,7 @@ h1, h2 {
     width: 200px;
     height: 70px;
     background-color: #172431;
-    opacity: 0.9
+    opacity: 0.5;
 }
 
 .caption .favorites-holder{
@@ -90,7 +95,12 @@ h1, h2 {
     width: 200px;
     height: 70px;
     background-color: #172431;
-    opacity: 0.9
+    opacity: 0.5;
+	-webkit-transition: opacity 0.8s ease-in-out;
+  -moz-transition: opacity 0.8s ease-in-out;
+  -ms-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .image {
@@ -111,17 +121,21 @@ h1, h2 {
 
 .details-caption {
     position:absolute;
-    left:56px;
+    left:40px;
     top:10px;
     color: white;
     font-size: 18px;
     line-height: 40px;
+	-webkit-transition: font-size 1.2s;
+   -moz-transition: color 12s, font-size 1.2s;
+     -o-transition: color 12s, font-size 1.2s;
+        transition: color 12s, font-size 1.2s;
+
 }
 
 .details-caption-holder:hover  .details-caption{
     opacity:1;
-    font-size:20px;  
-    left:47px;
+    font-size:19px; 
 }
 
 .caption:hover .details-caption-holder {
@@ -133,6 +147,13 @@ h1, h2 {
     opacity:0.95;
 }
 
+.favorites-text{
+	font-size: 14px;
+	-webkit-transition: font-size 1.2s;
+   -moz-transition: color 12s, font-size 1.2s;
+     -o-transition: color 12s, font-size 1.2s;
+        transition: color 12s, font-size 1.2s;
+}
 
 .caption:hover .user-rating-holder{
     display:inline-block;
@@ -140,6 +161,14 @@ h1, h2 {
 
 .caption:hover .favorites-holder{
     display:inline-block;
+}
+
+.favorites-holder:hover{
+	 opacity:0.95;
+}
+
+.favorites-holder:hover .favorites-text{
+font-size: 15px;	 
 }
 
 .rating-submit-button{
