@@ -78,7 +78,7 @@
     display: block;
     height: 6px;
     width: 25px;
-    transition: all 0.25s ease-out;
+    transition: all 0.55s ease-out;
 }
 
 .close-button:after {
@@ -93,11 +93,11 @@
 }
 
 .close-button-container:hover :before {  
-   transform: rotate(225deg);
+   transform: rotate(45deg);
 }
 
 .close-button-container:hover :after {
-   transform: rotate(135deg);
+   transform: rotate(-45deg);
 }
 
 body {  

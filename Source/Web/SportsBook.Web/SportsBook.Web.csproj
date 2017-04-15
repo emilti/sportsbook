@@ -507,7 +507,6 @@
     <Content Include="Areas\Facilities\Views\Shared\_FacilityCreateOrChangePartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
     <Content Include="Areas\Facilities\Views\FacilitiesPublic\SearchFacilities.cshtml" />
-    <Content Include="Views\Shared\_EventPartial.cshtml" />
     <Content Include="Views\Users\SearchUsers.cshtml" />
     <Content Include="Views\Shared\_LoginPopupPartial.cshtml" />
     <Content Include="Views\Shared\_RegisterPopupPartial.cshtml" />
