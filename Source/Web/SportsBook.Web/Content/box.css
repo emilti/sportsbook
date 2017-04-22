@@ -84,6 +84,11 @@ h1, h2 {
     height: 70px;
     background-color: #172431;
     opacity: 0.5;
+    -webkit-transition: opacity 0.8s ease-in-out;
+    -moz-transition: opacity 0.8s ease-in-out;
+    -ms-transition: opacity 0.8s ease-in-out;
+    -o-transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .caption .favorites-holder{
@@ -97,10 +102,10 @@ h1, h2 {
     background-color: #172431;
     opacity: 0.5;
 	-webkit-transition: opacity 0.8s ease-in-out;
-  -moz-transition: opacity 0.8s ease-in-out;
-  -ms-transition: opacity 0.8s ease-in-out;
-  -o-transition: opacity 0.8s ease-in-out;
-  transition: opacity 0.8s ease-in-out;
+    -moz-transition: opacity 0.8s ease-in-out;
+    -ms-transition: opacity 0.8s ease-in-out;
+    -o-transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .image {
@@ -150,13 +155,17 @@ h1, h2 {
 .favorites-text{
 	font-size: 14px;
 	-webkit-transition: font-size 1.2s;
-   -moz-transition: color 12s, font-size 1.2s;
-     -o-transition: color 12s, font-size 1.2s;
-        transition: color 12s, font-size 1.2s;
+    -moz-transition: color 12s, font-size 1.2s;
+    -o-transition: color 12s, font-size 1.2s;
+    transition: color 12s, font-size 1.2s;
 }
 
 .caption:hover .user-rating-holder{
     display:inline-block;
+}
+
+.user-rating-holder:hover{
+     opacity:0.95;
 }
 
 .caption:hover .favorites-holder{
