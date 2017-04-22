@@ -35,6 +35,20 @@ $(document).on("click", ".favorites-holder", function (e) {
     });
 })
 
+$(document).on("click", ".not-logged-user-star", function (e) {
+    getPopUpLogin();
+})
+
+function getPopUpLogin() {
+    $.get("/account/CheckLogin", "", function (result) {
+        var isUserLoggedIn = result;
+        if (isUserLoggedIn === "False") {
+            $("#dialog-login-form").dialog('open');
+            $.validator.unobtrusive.parse("#dialog-login-form");
+        }
+    });
+}
+
 
 $(".go-to-register-form").on("click", function (e) {
     $("#dialog-register-form").dialog('open');

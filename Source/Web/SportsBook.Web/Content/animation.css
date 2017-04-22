@@ -42,8 +42,8 @@
 
 
 .favorites-holder{
-  -webkit-animation: favorites-holder-animation  1500ms linear both;
-  animation: favorites-holder-animation  1500ms linear both;
+  -webkit-animation: favorites-holder-animation  1000ms linear both;
+  animation: favorites-holder-animation  1000ms linear both;
 }
 
 @-webkit-keyframes favorites-holder-animation { 

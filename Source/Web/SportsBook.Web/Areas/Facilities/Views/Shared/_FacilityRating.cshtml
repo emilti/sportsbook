@@ -25,17 +25,13 @@
         }
         else
         {
-            using (Html.BeginForm("AddRating", "Ratings", new { id = this.ViewBag.facilityId, area = "Facilities" }, FormMethod.Post))
-            {
-                <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
-                    <span class="star-style">☆</span>
-                    <span class="star-style">☆</span>
-                    <span class="star-style">☆</span>
-                    <span class="star-style">☆</span>
-                    <span class="star-style">☆</span>
-                </div>
-                <input class="rating-submit-button" type="submit" value="aa" />
-            }
+            <div class="user-rating" data-id="@this.ViewBag.facilityId" rating-value="0">
+                <span class="star-style not-logged-user-star">☆</span>
+                <span class="star-style not-logged-user-star">☆</span>
+                <span class="star-style not-logged-user-star">☆</span>
+                <span class="star-style not-logged-user-star">☆</span>
+                <span class="star-style not-logged-user-star">☆</span>
+            </div>
         }
     }
 </div>
