@@ -26,13 +26,7 @@ $(function () {
 });
 
 $(document).on("click", ".favorites-holder", function (e) {
-    $.get("/account/CheckLogin", "", function (result) {
-        var isUserLoggedIn = result;
-        if (isUserLoggedIn === "False") {
-            $("#dialog-login-form").dialog('open');
-            $.validator.unobtrusive.parse("#dialog-login-form");
-        }
-    });
+    getPopUpLogin();
 })
 
 $(document).on("click", ".not-logged-user-star", function (e) {
