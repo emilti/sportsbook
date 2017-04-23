@@ -13,15 +13,12 @@
             }
             else
             {
-                <div id="fav-field" class="row favorites-button">
+                <div id="fav-field" class="row">
+                    <div class="favorites-button"></div>
                 </div>
                 <div class="favorites-text">
                     <span>Add To Favorites</span>
                 </div>
-                using (Html.BeginForm("AddToFavorites", "FavoriteFacilities", new { id = Model.Id, area = "Facilities" }, FormMethod.Post))
-                {
-                    <input class="favorites-submit-button" type="submit" value="aa" />
-                }
             }
         </div>
         <div>
@@ -36,15 +33,15 @@
     </div>
     <div class="col-md-8">
         @{int i = 0;
-        foreach (var category in Model.SportCategories)
-        {
-            i++;
-            <span style="font-size:15px">@category.Name</span>
-            if (i < Model.SportCategories.Count)
+            foreach (var category in Model.SportCategories)
             {
-                <span>|</span>
+                i++;
+                <span style="font-size:15px">@category.Name</span>
+                if (i < Model.SportCategories.Count)
+                {
+                    <span>|</span>
+                }
             }
-        }
         }
 
         <span style="font-size:15px">| @Model.City.Name</span>
@@ -120,10 +117,10 @@
     <div id="latest-comments-container" class="row">
 
     </div>
-    
+
     <div id="comments-container" data-id="@Model.Id"></div>
-   
-       @*@ @foreach (var comment in Model.FacilityComments)
+
+    @*@ @foreach (var comment in Model.FacilityComments)
         {
            @Html.Action("RedirectToGetLatestComments", "FacilitiesPublic", new { area = "Facilities", id = Model.Id })
             if (comment.IsDeleted == false)

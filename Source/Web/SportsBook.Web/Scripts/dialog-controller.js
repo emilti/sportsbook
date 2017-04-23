@@ -6,8 +6,8 @@
         height: 390,
         modal: true,
         dialogClass: 'dialog-title',
-        show: { effect: "drop", duration: 800 },
-        hide: { effect: "drop", duration: 800 }
+        show: { effect: "blind", duration: 800 },
+        hide: { effect: "explode", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });
@@ -19,15 +19,20 @@ $(function () {
         height: 700,
         modal: true,
         dialogClass: 'dialog-title',
-        show: { effect: "drop", duration: 800 },
-        hide: { effect: "drop", duration: 800 }
+        show: { effect: "blind", duration: 800 },
+        hide: { effect: "explode", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });
 
+$(document).on("click", ".details-favorites-button", function (e) {
+    getPopUpLogin();
+})
+
 $(document).on("click", ".favorites-holder", function (e) {
     getPopUpLogin();
 })
+
 
 $(document).on("click", ".not-logged-user-star", function (e) {
     getPopUpLogin();
