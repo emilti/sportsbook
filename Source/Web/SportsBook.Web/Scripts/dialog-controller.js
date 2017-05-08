@@ -33,6 +33,9 @@ $(document).on("click", ".favorites-holder", function (e) {
     getPopUpLogin();
 })
 
+$(document).on("click", ".submit-comment-button", function (e) {
+    getPopUpLogin();
+})
 
 $(document).on("click", ".not-logged-user-star", function (e) {
     getPopUpLogin();
