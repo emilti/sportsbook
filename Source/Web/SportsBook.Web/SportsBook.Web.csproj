@@ -276,6 +276,7 @@
     <Content Include="Content\images\rating-star.jpg" />
     <Content Include="Content\images\rating-star.png" />
     <Content Include="Content\images\remove-from-favorites.png" />
+    <Content Include="Content\images\x-button.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\KendoUI\Default\editor.png" />
     <Content Include="Content\KendoUI\Default\imagebrowser.png" />

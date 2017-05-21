@@ -7,7 +7,7 @@
         modal: true,
         dialogClass: 'dialog-title',
         show: { effect: "blind", duration: 800 },
-        hide: { effect: "explode", duration: 800 }
+        hide: { effect: "blind", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });
@@ -20,7 +20,7 @@ $(function () {
         modal: true,
         dialogClass: 'dialog-title',
         show: { effect: "blind", duration: 800 },
-        hide: { effect: "explode", duration: 800 }
+        hide: { effect: "blind", duration: 800 }
     })
     $(".ui-dialog-titlebar").hide()
 });
@@ -51,7 +51,6 @@ function getPopUpLogin() {
     });
 }
 
-
 $(".go-to-register-form").on("click", function (e) {
     $("#dialog-register-form").dialog('open');
     $.validator.unobtrusive.parse("#dialog-register-form");
@@ -59,8 +58,10 @@ $(".go-to-register-form").on("click", function (e) {
 
 $(document).on("click", "#go-to-register-form", function (e) {
     $("#dialog-login-form").dialog("close");
-    $("#dialog-register-form").dialog("open");
-    $.validator.unobtrusive.parse("#dialog-register-form");
+
+    setTimeout(function() {
+        $("#dialog-register-form").dialog("open");
+        $.validator.unobtrusive.parse("#dialog-register-form");  }, 1500); 
 })
 
 $(".go-to-login-form").on("click", function (e) {
@@ -70,8 +71,11 @@ $(".go-to-login-form").on("click", function (e) {
 
 $(document).on("click", "#go-to-login-form", function (e) {
     $("#dialog-register-form").dialog("close");
-    $("#dialog-login-form").dialog("open");
-    $.validator.unobtrusive.parse("#dialog-login-form");
+
+    setTimeout(function() {
+        $("#dialog-login-form").dialog("open");
+        $.validator.unobtrusive.parse("#dialog-login-form");
+    }, 1500);
 })
 
 
